@@ -25,9 +25,5 @@ class JsonGameRepository
         SleekDBDatabaseFactory $databaseFactory,
     ) {
         $this->database = $databaseFactory->createFrom('games');
-//        /** @phpstan-ignore assign.propertyType */
-//        $this->serializer = $serializingFactory->createFrom(Game::class, Mode::SERIALIZE);
-//        /** @phpstan-ignore assign.propertyType */
-//        $this->deserializer = $serializingFactory->createFrom(GameCommand::class, Mode::DESERIALIZE);
     }
 }
