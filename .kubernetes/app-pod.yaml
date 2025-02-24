@@ -9,8 +9,8 @@ metadata:
   name: app
 spec:
   containers:
-    - name: hyperf-example-app
-      image: hyperf-example-app:kubernetes
+    - name: template_name-app
+      image: template_name-app:kubernetes
       imagePullPolicy: IfNotPresent
       env:
         - name: SCAN_CACHEABLE

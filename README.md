@@ -18,7 +18,7 @@ This is a simple example of a project using the Hyperf framework.
 Clone the repository
 
 ```bash
-git clone git@github.com:PHPcomRapadura/hyperf-example.git
+git clone git@github.com:PHPcomRapadura/hyperf-com-rapadura.git
 ```
 
 Execute the following command to setup the application

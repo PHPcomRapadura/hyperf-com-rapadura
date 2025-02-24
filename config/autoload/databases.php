@@ -12,21 +12,21 @@ $connections = [
         'driver' => 'pgsql',
         'read' => [
             'host' => [
-                env('PGSQL_READ_DB_HOST', env('PGSQL_DB_HOST')),
+                env('PGSQL_READ_DB_HOST', env('PGSQL_DB_HOST', 'postgres')),
             ],
-            'username' => env('PGSQL_READ_DB_USERNAME', env('PGSQL_DB_USERNAME', 'root')),
+            'username' => env('PGSQL_READ_DB_USERNAME', env('PGSQL_DB_USERNAME', 'postgres')),
             'password' => env('PGSQL_READ_DB_PASSWORD', env('PGSQL_DB_PASSWORD', 'root')),
             'port' => env('PGSQL_READ_DB_PORT', env('PGSQL_DB_PORT', 5432)),
         ],
         'write' => [
             'host' => [
-                env('PGSQL_DB_HOST'),
+                env('PGSQL_DB_HOST', 'postgres'),
             ],
-            'username' => env('PGSQL_DB_USERNAME', 'root'),
+            'username' => env('PGSQL_DB_USERNAME', 'postgres'),
             'password' => env('PGSQL_DB_PASSWORD', 'root'),
             'port' => env('PGSQL_DB_PORT', 5432),
         ],
-        'database' => env('PGSQL_DB_DATABASE', 'hyperf-example'),
+        'database' => env('PGSQL_DB_DATABASE', 'database'),
         'charset' => env('PGSQL_DB_CHARSET', 'utf8'),
         'collation' => env('PGSQL_DB_COLLATION', 'utf8_unicode_ci'),
         'prefix' => env('PGSQL_DB_PREFIX', ''),
@@ -52,9 +52,9 @@ $connections = [
         'driver' => 'mysql',
         'read' => [
             'host' => [
-                env('MYSQL_READ_DB_HOST', env('MYSQL_DB_HOST')),
+                env('MYSQL_READ_DB_HOST', env('MYSQL_DB_HOST', 'mysql')),
             ],
-            'username' => env('MYSQL_READ_DB_USERNAME', env('MYSQL_DB_USERNAME', 'root')),
+            'username' => env('MYSQL_READ_DB_USERNAME', env('MYSQL_DB_USERNAME', 'mysql')),
             'password' => env('MYSQL_READ_DB_PASSWORD', env('MYSQL_DB_PASSWORD', 'root')),
             'port' => env('MYSQL_READ_DB_PORT', env('MYSQL_DB_PORT', 3306)),
         ],
@@ -62,11 +62,11 @@ $connections = [
             'host' => [
                 env('MYSQL_DB_HOST', 'mysql'),
             ],
-            'username' => env('MYSQL_DB_USERNAME', 'root'),
+            'username' => env('MYSQL_DB_USERNAME', 'mysql'),
             'password' => env('MYSQL_DB_PASSWORD', 'root'),
             'port' => env('MYSQL_DB_PORT', 3306),
         ],
-        'database' => env('MYSQL_DB_DATABASE', 'hyperf-example'),
+        'database' => env('MYSQL_DB_DATABASE', 'database'),
         'charset' => env('MYSQL_DB_CHARSET', 'utf8'),
         'collation' => env('MYSQL_DB_COLLATION', 'utf8_unicode_ci'),
         'prefix' => env('MYSQL_DB_PREFIX', ''),

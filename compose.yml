@@ -1,23 +1,23 @@
 services:
   app:
-    container_name: hyperf-example-app
-    image: hyperf-example-app
+    container_name: template_name-app
+    image: template_name-app
     build:
       context: .
       args:
         - APP_ENV=dev
     command: [ "server:watch" ]
     volumes:
-      - ./:/opt/www
+      - ./:/home/runner/work/hyperf-com-rapadura/hyperf-com-rapadura
     ports:
       - "9501:9501"
     environment:
       - SCAN_CACHEABLE=false
       - STDOUT_LOG_LEVEL=alert,critical,emergency,error,warning,notice,info
     networks:
-      - hyperf-example-network
+      - template_name-network
     restart: on-failure
 
 networks:
-  hyperf-example-network:
-    name: hyperf-example-network
+  template_name-network:
+    name: template_name-network
