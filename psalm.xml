@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="8"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="true"
+    findUnusedPsalmSuppress="true"
+    disableSuppressAll="true"
+    findUnusedCode="false"
+>
+    <projectFiles>
+        <directory name="app" />
+        <directory name="config" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <file name="config/autoload/server.php" />
+            <file name="config/autoload/annotations.php" />
+        </ignoreFiles>
+    </projectFiles>
+    <enableExtensions>
+        <extension name="decimal"/>
+        <extension name="pdo"/>
+        <extension name="ds"/>
+    </enableExtensions>
+</psalm>

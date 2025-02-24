@@ -1,0 +1,19 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_RUNNER: "docker compose --compatibility"
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: make setup
+
+      - run: make lint

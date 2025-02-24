@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  ports:
+    - name: "9501"
+      port: 9501
+      targetPort: 9501
+  selector:
+    io.kompose.service: app

@@ -1,0 +1,86 @@
+parameters:
+  paths:
+    - ./app
+
+  layers:
+    # Define the layers of your application
+    - name: Application
+      collectors:
+        - type: className
+          regex: ^App\\Application.*
+
+    - name: Domain
+      collectors:
+        - type: className
+          regex: ^App\\Domain.*
+
+    - name: Infrastructure
+      collectors:
+        - type: className
+          regex: ^App\\Infrastructure.*
+
+    - name: Presentation
+      collectors:
+        - type: className
+          regex: ^App\\Presentation.*
+
+    # Define the supported global layers
+    - name: Contract
+      collectors:
+        - type: className
+          regex: ^Hyperf\\Contract\\.*
+
+    - name: Native
+      collectors:
+        - type: className
+          regex: ^\w+$|^(DS|Decimal)\\.*$
+
+    - name: Vendor
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex:
+                ^Psr\\(Http|Log|Container)\\.*|\
+                ^Hyperf\\(Event|Command|Coordinator|HttpMessage|HttpServer|Context|ExceptionHandler)\\.*|\
+                ^Google\\.*|\
+                ^SleekDB\\.*|\
+                ^Visus\\Cuid2\\.*|\
+                ^Swow\\.*
+          must_not:
+            - type: className
+              regex:
+                ^Psr\\Container\\ContainerInterface$|\
+                ^Psr\\Http\\Message\\ServerRequestInterface$|\
+                ^Hyperf\\Context\\Context$|\
+                ^Hyperf\\Validation\\ValidationException$|\
+                ^Hyperf\\Validation\\Request\\FormRequest$
+
+    - name: Validation
+      collectors:
+        - type: className
+          regex:
+            ^Psr\\Container\\ContainerInterface$|\
+            ^Psr\\Http\\Message\\ServerRequestInterface$|\
+            ^Hyperf\\Context\\Context$|\
+            ^Hyperf\\Validation\\ValidationException$|\
+            ^Hyperf\\Validation\\Request\\FormRequest$
+
+  ruleset:
+    Application:
+      - Domain
+      - Native
+    Domain:
+      - Contract
+      - Native
+    Infrastructure:
+      - Domain
+      - Contract
+      - Native
+      - Vendor
+      - Validation
+    Presentation:
+      - Application
+      - Domain
+      - Infrastructure
+      - Validation

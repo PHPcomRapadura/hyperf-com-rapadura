@@ -1,0 +1,23 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_RUNNER: "docker compose --compatibility"
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: make setup
+
+      - run: make test
+
+      - uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

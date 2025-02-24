@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  containers:
+    - name: hyperf-example-app
+      image: hyperf-example-app:kubernetes
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: SCAN_CACHEABLE
+          value: "false"
+        - name: STDOUT_LOG_LEVEL
+          value: alert,critical,emergency,error,warning,notice,info
+      ports:
+        - containerPort: 9501
+          protocol: TCP
+  restartPolicy: OnFailure
