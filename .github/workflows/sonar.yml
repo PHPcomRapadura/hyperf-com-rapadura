@@ -22,7 +22,7 @@ jobs:
 
       - run: |
           cp tests/.phpunit/logging.xml tests/logging.xml && \
-          sed -i 's|/opt/www/tests/|tests/|g' tests/logging.xml
+          sed -i 's|/opt/www/tests/|/home/runner/work/hyperf-com-rapadura/hyperf-com-rapadura/tests/|g' tests/logging.xml
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
