@@ -20,14 +20,6 @@ jobs:
 
       - run: make test
 
-      - run: |
-          cp tests/.phpunit/logging.xml tests/logging.xml && \
-          sed -i 's|/opt/www/tests/|${{ github.workspace }}/tests/|g' tests/logging.xml
-
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectBaseDir=${{ github.workspace }}
-            -Dsonar.php.tests.reportPath=tests/logging.xml
