@@ -2,10 +2,10 @@
 
 * [Bem-vindo](README.md)
 
-## Começando do começo
+## Hyperf com Rapadura
 
-* [Bora já então](comecando-do-comeco/quickstart.md)
-* [Publish your docs](comecando-do-comeco/publish-your-docs.md)
+* [Bora já então](hyperf-com-rapadura/quickstart.md)
+* [Publish your docs](hyperf-com-rapadura/publish-your-docs.md)
 
 ## Basics
 
