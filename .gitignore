@@ -13,3 +13,4 @@ vendor/
 *.cache
 .vscode/
 core
+*.override.*

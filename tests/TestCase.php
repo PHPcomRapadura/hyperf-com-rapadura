@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase as PHPUnit;
 use Psr\Http\Message\ServerRequestInterface;
 use Tests\Support\Faker\Faker;
 
-use function Hyperf\Support\env;
 use function Hyperf\Support\make;
 
 class TestCase extends PHPUnit
@@ -34,10 +33,6 @@ class TestCase extends PHPUnit
         gc_collect_cycles();
         Context::destroy(ServerRequestInterface::class);
         Context::destroy('http.request.parsedData');
-
-        if (env('CUSTOM_DOCUMENT_ROOT')) {
-            $_SERVER['DOCUMENT_ROOT'] = env('CUSTOM_DOCUMENT_ROOT');
-        }
     }
 
     protected function assertEnumValue(BackedEnum $enum, string $value): void

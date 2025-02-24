@@ -16,11 +16,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - run: cp .github/ci/compose.override.yml compose.override.yml
-
       - run: make setup
 
       - run: make test
+
+      - run: sed -i 's|/opt/www/tests/|tests/|g' tests/.phpunit/logging.xml
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:

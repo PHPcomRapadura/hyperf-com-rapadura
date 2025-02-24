@@ -20,4 +20,4 @@ services:
 
 networks:
   template_name-network:
-    name: hyperf_example-network
+    name: template_name-network
