@@ -2,15 +2,18 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
-    env:
-      COMPOSE_RUNNER: "docker compose --compatibility"
+    runs-on: hyperf/hyperf:8.3-alpine-v3.19-swoole
     steps:
       - uses: actions/checkout@v4
 
-      - run: make setup
+      - run: .docker/app/default.sh "UTC"
 
-      - run: make lint
+      - run: .docker/app/conditional.sh "test"
+
+      - run: composer lint
