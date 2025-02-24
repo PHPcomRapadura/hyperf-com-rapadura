@@ -18,6 +18,10 @@ jobs:
 
       - run: make test
 
+      - run: sed -i "s|/opt/www/|$(pwd)/|g" tests/.phpunit/report/clover.xml
+
+      - run: sed -i "s|/opt/www/|$(pwd)/|g" tests/.phpunit/logging.xml
+
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
