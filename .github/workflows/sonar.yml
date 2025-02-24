@@ -20,8 +20,12 @@ jobs:
 
       - run: make test
 
+      - run: cp tests/.phpunit/logging.xml tests/logging.xml
       - run: sed -i 's|/opt/www/tests/|tests/|g' tests/.phpunit/logging.xml
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.php.tests.reportPath=tests/logging.xml
