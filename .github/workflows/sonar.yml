@@ -20,8 +20,9 @@ jobs:
 
       - run: make test
 
-      - run: cp tests/.phpunit/logging.xml tests/logging.xml
-      - run: sed -i 's|/opt/www/tests/|tests/|g' tests/.phpunit/logging.xml
+      - run: |
+          cp tests/.phpunit/logging.xml tests/logging.xml && \
+          sed -i 's|/opt/www/tests/|tests/|g' tests/logging.xml
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
