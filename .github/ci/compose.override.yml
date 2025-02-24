@@ -1,5 +1,7 @@
 services:
   app:
     container_name: template_name-app
+    volumes:
+      - ./:/home/runner/work/hyperf-com-rapadura/hyperf-com-rapadura
     environment:
       - CUSTOM_DOCUMENT_ROOT=/home/runner/work/hyperf-com-rapadura/hyperf-com-rapadura
