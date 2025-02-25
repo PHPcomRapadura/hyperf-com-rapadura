@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Support\Adapter\Mapping;
+namespace App\Infrastructure\Support\Adapter\Serializing\Serialize;
 
+use;
 use App\Infrastructure\Support\CaseConvention;
 use ReflectionIntersectionType;
 use ReflectionNamedType;

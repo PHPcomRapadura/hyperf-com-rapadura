@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Support\Adapter\Mapping\Resolve;
+namespace App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve;
 
 use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\Mapping\NotResolvedType;
 use App\Domain\Support\Value;
 use App\Domain\Support\Values;
-use App\Infrastructure\Support\Adapter\Mapping\Chain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Chain;
 use ReflectionParameter;
+
+use function App\Infrastructure\Support\Adapter\Mapping\Resolve\gettype;
 
 class InvalidChain extends Chain
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Support\Adapter\Mapping\Prepare;
+namespace App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare;
 
 use App\Domain\Support\Value;
 use App\Domain\Support\Values;
-use App\Infrastructure\Support\Adapter\Mapping\Chain;
-use App\Infrastructure\Support\Adapter\Mapping\Converter;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Chain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Converter;
 use ReflectionNamedType;
 use ReflectionParameter;
 

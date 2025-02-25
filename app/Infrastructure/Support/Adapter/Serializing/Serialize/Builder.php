@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Support\Adapter\Mapping;
+namespace App\Infrastructure\Support\Adapter\Serializing\Serialize;
 
 use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\MappingException;
 use App\Domain\Support\Values;
-use App\Infrastructure\Support\Adapter\Mapping\Prepare\CastChain;
-use App\Infrastructure\Support\Adapter\Mapping\Prepare\DependencyChain;
-use App\Infrastructure\Support\Adapter\Mapping\Prepare\EmptyChain;
-use App\Infrastructure\Support\Adapter\Mapping\Resolve\InvalidChain;
-use App\Infrastructure\Support\Adapter\Mapping\Resolve\RequiredChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\CastChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\DependencyChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\EmptyChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\InvalidChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\RequiredChain;
 use ReflectionClass;
 use ReflectionParameter;
 use Throwable;
 
-class Mapper extends Engine
+class Builder extends Engine
 {
     /**
      * @template T of object
@@ -26,7 +26,7 @@ class Mapper extends Engine
      * @return T
      * @throws MappingException
      */
-    public function map(string $class, Values $values): mixed
+    public function build(string $class, Values $values): mixed
     {
         try {
             $reflectionClass = new ReflectionClass($class);
@@ -68,7 +68,7 @@ class Mapper extends Engine
             $value = $resolved->value;
             if ($value instanceof Context) {
                 /** @phpstan-ignore argument.type, argument.templateType */
-                $value = $this->map($value->class, $value->values);
+                $value = $this->build($value->class, $value->values);
             }
             $values = $values->with($name, $value);
         }

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Infrastructure\Support\Adapter\Mapping;
+namespace Tests\Unit\Infrastructure\Support\Adapter\Serializing\Serialize;
 
 use Countable;
 use Iterator;
 use RuntimeException;
 
-class MapperTestStubEdgeCaseIntersection implements Iterator, Countable
+class BuilderTestStubEdgeCaseIntersection implements Iterator, Countable
 {
     public function current(): mixed
     {

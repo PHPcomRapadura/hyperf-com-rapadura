@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Integration;
 
-use App\Infrastructure\Support\Adapter\Mapping\Mapper;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Builder;
 use App\Infrastructure\Support\Persistence\Hyperf\HyperfDBFactory;
 use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
 use Tests\Integration\Support\Database\Helper;
-use Tests\Integration\Support\Database\Helpers\SleekDBHelper;
 use Tests\Integration\Support\Database\Helpers\PostgresHelper;
+use Tests\Integration\Support\Database\Helpers\SleekDBHelper;
 use Tests\TestCase;
 
 class IntegrationTestCase extends TestCase
 {
     protected Helper $sleek;
 
-    protected Mapper $mapper;
+    protected Builder $mapper;
 
     protected PostgresHelper $postgres;
 
@@ -26,7 +26,7 @@ class IntegrationTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->mapper = $this->make(Mapper::class);
+        $this->mapper = $this->make(Builder::class);
 
         $this->sleek = new SleekDBHelper($this->make(SleekDBDatabaseFactory::class), $this);
 

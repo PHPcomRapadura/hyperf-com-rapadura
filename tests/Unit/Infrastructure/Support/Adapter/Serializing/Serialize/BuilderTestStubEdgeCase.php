@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Infrastructure\Support\Adapter\Mapping;
+namespace Tests\Unit\Infrastructure\Support\Adapter\Serializing\Serialize;
 
 use Countable;
 use Iterator;
 
-class MapperTestStubEdgeCase
+class BuilderTestStubEdgeCase
 {
     private readonly mixed $whatever;
 
     public function __construct(
         public readonly int|string $union,
         public readonly Iterator&Countable $intersection,
-        public readonly MapperTestStubWithConstructor $nested,
+        public readonly BuilderTestStubWithConstructor $nested,
         $whatever,
     ) {
         $this->whatever = $whatever;

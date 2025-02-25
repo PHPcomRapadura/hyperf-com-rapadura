@@ -6,6 +6,7 @@ namespace App\Infrastructure\Support\Adapter\Serializing;
 
 use App\Domain\Contract\Deserializer as Contract;
 use App\Domain\Support\Outputable;
+use App\Infrastructure\Support\CaseConvention;
 use InvalidArgumentException;
 use JsonException;
 
@@ -18,8 +19,11 @@ class Deserializer implements Contract
     /**
      * @param class-string<T> $type
      */
-    public function __construct(private readonly string $type)
-    {
+    public function __construct(
+        private readonly string $type,
+        CaseConvention $case = CaseConvention::SNAKE,
+        array $converters = [],
+    ) {
     }
 
     /**

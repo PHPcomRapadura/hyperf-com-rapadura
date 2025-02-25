@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Support\Adapter\Mapping;
+namespace App\Infrastructure\Support\Adapter\Serializing\Serialize;
 
 use App\Domain\Support\Values;
 

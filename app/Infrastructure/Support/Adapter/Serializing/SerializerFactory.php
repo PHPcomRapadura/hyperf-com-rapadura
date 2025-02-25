@@ -15,6 +15,6 @@ class SerializerFactory
      */
     public function make(string $type): Serializer
     {
-        return new Serializer(type: $type, conversors: ['array' => new FromDatabaseToArray()]);
+        return new Serializer(type: $type, converters: ['array' => new FromDatabaseToArray()]);
     }
 }

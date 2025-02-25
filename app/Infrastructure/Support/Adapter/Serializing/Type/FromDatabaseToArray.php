@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Support\Adapter\Serializing\Type;
 
-use App\Infrastructure\Support\Adapter\Mapping\Converter;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Converter;
 
 use function Util\Type\Json\decode;
 
