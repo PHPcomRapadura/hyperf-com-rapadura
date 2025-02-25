@@ -8,11 +8,11 @@ use Hyperf\DB\DB as Database;
 use Tests\Integration\Support\Database\Helper;
 use Tests\TestCase;
 
-class MySQLHelper implements Helper
+final readonly class MySQLHelper implements Helper
 {
     public function __construct(
-        private readonly Database $database,
-        private readonly TestCase $assertion,
+        private Database $database,
+        private TestCase $assertion,
     ) {
     }
 

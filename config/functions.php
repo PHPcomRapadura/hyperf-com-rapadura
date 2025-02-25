@@ -139,11 +139,14 @@ namespace Util\Type\Json;
 
 use JsonException;
 
+use function Util\Type\Cast\toArray;
+use function Util\Type\Cast\toString;
+
 if (! function_exists('decode')) {
     function decode(string $json): ?array
     {
         try {
-            return json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            return toArray(json_decode($json, true, 512, JSON_THROW_ON_ERROR));
         } catch (JsonException) {
             return null;
         }
@@ -154,7 +157,7 @@ if (! function_exists('encode')) {
     function encode(array $data): ?string
     {
         try {
-            return json_encode($data, JSON_THROW_ON_ERROR);
+            return toString(json_encode($data, JSON_THROW_ON_ERROR));
         } catch (JsonException) {
             return null;
         }

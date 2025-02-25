@@ -8,6 +8,7 @@ use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
 use App\Infrastructure\Support\Adapter\Serializing\Serializer;
+use App\Infrastructure\Support\Adapter\Serializing\SerializerFactory;
 use App\Infrastructure\Support\Persistence\Generator;
 use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
 use SleekDB\Exceptions\InvalidArgumentException;
@@ -23,10 +24,11 @@ class SleekDBGameQueryRepository extends SleekDBGameRepository implements GameQu
     public function __construct(
         Generator $generator,
         SleekDBDatabaseFactory $databaseFactory,
+        SerializerFactory $serializerFactory,
     ) {
         parent::__construct($generator, $databaseFactory);
 
-        $this->serializer = new Serializer(Game::class);
+        $this->serializer = $serializerFactory->make(Game::class);
     }
 
     /**

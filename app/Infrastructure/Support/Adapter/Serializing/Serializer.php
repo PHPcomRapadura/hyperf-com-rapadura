@@ -20,9 +20,10 @@ class Serializer extends Mapper implements Contract
      */
     public function __construct(
         private readonly string $type,
-        CaseConvention $case = CaseConvention::SNAKE
+        CaseConvention $case = CaseConvention::SNAKE,
+        array $conversors = [],
     ) {
-        parent::__construct($case);
+        parent::__construct($case, $conversors);
     }
 
     /**

@@ -9,11 +9,11 @@ use JsonException;
 use Tests\Integration\Support\Database\Helper;
 use Tests\TestCase;
 
-final class SleekDBHelper implements Helper
+final readonly class SleekDBHelper implements Helper
 {
     public function __construct(
-        private readonly SleekDBDatabaseFactory $factory,
-        private readonly TestCase $assertion,
+        private SleekDBDatabaseFactory $factory,
+        private TestCase $assertion,
     ) {
     }
 

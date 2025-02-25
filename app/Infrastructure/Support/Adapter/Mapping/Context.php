@@ -6,7 +6,7 @@ namespace App\Infrastructure\Support\Adapter\Mapping;
 
 use App\Domain\Support\Values;
 
-readonly class MapperContext
+readonly class Context
 {
     public function __construct(
         public string $class,

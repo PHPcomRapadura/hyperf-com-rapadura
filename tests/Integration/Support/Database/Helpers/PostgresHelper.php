@@ -12,22 +12,30 @@ use function Util\Type\Array\extractNumeric;
 use function Util\Type\Cast\toArray;
 use function Util\Type\Json\encode;
 
-final class PostgresHelper implements Helper
+final readonly class PostgresHelper implements Helper
 {
     public function __construct(
-        private readonly Database $database,
-        private readonly TestCase $assertion,
+        private Database $database,
+        private TestCase $assertion,
     ) {
     }
 
     public function truncate(string $resource): void
     {
-        $this->database->execute(sprintf("TRUNCATE TABLE %s CASCADE", $resource));
+        $this->database->execute(sprintf("delete from %s where true", $resource));
     }
 
     public function seed(string $resource, array $data = []): mixed
     {
-        // TODO: Implement seed() method.
+        $fields = array_keys($data);
+        $fields = array_map(fn (string $field) => sprintf('"%s"', $field), $fields);
+        $columns = implode(',', $fields);
+        $values = str_repeat('?,', count($fields) - 1) . '?';
+
+        $query = sprintf('insert into "%s" (%s) values (%s)', $resource, $columns, $values);
+        $bindings = array_values($data);
+
+        return $this->database->execute($query, $bindings);
     }
 
     public function has(string $resource, array $filters): void

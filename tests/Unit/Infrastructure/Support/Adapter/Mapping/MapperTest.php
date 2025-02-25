@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Infrastructure\Support\Adapter\Mapping;
 
+use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\MappingException;
-use App\Domain\Exception\MappingExceptionItem;
 use App\Domain\Support\Values;
 use App\Infrastructure\Support\Adapter\Mapping\Mapper;
+use App\Infrastructure\Support\Adapter\Serializing\Type\FromDatabaseToArray;
 use App\Infrastructure\Support\CaseConvention;
 use DateTime;
 use stdClass;
 use Tests\TestCase;
+
+use function Util\Type\Json\encode;
 
 class MapperTest extends TestCase
 {
@@ -23,11 +26,13 @@ class MapperTest extends TestCase
             'price' => 19.99,
             'name' => 'Test',
             'is_active' => true,
-            'tags' => ['tag1', 'tag2'],
+            'tags' => encode(['tag1', 'tag2']),
             'more' => new MapperTestStubWithNoConstructor(),
         ];
 
-        $mapper = new Mapper();
+        $mapper = new Mapper(converters: [
+            'array' => new FromDatabaseToArray(),
+        ]);
         $instance = $mapper->map($entityClass, Values::createFrom($values));
 
         $this->assertInstanceOf($entityClass, $instance);
@@ -78,8 +83,8 @@ class MapperTest extends TestCase
             $mapper = new Mapper();
             $mapper->map($entityClass, Values::createFrom($values));
         } catch (MappingException $e) {
-            $errors = $e->getErrors();
-            $this->assertContainsOnlyInstancesOf(MappingExceptionItem::class, $errors);
+            $errors = $e->getUnresolved();
+            $this->assertContainsOnlyInstancesOf(NotResolved::class, $errors);
             $messages = [
                 "The value for 'id' is not of the expected type.",
                 "The value for 'price' is required and was not provided.",
@@ -106,6 +111,9 @@ class MapperTest extends TestCase
 
     final public function testMapWithReflectionError(): void
     {
+        $this->expectException(MappingException::class);
+        $this->expectExceptionMessage('Class "NonExistentClass" does not exist');
+
         $values = [
             'id' => 1,
             'price' => 19.99,
@@ -114,14 +122,8 @@ class MapperTest extends TestCase
             'more' => new MapperTestStubWithNoConstructor(),
         ];
 
-        try {
-            $mapper = new Mapper();
-            $mapper->map('NonExistentClass', Values::createFrom($values));
-        } catch (MappingException $e) {
-            $errors = $e->getErrors();
-            $this->assertContainsOnlyInstancesOf(MappingExceptionItem::class, $errors);
-            $this->assertTrue($this->hasErrorMessage($errors, 'Class "NonExistentClass" does not exist'));
-        }
+        $mapper = new Mapper();
+        $mapper->map('NonExistentClass', Values::createFrom($values));
     }
 
     final public function testEdgeTypeCases(): void
@@ -153,7 +155,7 @@ class MapperTest extends TestCase
     private function hasErrorMessage(array $errors, string $message): bool
     {
         foreach ($errors as $error) {
-            if ($error->message === $message) {
+            if ($error->message() === $message) {
                 return true;
             }
         }

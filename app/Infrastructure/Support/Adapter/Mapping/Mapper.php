@@ -4,16 +4,19 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Support\Adapter\Mapping;
 
+use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\MappingException;
-use App\Domain\Exception\MappingExceptionItem;
 use App\Domain\Support\Values;
-use InvalidArgumentException;
+use App\Infrastructure\Support\Adapter\Mapping\Prepare\CastChain;
+use App\Infrastructure\Support\Adapter\Mapping\Prepare\DependencyChain;
+use App\Infrastructure\Support\Adapter\Mapping\Prepare\EmptyChain;
+use App\Infrastructure\Support\Adapter\Mapping\Resolve\InvalidChain;
+use App\Infrastructure\Support\Adapter\Mapping\Resolve\RequiredChain;
 use ReflectionClass;
-use ReflectionException;
 use ReflectionParameter;
 use Throwable;
 
-class Mapper extends MapperEngine
+class Mapper extends Engine
 {
     /**
      * @template T of object
@@ -34,16 +37,13 @@ class Mapper extends MapperEngine
             }
 
             $parameters = $constructor->getParameters();
-            $values = $this->resolveDependencies($parameters, $values);
-            $args = $this->resolveArgs($parameters, $values);
+            $values = $this->prepare($parameters, $values);
+            $args = $this->resolve($parameters, $values);
             return $reflectionClass->newInstanceArgs($args);
         } catch (MappingException $e) {
             throw $e;
-        } catch (Throwable $e) {
-            $errors = [
-                new MappingExceptionItem(kind: 'panic', value: $class, message: $e->getMessage()),
-            ];
-            throw new MappingException($values, $errors);
+        } catch (Throwable $error) {
+            throw new MappingException(values: $values, error: $error);
         }
     }
 
@@ -51,23 +51,26 @@ class Mapper extends MapperEngine
      * @param array<ReflectionParameter> $parameters
      * @param Values $values
      * @return Values
-     * @throws ReflectionException
      */
-    private function resolveDependencies(array $parameters, Values $values): Values
+    private function prepare(array $parameters, Values $values): Values
     {
         foreach ($parameters as $parameter) {
-            $name = $this->normalize($parameter);
-            if (! $values->has($name)) {
+            $resolved = (new DependencyChain($this->case, $this->converters))
+                ->then(new CastChain($this->case, $this->converters))
+                ->then(new EmptyChain($this->case, $this->converters))
+                ->resolve($parameter, $values);
+
+            if ($resolved === null) {
                 continue;
             }
 
-            $value = $values->get($name);
-            $context = $this->resolveDependencyContext($parameter, $value);
-            if ($context === null) {
-                continue;
+            $name = $this->normalize($parameter);
+            $value = $resolved->value;
+            if ($value instanceof Context) {
+                /** @phpstan-ignore argument.type, argument.templateType */
+                $value = $this->map($value->class, $value->values);
             }
-            /** @phpstan-ignore argument.type, argument.templateType */
-            $values = $values->with($name, $this->map($context->class, $context->values));
+            $values = $values->with($name, $value);
         }
 
         return $values;
@@ -77,23 +80,26 @@ class Mapper extends MapperEngine
      * @param array<ReflectionParameter> $parameters
      * @param Values $values
      * @return array
-     * @throws ReflectionException
      */
-    private function resolveArgs(array $parameters, Values $values): array
+    private function resolve(array $parameters, Values $values): array
     {
         $errors = [];
         $args = [];
         foreach ($parameters as $parameter) {
-            try {
-                $args[] = $this->resolveArgsParameter($parameter, $values);
-            } catch (InvalidArgumentException $e) {
-                $errors[] = new MappingExceptionItem(
-                    $e->getMessage(),
-                    $values->get($parameter->getName()),
-                    $parameter->getName(),
-                );
+            $resolved = (new InvalidChain($this->case, $this->converters))
+                ->then(new RequiredChain($this->case, $this->converters))
+                ->resolve($parameter, $values);
+            if ($resolved === null) {
+                continue;
             }
+
+            if ($resolved->value instanceof NotResolved) {
+                $errors[] = $resolved->value;
+                continue;
+            }
+            $args[] = $resolved->value;
         }
+
         if (empty($errors)) {
             return $args;
         }
