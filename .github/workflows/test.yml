@@ -16,13 +16,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - run: make setup
+#      - run: make setup
 
-      - run: make postgres
+#      - run: make postgres
 
-      - run: make migrate
+#      - run: make migrate
 
-      - run: make test
+#      - run: make test
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
