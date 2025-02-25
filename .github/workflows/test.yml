@@ -37,6 +37,8 @@ jobs:
         with:
           fetch-depth: 0
 
+      - run: git config --global --add safe.directory /__w/hyperf-com-rapadura/hyperf-com-rapadura
+
       - run: composer install
 
       - run: php bin/hyperf.php migrate --database=postgres
