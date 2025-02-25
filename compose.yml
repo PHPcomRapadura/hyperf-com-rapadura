@@ -25,9 +25,9 @@ services:
     image: postgres:16.2
     tty: true
     environment:
-      - POSTGRES_USER=${POSTGRES_DB_USERNAME}
-      - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB_NAME}
+      - POSTGRES_USER=${POSTGRES_DB_USERNAME:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD:-root}
+      - POSTGRES_DB=${POSTGRES_DB_NAME:-database}
     ports:
       - '5432:5432'
     volumes:
