@@ -45,9 +45,8 @@ jobs:
 
       - run: composer test
 
-      - uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.test.exclusions=tests/bootstrap.php
+      - run: |
+          - docker run --rm \
+          -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} \
+          -v ${{ github.workspace }}:/usr/src \
+          - sonarsource/sonar-scanner-cli
