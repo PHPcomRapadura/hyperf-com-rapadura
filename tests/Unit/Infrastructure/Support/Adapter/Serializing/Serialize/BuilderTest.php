@@ -126,6 +126,16 @@ class BuilderTest extends TestCase
         $mapper->build('NonExistentClass', Values::createFrom($values));
     }
 
+    final public function testMapWithReflectionInvalidArgsError(): void
+    {
+        $this->expectException(MappingException::class);
+
+        $values = [];
+
+        $mapper = new Builder();
+        $mapper->build(BuilderTestStubWithConstructor::class, Values::createFrom($values));
+    }
+
     final public function testEdgeTypeCases(): void
     {
         $values = [

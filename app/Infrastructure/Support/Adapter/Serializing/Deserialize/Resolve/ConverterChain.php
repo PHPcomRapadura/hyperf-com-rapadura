@@ -31,7 +31,7 @@ class ConverterChain extends Chain
             default => $type,
         };
         if ($type === 'object' && is_object($value)) {
-            $type = get_class($value);
+            $type = $value::class;
         }
         return toString($type);
     }

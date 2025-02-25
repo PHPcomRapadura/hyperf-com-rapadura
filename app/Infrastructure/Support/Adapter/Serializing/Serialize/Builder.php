@@ -10,8 +10,8 @@ use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\ConverterCh
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\DependencyChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\EmptyChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\Consolidator;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\InvalidChain;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\RequiredChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\CheckInvalidChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\CheckRequiredChain;
 use ReflectionClass;
 use ReflectionParameter;
 use Throwable;
@@ -85,12 +85,10 @@ class Builder extends Engine
     {
         $consolidator = new Consolidator();
         foreach ($parameters as $parameter) {
-            $resolved = (new InvalidChain($this->case))
-                ->then(new RequiredChain($this->case))
+            $resolved = (new CheckInvalidChain($this->case))
+                ->then(new CheckRequiredChain($this->case))
                 ->resolve($parameter, $values);
-            if ($resolved === null) {
-                continue;
-            }
+
             $consolidator->consolidate($resolved);
         }
 

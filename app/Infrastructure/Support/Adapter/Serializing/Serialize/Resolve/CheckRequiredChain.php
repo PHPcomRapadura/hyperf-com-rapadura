@@ -8,16 +8,15 @@ use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\Mapping\NotResolvedType;
 use App\Domain\Support\Value;
 use App\Domain\Support\Values;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Chain;
 use ReflectionException;
 use ReflectionParameter;
 
-class RequiredChain extends Chain
+class CheckRequiredChain extends Chain
 {
     /**
      * @throws ReflectionException
      */
-    public function resolve(ReflectionParameter $parameter, Values $values): ?Value
+    public function resolve(ReflectionParameter $parameter, Values $values): Value
     {
         $name = $this->normalize($parameter);
         if ($values->has($name)) {

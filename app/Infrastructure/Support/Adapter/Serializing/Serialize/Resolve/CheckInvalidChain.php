@@ -8,19 +8,13 @@ use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\Mapping\NotResolvedType;
 use App\Domain\Support\Value;
 use App\Domain\Support\Values;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Chain;
 use ReflectionParameter;
 
 use function gettype;
 
-class InvalidChain extends Chain
+class CheckInvalidChain extends Chain
 {
-    /**
-     * @param ReflectionParameter $parameter
-     * @param Values $values
-     * @return Value|null
-     */
-    public function resolve(ReflectionParameter $parameter, Values $values): ?Value
+    public function resolve(ReflectionParameter $parameter, Values $values): Value
     {
         $type = $parameter->getType();
         $name = $this->normalize($parameter);
