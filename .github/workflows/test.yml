@@ -45,10 +45,7 @@ jobs:
 
       - run: composer test
 
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+      - run apk add --no-cache openjdk17 wget unzip
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
