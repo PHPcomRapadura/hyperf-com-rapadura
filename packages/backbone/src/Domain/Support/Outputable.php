@@ -12,7 +12,7 @@ use JsonSerializable;
 use function get_object_vars;
 use function json_encode;
 use function sprintf;
-use function Backbone\Util\Type\String\toSnakeCase;
+use function Backbone\Type\String\toSnakeCase;
 
 abstract class Outputable implements Result, JsonSerializable, Jsonable
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Adapter\Serializing;
+namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing;
 
 use Backbone\Infrastructure\Adapter\Serializing\Deserializer;
 use InvalidArgumentException;

@@ -6,7 +6,7 @@ namespace Backbone\Infrastructure\Persistence\Converter;
 
 use Backbone\Infrastructure\Adapter\Serializing\Converter;
 
-use function Backbone\Util\Type\Json\decode;
+use function Backbone\Type\Json\decode;
 
 class FromDatabaseToArray implements Converter
 {

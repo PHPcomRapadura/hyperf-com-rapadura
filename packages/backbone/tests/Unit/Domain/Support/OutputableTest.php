@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Domain\Support;
+namespace BackboneTest\Unit\Domain\Support;
 
 use Backbone\Domain\Support\Outputable;
 use Tests\Support\TestCase;

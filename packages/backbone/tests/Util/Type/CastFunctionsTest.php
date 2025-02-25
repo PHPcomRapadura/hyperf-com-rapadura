@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Util\Type;
+namespace BackboneTest\Util\Type;
 
 use PHPUnit\Framework\TestCase;
 
-use function Backbone\Util\Type\Cast\toArray;
-use function Backbone\Util\Type\Cast\toBool;
-use function Backbone\Util\Type\Cast\toInt;
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toArray;
+use function Backbone\Type\Cast\toBool;
+use function Backbone\Type\Cast\toInt;
+use function Backbone\Type\Cast\toString;
 
 class CastFunctionsTest extends TestCase
 {

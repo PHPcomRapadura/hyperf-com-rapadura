@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Support\Database\Helpers;
+namespace BackboneTest\Support\Database\Helpers;
 
-use Backbone\Test\Support\Database\Helper;
+use BackboneTest\Support\Database\Helper;
 use Hyperf\DB\DB as Database;
 use Tests\Support\TestCase;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Adapter;
+namespace BackboneTest\Unit\Infrastructure\Adapter;
 
 use Tests\Support\TestCase;
 

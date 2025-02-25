@@ -12,7 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 
 use function assert;
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toString;
 
 class CorsMiddleware
 {

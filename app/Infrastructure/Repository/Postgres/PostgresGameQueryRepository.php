@@ -9,7 +9,7 @@ use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
 use Backbone\Infrastructure\Persistence\PostgresRepository;
 
-use function Backbone\Util\Type\Cast\toArray;
+use function Backbone\Type\Cast\toArray;
 
 class PostgresGameQueryRepository extends PostgresRepository implements GameQueryRepository
 {

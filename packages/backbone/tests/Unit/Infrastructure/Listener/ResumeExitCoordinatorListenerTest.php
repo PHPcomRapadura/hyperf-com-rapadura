@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Listener;
+namespace BackboneTest\Unit\Infrastructure\Listener;
 
 use Backbone\Infrastructure\Listener\ResumeExitCoordinatorListener;
 use Hyperf\Command\Event\AfterExecute;

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Support\Database\Helpers;
+namespace BackboneTest\Support\Database\Helpers;
 
 use Backbone\Domain\Support\Values;
 use Backbone\Infrastructure\Persistence\Serializing\RelationalDeserializerFactory;
 use Backbone\Infrastructure\Persistence\Serializing\RelationalSerializerFactory;
-use Backbone\Test\Support\Database\Helper;
+use BackboneTest\Support\Database\Helper;
 use Hyperf\DB\DB as Database;
 use Tests\Support\TestCase;
 
-use function Backbone\Util\Type\Array\extractNumeric;
-use function Backbone\Util\Type\Cast\toArray;
-use function Backbone\Util\Type\Json\encode;
+use function Backbone\Type\Array\extractNumeric;
+use function Backbone\Type\Cast\toArray;
+use function Backbone\Type\Json\encode;
 
 final readonly class PostgresHelper implements Helper
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Presentation\Output;
+namespace BackboneTest\Unit\Presentation\Output;
 
 use Backbone\Presentation\Output\NotFound;
 use Tests\Support\TestCase;

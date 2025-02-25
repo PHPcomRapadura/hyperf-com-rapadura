@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Http\Exception\Handler;
+namespace BackboneTest\Unit\Infrastructure\Http\Exception\Handler;
 
 use Backbone\Infrastructure\Http\Exception\Handler\AppExceptionHandler;
 use Exception;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Persistence;
+namespace BackboneTest\Unit\Infrastructure\Persistence;
 
 use Backbone\Domain\Exception\GeneratingException;
 use Backbone\Infrastructure\Persistence\Generator;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Presentation;
+namespace BackboneTest\Unit\Presentation;
 
 use Backbone\Presentation\OutputFormatter;
 use Tests\Support\TestCase;

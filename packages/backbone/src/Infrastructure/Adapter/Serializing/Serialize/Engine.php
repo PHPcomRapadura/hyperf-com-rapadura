@@ -13,7 +13,7 @@ use ReflectionType;
 use ReflectionUnionType;
 
 use function array_map;
-use function Backbone\Util\Type\String\toSnakeCase;
+use function Backbone\Type\String\toSnakeCase;
 
 abstract class Engine
 {

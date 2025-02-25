@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Http\Middleware;
+namespace BackboneTest\Unit\Infrastructure\Http\Middleware;
 
 use Backbone\Infrastructure\Http\Middleware\AppMiddleware;
 use Backbone\Presentation\Output\NoContent;

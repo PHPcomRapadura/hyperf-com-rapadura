@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
+namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
 
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\DoNothingChain;
 use Tests\Support\TestCase;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use SleekDB\Query;
 
 use function Hyperf\Support\env;
-use function Backbone\Util\Type\Cast\toFloat;
+use function Backbone\Type\Cast\toFloat;
 
 return [
     'postgres' => [

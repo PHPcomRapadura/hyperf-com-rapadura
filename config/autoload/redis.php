@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use function Hyperf\Support\env;
-use function Backbone\Util\Type\Cast\toInt;
-use function Backbone\Util\Type\Cast\toFloat;
+use function Backbone\Type\Cast\toInt;
+use function Backbone\Type\Cast\toFloat;
 
 return [
     'default' => [

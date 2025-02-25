@@ -16,7 +16,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Swow\Psr7\Message\ResponsePlusInterface;
 
-use function Backbone\Util\Type\Cast\toInt;
+use function Backbone\Type\Cast\toInt;
 
 class AppMiddleware extends Hyperf
 {

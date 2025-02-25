@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Persistence\Converter;
+namespace BackboneTest\Unit\Infrastructure\Persistence\Converter;
 
 use Backbone\Infrastructure\Persistence\Converter\FromDatetimeToDatabase;
 use DateTime;

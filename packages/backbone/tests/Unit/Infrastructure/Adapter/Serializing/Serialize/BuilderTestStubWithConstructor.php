@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Adapter\Serializing\Serialize;
+namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Serialize;
 
 use Backbone\Domain\Entity\Entity;
 use DateTime;

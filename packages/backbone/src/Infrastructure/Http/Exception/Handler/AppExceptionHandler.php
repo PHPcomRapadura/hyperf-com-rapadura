@@ -12,8 +12,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-use function Backbone\Util\Type\Cast\toInt;
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toInt;
+use function Backbone\Type\Cast\toString;
 
 class AppExceptionHandler extends ExceptionHandler
 {

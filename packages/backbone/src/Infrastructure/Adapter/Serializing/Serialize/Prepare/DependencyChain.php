@@ -11,7 +11,7 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
 
-use function Backbone\Util\Type\Cast\toArray;
+use function Backbone\Type\Cast\toArray;
 
 class DependencyChain extends Chain
 {

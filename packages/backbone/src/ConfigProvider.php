@@ -19,7 +19,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
 use function Hyperf\Support\env;
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toString;
 
 
 class ConfigProvider

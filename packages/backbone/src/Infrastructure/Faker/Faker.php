@@ -17,7 +17,7 @@ use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
 
-use function Backbone\Util\Type\String\toSnakeCase;
+use function Backbone\Type\String\toSnakeCase;
 
 readonly class Faker
 {

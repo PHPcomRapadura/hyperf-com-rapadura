@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Domain\Collection\Support;
+namespace BackboneTest\Unit\Domain\Collection\Support;
 
 use JsonSerializable;
 

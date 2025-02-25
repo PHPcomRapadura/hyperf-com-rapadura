@@ -1,6 +1,7 @@
 {
     "name": "devitools/backbone",
     "type": "library",
+    "version": "1.0.2",
     "license": "MIT",
     "keywords": [
         "php",
@@ -17,7 +18,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Backbone\\Test\\": "tests"
+            "BackboneTest\\": "tests/"
         }
     },
     "require": {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Logging;
+namespace BackboneTest\Unit\Infrastructure\Logging;
 
 use Backbone\Infrastructure\Logging\EnvironmentLoggerFactory;
 use Hyperf\Contract\ConfigInterface;

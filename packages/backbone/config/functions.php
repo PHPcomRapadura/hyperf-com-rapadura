@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Util\Type\Cast;
+namespace Backbone\Type\Cast;
 
 if (! function_exists('toArray')) {
     /**
@@ -45,7 +45,7 @@ if (! function_exists('toBool')) {
     }
 }
 
-namespace Backbone\Util\Type\Array;
+namespace Backbone\Type\Array;
 
 if (! function_exists('extractArray')) {
     /**
@@ -109,9 +109,9 @@ if (! function_exists('extractNumeric')) {
     }
 }
 
-namespace Backbone\Util\Type\String;
+namespace Backbone\Type\String;
 
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toString;
 
 if (! function_exists('toSnakeCase')) {
     function toSnakeCase(string $string): string
@@ -121,12 +121,12 @@ if (! function_exists('toSnakeCase')) {
     }
 }
 
-namespace Backbone\Util\Type\Json;
+namespace Backbone\Type\Json;
 
 use JsonException;
 
-use function Backbone\Util\Type\Cast\toArray;
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toArray;
+use function Backbone\Type\Cast\toString;
 
 if (! function_exists('decode')) {
     function decode(string $json): ?array

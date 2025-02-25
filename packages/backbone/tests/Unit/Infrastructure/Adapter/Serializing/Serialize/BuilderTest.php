@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Adapter\Serializing\Serialize;
+namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Serialize;
 
 use Backbone\Domain\Exception\Mapping\NotResolved;
 use Backbone\Domain\Exception\MappingException;
@@ -14,7 +14,7 @@ use DateTime;
 use stdClass;
 use Tests\Support\TestCase;
 
-use function Backbone\Util\Type\Json\encode;
+use function Backbone\Type\Json\encode;
 
 class BuilderTest extends TestCase
 {

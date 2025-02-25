@@ -10,8 +10,8 @@ use SleekDB\Exceptions\InvalidConfigurationException;
 use SleekDB\Exceptions\IOException;
 use SleekDB\Store;
 
-use function Backbone\Util\Type\Cast\toArray;
-use function Backbone\Util\Type\Cast\toString;
+use function Backbone\Type\Cast\toArray;
+use function Backbone\Type\Cast\toString;
 
 class SleekDBDatabaseFactory
 {

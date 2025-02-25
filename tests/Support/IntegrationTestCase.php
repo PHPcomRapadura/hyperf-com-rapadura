@@ -7,9 +7,9 @@ namespace Tests\Support;
 use Backbone\Infrastructure\Adapter\Serializing\Serialize\Builder;
 use Backbone\Infrastructure\Persistence\Factory\HyperfDBFactory;
 use Backbone\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
-use Backbone\Test\Support\Database\Helper;
-use Backbone\Test\Support\Database\Helpers\PostgresHelper;
-use Backbone\Test\Support\Database\Helpers\SleekDBHelper;
+use BackboneTest\Support\Database\Helper;
+use BackboneTest\Support\Database\Helpers\PostgresHelper;
+use BackboneTest\Support\Database\Helpers\SleekDBHelper;
 
 class IntegrationTestCase extends TestCase
 {

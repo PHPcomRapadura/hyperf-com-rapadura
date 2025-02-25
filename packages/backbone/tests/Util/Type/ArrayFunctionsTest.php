@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Util\Type;
+namespace BackboneTest\Util\Type;
 
 use PHPUnit\Framework\TestCase;
 
-use function Backbone\Util\Type\Array\extractArray;
-use function Backbone\Util\Type\Array\extractBool;
-use function Backbone\Util\Type\Array\extractInt;
-use function Backbone\Util\Type\Array\extractString;
+use function Backbone\Type\Array\extractArray;
+use function Backbone\Type\Array\extractBool;
+use function Backbone\Type\Array\extractInt;
+use function Backbone\Type\Array\extractString;
 
 class ArrayFunctionsTest extends TestCase
 {

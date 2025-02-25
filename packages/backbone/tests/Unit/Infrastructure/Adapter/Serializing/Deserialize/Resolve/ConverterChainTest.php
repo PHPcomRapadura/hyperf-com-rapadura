@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Test\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
+namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
 
 use Backbone\Infrastructure\Adapter\Serializing\Converter;
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\ConverterChain;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\Support\TestCase;
 
-use function Backbone\Util\Type\Json\encode;
+use function Backbone\Type\Json\encode;
 
 class ConverterChainTest extends TestCase
 {
