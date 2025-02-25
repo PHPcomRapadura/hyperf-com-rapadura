@@ -7,8 +7,29 @@ on:
       - main
 
 jobs:
-  sonar:
+  test:
     runs-on: ubuntu-latest
+
+    services:
+
+      postgres:
+        profiles:
+          - postgres
+        container_name: template_name-postgres
+        image: postgres:16.2
+        tty: true
+        env:
+          - POSTGRES_USER=${POSTGRES_DB_USERNAME:-postgres}
+          - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD:-root}
+          - POSTGRES_DB=${POSTGRES_DB_NAME:-database}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - '5432:5432'
+
     env:
       COMPOSE_RUNNER: "docker compose --compatibility"
     steps:

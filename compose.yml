@@ -1,11 +1,7 @@
 services:
   app:
     container_name: template_name-app
-    image: template_name-app
-    build:
-      context: .
-      args:
-        - APP_TARGET=dev
+    image: devitools/hyperf:8.3
     command: [ "server:watch" ]
     volumes:
       - ./:/opt/www

@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  ci:
+  lint:
     runs-on: ubuntu-latest
     env:
       COMPOSE_RUNNER: "docker compose --compatibility"
