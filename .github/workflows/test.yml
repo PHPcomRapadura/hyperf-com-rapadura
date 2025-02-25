@@ -13,8 +13,8 @@ jobs:
     container:
       image: devitools/hyperf:8.3-dev
       env:
-        - SCAN_CACHEABLE=false
-        - STDOUT_LOG_LEVEL=alert,critical,emergency,error,warning,notice,info
+        SCAN_CACHEABLE: false
+        STDOUT_LOG_LEVEL: alert,critical,emergency,error,warning,notice,info
       options: --cpus 1
 
     services:
