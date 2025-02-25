@@ -45,12 +45,14 @@ jobs:
 
       - run: composer test
 
-      - run: |
-          wget -O sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-6.2.1.4610-linux.zip \
-          unzip sonar-scanner.zip \
-          echo "${{ github.workspace }}/sonar-scanner-6.2.1.4610-linux/bin" >> $GITHUB_PATH
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-      - run: sonar-scanner
+      - uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#
+        with:
+          args: >
+            -Dsonar.test.exclusions=tests/bootstrap.php
