@@ -1,3 +1,6 @@
+[![.github/workflows/sonar.yml](https://github.com/PHPcomRapadura/hyperf-com-rapadura/actions/workflows/sonar.yml/badge.svg)](https://github.com/PHPcomRapadura/hyperf-com-rapadura/actions/workflows/sonar.yml)
+--
+
 # Hyperf com Rapadura
 
 ## 🍿 Overview
