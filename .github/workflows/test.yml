@@ -45,6 +45,8 @@ jobs:
 
       - run: composer test
 
-      - run: sonar-scanner -Dsonar.test.exclusions=tests/bootstrap.php
+      - run: sonar-scanner \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.test.exclusions=tests/bootstrap.php
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
