@@ -109,6 +109,20 @@ if (! function_exists('extractBool')) {
     }
 }
 
+if (! function_exists('extractNumeric')) {
+    /**
+     * @param array<string, mixed> $array
+     * @param string $property
+     * @param int|float $default
+     * @return float
+     */
+    function extractNumeric(array $array, string $property, int|float $default = 0): float
+    {
+        $numeric = $array[$property] ?? $default;
+        return (float) (is_numeric($numeric) ? $numeric : $default);
+    }
+}
+
 namespace Util\Type\String;
 
 use function Util\Type\Cast\toString;
@@ -118,5 +132,31 @@ if (! function_exists('toSnakeCase')) {
     {
         $string = toString(preg_replace('/[A-Z]/', '_$0', $string));
         return strtolower(ltrim($string, '_'));
+    }
+}
+
+namespace Util\Type\Json;
+
+use JsonException;
+
+if (! function_exists('decode')) {
+    function decode(string $json): ?array
+    {
+        try {
+            return json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException) {
+            return null;
+        }
+    }
+}
+
+if (! function_exists('encode')) {
+    function encode(array $data): ?string
+    {
+        try {
+            return json_encode($data, JSON_THROW_ON_ERROR);
+        } catch (JsonException) {
+            return null;
+        }
     }
 }

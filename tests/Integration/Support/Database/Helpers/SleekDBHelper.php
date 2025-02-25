@@ -9,7 +9,7 @@ use JsonException;
 use Tests\Integration\Support\Database\Helper;
 use Tests\TestCase;
 
-class SleekDBHelper implements Helper
+final class SleekDBHelper implements Helper
 {
     public function __construct(
         private readonly SleekDBDatabaseFactory $factory,
@@ -19,13 +19,13 @@ class SleekDBHelper implements Helper
 
     public function truncate(string $resource): void
     {
-        $database = $this->factory->createFrom($resource);
+        $database = $this->factory->make($resource);
         $database->deleteBy(['_id', '>=', 0]);
     }
 
     public function seed(string $resource, array $data = []): array
     {
-        $database = $this->factory->createFrom($resource);
+        $database = $this->factory->make($resource);
         return $database->insert($data);
     }
 
@@ -58,7 +58,7 @@ class SleekDBHelper implements Helper
 
     private function count(string $resource, array $filters = []): int
     {
-        $database = $this->factory->createFrom($resource);
+        $database = $this->factory->make($resource);
         return count($database->findBy($filters));
     }
 

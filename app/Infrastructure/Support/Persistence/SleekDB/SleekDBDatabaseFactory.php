@@ -24,7 +24,7 @@ class SleekDBDatabaseFactory
      * @throws InvalidArgumentException
      * @throws IOException
      */
-    public function createFrom(string $resource): Store
+    public function make(string $resource): Store
     {
         $path = toString($this->config->get('databases.sleek.path'));
         $configuration = toArray($this->config->get('databases.sleek.configuration'));

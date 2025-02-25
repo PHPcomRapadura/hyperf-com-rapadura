@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Repository\Json;
+namespace App\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
@@ -13,7 +13,7 @@ use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
 use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
 
-class JsonGameQueryRepository extends JsonGameRepository implements GameQueryRepository
+class SleekDBGameQueryRepository extends SleekDBGameRepository implements GameQueryRepository
 {
     /**
      * @var Serializer<Game>

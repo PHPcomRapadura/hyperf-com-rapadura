@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Infrastructure\Repository\Json;
+namespace Tests\Integration\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Command\GameCommand;
-use App\Infrastructure\Repository\Json\JsonGameCommandRepository;
+use App\Infrastructure\Repository\SleekDB\SleekDBGameCommandRepository;
 use Tests\Integration\IntegrationTestCase;
 
-class JsonGameCommandRepositoryTest extends IntegrationTestCase
+class SleekDBGameCommandRepositoryTest extends IntegrationTestCase
 {
     protected array $truncate = ['games' => 'sleek'];
 
     public function testShouldPersistSuccessfully(): void
     {
-        $repository = $this->make(JsonGameCommandRepository::class);
+        $repository = $this->make(SleekDBGameCommandRepository::class);
         $values = $this->faker->fake(GameCommand::class);
         $game = $this->mapper->map(GameCommand::class, $values);
         $id = $repository->persist($game);

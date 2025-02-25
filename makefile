@@ -64,10 +64,17 @@ test-unit: ## Execute tests unit
 test-integration: ## Execute tests integration
 	@$(COMPOSE_RUNNER) run --rm --entrypoint composer app "test:integration"
 
+
 ##@ CI
 
 ci: ## Execute all analysis as CI does
 	@$(COMPOSE_RUNNER) run --rm --entrypoint composer app ci
+
+
+##@ Database
+
+migrate: ## Execute the migrations
+	@$(COMPOSE_RUNNER) run --rm --entrypoint "php bin/hyperf.php" app migrate --database=postgres
 
 ##@ Docs
 

@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Repository\Json;
+namespace App\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Exception\GeneratingException;
 use App\Domain\Repository\GameCommandRepository;
 use App\Infrastructure\Support\Adapter\Serializing\Deserializer;
+use App\Infrastructure\Support\Adapter\Serializing\DeserializerFactory;
 use App\Infrastructure\Support\Persistence\Generator;
 use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
 use JsonException as SerializationError;
@@ -16,7 +17,7 @@ use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
 use SleekDB\Exceptions\JsonException;
 
-class JsonGameCommandRepository extends JsonGameRepository implements GameCommandRepository
+class SleekDBGameCommandRepository extends SleekDBGameRepository implements GameCommandRepository
 {
     /**
      * @var Deserializer<GameCommand>
@@ -26,10 +27,11 @@ class JsonGameCommandRepository extends JsonGameRepository implements GameComman
     public function __construct(
         Generator $generator,
         SleekDBDatabaseFactory $databaseFactory,
+        DeserializerFactory $deserializerFactory,
     ) {
         parent::__construct($generator, $databaseFactory);
 
-        $this->deserializer = new Deserializer(GameCommand::class);
+        $this->deserializer = $deserializerFactory->make(GameCommand::class);
     }
 
     /**

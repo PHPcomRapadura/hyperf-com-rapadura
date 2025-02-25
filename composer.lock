@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "803bba816217f50ca8efd7c4316bf40d",
+    "content-hash": "49c2ebe8c77741e9e1a467bbcf4175f1",
     "packages": [
         {
             "name": "bnf/phpstan-psr-container",

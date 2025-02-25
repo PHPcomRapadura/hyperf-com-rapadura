@@ -5,7 +5,7 @@ services:
     build:
       context: .
       args:
-        - APP_ENV=dev
+        - APP_TARGET=dev
     command: [ "server:watch" ]
     volumes:
       - ./:/opt/www
@@ -17,6 +17,26 @@ services:
     networks:
       - template_name-network
     restart: on-failure
+
+  postgres:
+    profiles:
+      - postgres
+    container_name: template_name-postgres
+    image: postgres:16.2
+    tty: true
+    environment:
+      - POSTGRES_USER=${POSTGRES_DB_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB_NAME}
+    ports:
+      - '5432:5432'
+    volumes:
+      - template_name-postgres-data:/var/lib/postgresql/data
+    networks:
+      - template_name-network
+
+volumes:
+  template_name-postgres-data:
 
 networks:
   template_name-network:

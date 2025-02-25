@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Infrastructure\Repository\Json;
+namespace Tests\Integration\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Game;
-use App\Infrastructure\Repository\Json\JsonGameQueryRepository;
+use App\Infrastructure\Repository\SleekDB\SleekDBGameQueryRepository;
 use Tests\Integration\IntegrationTestCase;
 
 use function Hyperf\Collection\collect;
 
-class JsonGameQueryRepositoryTest extends IntegrationTestCase
+class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 {
     protected array $truncate = ['games' => 'sleek'];
 
@@ -19,7 +19,7 @@ class JsonGameQueryRepositoryTest extends IntegrationTestCase
         $values = $this->faker->fake(Game::class);
         $this->sleek->seed('games', $values->toArray());
 
-        $repository = $this->make(JsonGameQueryRepository::class);
+        $repository = $this->make(SleekDBGameQueryRepository::class);
         $game = $repository->getGame($values->get('id'));
         $this->assertEquals($values->get('name'), $game->name);
     }
@@ -27,7 +27,7 @@ class JsonGameQueryRepositoryTest extends IntegrationTestCase
     final public function testShouldReturnNullWhenGameNotExists(): void
     {
         $id = $this->faker->generator->id();
-        $repository = $this->make(JsonGameQueryRepository::class);
+        $repository = $this->make(SleekDBGameQueryRepository::class);
         $this->assertNull($repository->getGame($id));
     }
 
@@ -36,7 +36,7 @@ class JsonGameQueryRepositoryTest extends IntegrationTestCase
         $this->sleek->seed('games', $this->faker->fake(Game::class)->toArray());
         $this->sleek->seed('games', $this->faker->fake(Game::class)->toArray());
 
-        $repository = $this->make(JsonGameQueryRepository::class);
+        $repository = $this->make(SleekDBGameQueryRepository::class);
         $games = $repository->getGames();
 
         $this->assertCount(2, $games);
@@ -47,7 +47,7 @@ class JsonGameQueryRepositoryTest extends IntegrationTestCase
         $values = $this->faker->fake(Game::class);
         $this->sleek->seed('games', $values->toArray());
 
-        $repository = $this->make(JsonGameQueryRepository::class);
+        $repository = $this->make(SleekDBGameQueryRepository::class);
         $all = $repository->getGames()->all();
         $count = collect($all)
             ->filter(fn ($game) => $game->id === $values->get('id'))
@@ -57,7 +57,7 @@ class JsonGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesReturnsEmptyCollectionWhenNoGames(): void
     {
-        $repository = $this->make(JsonGameQueryRepository::class);
+        $repository = $this->make(SleekDBGameQueryRepository::class);
         $games = $repository->getGames();
         $this->assertCount(0, $games);
     }
