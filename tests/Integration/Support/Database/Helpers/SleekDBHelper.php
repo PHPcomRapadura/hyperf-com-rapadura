@@ -47,7 +47,7 @@ final readonly class SleekDBHelper implements Helper
         return new Values(array_merge($data, ['_id' => $generatedId]));
     }
 
-    public function has(string $resource, array $filters): void
+    public function assertHas(string $resource, array $filters): void
     {
         $this->assertion->assertTrue(
             $this->count($resource, $filters) > 0,
@@ -59,17 +59,17 @@ final readonly class SleekDBHelper implements Helper
         );
     }
 
-    public function hasNot(string $resource, array $filters): void
+    public function assertHasNot(string $resource, array $filters): void
     {
         // TODO: Implement hasNot() method.
     }
 
-    public function hasCount(int $expected, string $resource, array $filters): void
+    public function assertHasCount(int $expected, string $resource, array $filters): void
     {
         // TODO: Implement hasCount() method.
     }
 
-    public function isEmpty(string $resource): void
+    public function assertIsEmpty(string $resource): void
     {
         // TODO: Implement isEmpty() method.
     }

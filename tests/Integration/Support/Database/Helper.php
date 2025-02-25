@@ -10,11 +10,11 @@ interface Helper
 
     public function seed(string $type, string $resource, array $override = []): Values;
 
-    public function has(string $resource, array $filters): void;
+    public function assertHas(string $resource, array $filters): void;
 
-    public function hasNot(string $resource, array $filters): void;
+    public function assertHasNot(string $resource, array $filters): void;
 
-    public function hasCount(int $expected, string $resource, array $filters): void;
+    public function assertHasCount(int $expected, string $resource, array $filters): void;
 
-    public function isEmpty(string $resource): void;
+    public function assertIsEmpty(string $resource): void;
 }
