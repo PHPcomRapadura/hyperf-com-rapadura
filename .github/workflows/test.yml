@@ -45,6 +45,8 @@ jobs:
 
       - run: composer test
 
+      - run: echo "SONAR_SCANNER_OPTS=-Djava.home=$JAVA_HOME" >> $GITHUB_ENV
+
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
