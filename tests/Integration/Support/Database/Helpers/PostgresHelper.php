@@ -54,7 +54,7 @@ final readonly class PostgresHelper implements Helper
         return new Values($data);
     }
 
-    public function has(string $resource, array $filters): void
+    public function assertHas(string $resource, array $filters): void
     {
         $count = $this->count($resource, $filters);
         $message = sprintf(
@@ -65,7 +65,7 @@ final readonly class PostgresHelper implements Helper
         $this->assertion->assertTrue($count > 0, $message);
     }
 
-    public function hasNot(string $resource, array $filters): void
+    public function assertHasNot(string $resource, array $filters): void
     {
         $count = $this->count($resource, $filters);
         $message = sprintf(
@@ -76,7 +76,7 @@ final readonly class PostgresHelper implements Helper
         $this->assertion->assertSame($count, 0, $message);
     }
 
-    public function hasCount(int $expected, string $resource, array $filters): void
+    public function assertHasCount(int $expected, string $resource, array $filters): void
     {
         $count = $this->count($resource, $filters);
         $message = sprintf(
@@ -89,7 +89,7 @@ final readonly class PostgresHelper implements Helper
         $this->assertion->assertEquals($expected, $count, $message);
     }
 
-    public function isEmpty(string $resource): void
+    public function assertIsEmpty(string $resource): void
     {
         // TODO: Implement isEmpty() method.
     }

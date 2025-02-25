@@ -19,7 +19,7 @@ class PostgresGameCommandRepositoryTest extends IntegrationTestCase
         $game = $this->mapper->build(GameCommand::class, $values);
         $id = $repository->persist($game);
 
-        $this->postgres->has('games', [
+        $this->postgres->assertHas('games', [
             'id' => $id,
         ]);
     }

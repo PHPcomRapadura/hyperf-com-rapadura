@@ -19,7 +19,7 @@ class SleekDBGameCommandRepositoryTest extends IntegrationTestCase
         $game = $this->mapper->build(GameCommand::class, $values);
         $id = $repository->persist($game);
 
-        $this->sleek->has('games', [
+        $this->sleek->assertHas('games', [
             ['id', '=', $id],
         ]);
     }

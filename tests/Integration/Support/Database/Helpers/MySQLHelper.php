@@ -26,22 +26,22 @@ final readonly class MySQLHelper implements Helper
         // TODO: Implement seed() method.
     }
 
-    public function has(string $resource, array $filters): void
+    public function assertHas(string $resource, array $filters): void
     {
         // TODO: Implement has() method.
     }
 
-    public function hasNot(string $resource, array $filters): void
+    public function assertHasNot(string $resource, array $filters): void
     {
         // TODO: Implement hasNot() method.
     }
 
-    public function hasCount(int $expected, string $resource, array $filters): void
+    public function assertHasCount(int $expected, string $resource, array $filters): void
     {
         // TODO: Implement hasCount() method.
     }
 
-    public function isEmpty(string $resource): void
+    public function assertIsEmpty(string $resource): void
     {
         // TODO: Implement isEmpty() method.
     }
