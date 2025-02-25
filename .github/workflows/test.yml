@@ -46,7 +46,7 @@ jobs:
       - run: composer test
 
       - run: |
-          - docker run --rm \
-          -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} \
-          -v ${{ github.workspace }}:/usr/src \
-          - sonarsource/sonar-scanner-cli
+          docker run --rm \
+            -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} \
+            -v ${{ github.workspace }}:/usr/src \
+            sonarsource/sonar-scanner-cli
