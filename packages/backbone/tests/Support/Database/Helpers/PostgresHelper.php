@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Backbone\Test\Support\Database\Helpers;
 
 use Backbone\Domain\Support\Values;
-use Backbone\Infrastructure\Persistence\Relational\RelationalDeserializerFactory;
-use Backbone\Infrastructure\Persistence\Relational\RelationalSerializerFactory;
+use Backbone\Infrastructure\Persistence\Serializing\RelationalDeserializerFactory;
+use Backbone\Infrastructure\Persistence\Serializing\RelationalSerializerFactory;
 use Backbone\Test\Support\Database\Helper;
 use Hyperf\DB\DB as Database;
 use Tests\Support\TestCase;

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Backbone\Test\Unit\Domain\Support;
 
-use;
 use Backbone\Domain\Support\Outputable;
 use Tests\Support\TestCase;
 

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Backbone\Infrastructure\Adapter\Serializing\Serialize;
 
-use;
 use Backbone\Infrastructure\Adapter\Serializing\Converter;
 use Backbone\Infrastructure\CaseConvention;
 use ReflectionIntersectionType;

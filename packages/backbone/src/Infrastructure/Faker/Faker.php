@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Backbone\Infrastructure\Faker;
 
-use;
 use Backbone\Domain\Support\Value;
 use Backbone\Domain\Support\Values;
 use Backbone\Infrastructure\CaseConvention;

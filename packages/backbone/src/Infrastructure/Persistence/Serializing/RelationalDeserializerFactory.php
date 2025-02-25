@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Backbone\Infrastructure\Persistence\Relational;
+namespace Backbone\Infrastructure\Persistence\Serializing;
 
 use Backbone\Infrastructure\Adapter\Serializing\DeserializerFactory;
 use Backbone\Infrastructure\Persistence\Converter\FromArrayToDatabase;
