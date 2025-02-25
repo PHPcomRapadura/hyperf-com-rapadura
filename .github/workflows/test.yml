@@ -46,7 +46,9 @@ jobs:
       - run: composer test
 
       - run: |
-          docker run --rm \
-            -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} \
-            -v ${{ github.workspace }}:/usr/src \
-            sonarsource/sonar-scanner-cli
+          wget -O sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-6.2.1.4610-linux.zip
+          unzip sonar-scanner.zip
+          echo "${{ github.workspace }}/sonar-scanner-6.2.1.4610-linux/bin" >> $GITHUB_PATH
+      - run: sonar-scanner
+        env:
+          - SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
