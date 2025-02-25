@@ -39,7 +39,7 @@ jobs:
 
       - run: composer install
 
-      - run: php bin/hyperf.php migrate
+      - run: php bin/hyperf.php migrate --database=postgres
 
       - run: composer test
 
