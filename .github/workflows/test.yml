@@ -45,11 +45,14 @@ jobs:
 
       - run: composer test
 
-      - run: apk add --no-cache openjdk17 wget unzip
-
-      - uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.test.exclusions=tests/bootstrap.php
+      - run: |
+          /usr/bin/docker run --rm \
+            -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} \
+            -v ${{ github.workspace }}:/usr/src \
+            sonarsource/sonar-scanner-cli
+#      - uses: SonarSource/sonarqube-scan-action@v4
+#        env:
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#        with:
+#          args: >
+#            -Dsonar.test.exclusions=tests/bootstrap.php
