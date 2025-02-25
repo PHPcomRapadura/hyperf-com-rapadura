@@ -23,7 +23,7 @@ return static function (RectorConfig $config): void {
     $config->skip([AddOverrideAttributeToOverriddenMethodsRector::class]);
     $config->skip([
         ClassPropertyAssignToConstructorPromotionRector::class => [
-            __DIR__ . '/tests/Unit/Infrastructure/Support/Adapter/Mapping/MapperTestStubEdgeCase.php',
+            __DIR__ . '/tests/Unit/Infrastructure/Support/Adapter/Serializing/Serialize/MapperTestStubEdgeCase.php',
         ],
     ]);
 

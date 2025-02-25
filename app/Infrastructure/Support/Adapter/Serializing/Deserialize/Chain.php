@@ -18,6 +18,9 @@ abstract class Chain extends Demolisher
 
     public function resolve(mixed $value): Value
     {
+        if (! isset($this->previous)) {
+            return new Value($value);
+        }
         return $this->previous->resolve($value);
     }
 

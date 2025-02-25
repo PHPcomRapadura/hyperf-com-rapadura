@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Support\Adapter\Serializing\Serialize;
 
-use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\MappingException;
 use App\Domain\Support\Values;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\ConverterChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\DependencyChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\EmptyChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\Consolidator;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\InvalidChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\RequiredChain;
 use ReflectionClass;
@@ -83,8 +83,7 @@ class Builder extends Engine
      */
     private function resolve(array $parameters, Values $values): array
     {
-        $errors = [];
-        $args = [];
+        $consolidator = new Consolidator();
         foreach ($parameters as $parameter) {
             $resolved = (new InvalidChain($this->case))
                 ->then(new RequiredChain($this->case))
@@ -92,16 +91,12 @@ class Builder extends Engine
             if ($resolved === null) {
                 continue;
             }
-            if ($resolved->value instanceof NotResolved) {
-                $errors[] = $resolved->value;
-                continue;
-            }
-            $args[] = $resolved->value;
+            $consolidator->consolidate($resolved);
         }
 
-        if (empty($errors)) {
-            return $args;
+        if (empty($consolidator->errors())) {
+            return $consolidator->args();
         }
-        throw new MappingException($values, $errors);
+        throw new MappingException($values, $consolidator->errors());
     }
 }
