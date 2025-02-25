@@ -18,6 +18,10 @@ jobs:
 
       - run: make setup
 
+      - run: make postgres
+
+      - run: make migrate
+
       - run: make test
 
       - uses: SonarSource/sonarqube-scan-action@v4

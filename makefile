@@ -73,6 +73,9 @@ ci: ## Execute all analysis as CI does
 
 ##@ Database
 
+postgres: ## Start the postgres container
+	@$(COMPOSE_RUNNER) --profile postgres up -d
+
 migrate: ## Execute the migrations
 	@$(COMPOSE_RUNNER) run --rm --entrypoint "php bin/hyperf.php" app migrate --database=postgres
 
