@@ -13,6 +13,11 @@ class DeserializerFactory
      */
     public function make(string $type): Deserializer
     {
-        return new Deserializer($type);
+        return new Deserializer(type: $type, converters: $this->converters());
+    }
+
+    protected function converters(): array
+    {
+        return [];
     }
 }

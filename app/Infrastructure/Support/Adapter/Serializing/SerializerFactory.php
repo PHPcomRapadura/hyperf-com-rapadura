@@ -13,6 +13,11 @@ class SerializerFactory
      */
     public function make(string $type): Serializer
     {
-        return new Serializer(type: $type);
+        return new Serializer(type: $type, converters: $this->converters());
+    }
+
+    protected function converters(): array
+    {
+        return [];
     }
 }
