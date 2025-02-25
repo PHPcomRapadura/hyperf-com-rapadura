@@ -7,9 +7,11 @@ namespace App\Infrastructure\Support\Adapter\Serializing\Deserialize\Resolve;
 use App\Domain\Support\Value;
 use App\Infrastructure\Support\Adapter\Serializing\Deserialize\Chain;
 
+use function Util\Type\Cast\toString;
+
 class ConverterChain extends Chain
 {
-    public function resolve(mixed $value): ?Value
+    public function resolve(mixed $value): Value
     {
         $type = $this->extractType($value);
         $conversor = $this->conversor($type);
@@ -28,9 +30,9 @@ class ConverterChain extends Chain
             'boolean' => 'bool',
             default => $type,
         };
-        if ($type === 'object') {
-            return get_class($value);
+        if ($type === 'object' && is_object($value)) {
+            $type = get_class($value);
         }
-        return $type;
+        return toString($type);
     }
 }

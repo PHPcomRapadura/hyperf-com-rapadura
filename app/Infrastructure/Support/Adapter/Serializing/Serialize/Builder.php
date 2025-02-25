@@ -55,9 +55,9 @@ class Builder extends Engine
     private function prepare(array $parameters, Values $values): Values
     {
         foreach ($parameters as $parameter) {
-            $resolved = (new DependencyChain($this->case, $this->converters))
+            $resolved = (new DependencyChain($this->case))
                 ->then(new ConverterChain($this->case, $this->converters))
-                ->then(new EmptyChain($this->case, $this->converters))
+                ->then(new EmptyChain($this->case))
                 ->resolve($parameter, $values);
 
             if ($resolved === null) {
@@ -86,13 +86,12 @@ class Builder extends Engine
         $errors = [];
         $args = [];
         foreach ($parameters as $parameter) {
-            $resolved = (new InvalidChain($this->case, $this->converters))
-                ->then(new RequiredChain($this->case, $this->converters))
+            $resolved = (new InvalidChain($this->case))
+                ->then(new RequiredChain($this->case))
                 ->resolve($parameter, $values);
             if ($resolved === null) {
                 continue;
             }
-
             if ($resolved->value instanceof NotResolved) {
                 $errors[] = $resolved->value;
                 continue;

@@ -23,6 +23,14 @@ class RequiredChain extends Chain
         if ($values->has($name)) {
             return parent::resolve($parameter, $values);
         }
+        return $this->makeValues($parameter, $name);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function makeValues(ReflectionParameter $parameter, string $name): Value
+    {
         if ($parameter->isOptional() || $parameter->isDefaultValueAvailable()) {
             return new Value($parameter->getDefaultValue());
         }

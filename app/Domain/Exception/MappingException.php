@@ -32,15 +32,20 @@ final class MappingException extends InvalidArgumentException
         return $this->unresolved;
     }
 
-    private function parse(array $errors, ?Throwable $error = null): string
+    /**
+     * @param array<NotResolved> $notResolved
+     * @param Throwable|null $error
+     * @return string
+     */
+    private function parse(array $notResolved, ?Throwable $error = null): string
     {
         if ($error !== null) {
             return $error->getMessage();
         }
         return sprintf(
             'Mapping failed with %d error(s). The errors are: "%s"',
-            count($errors),
-            implode('", "', $this->merge($errors)),
+            count($notResolved),
+            implode('", "', $this->merge($notResolved)),
         );
     }
 

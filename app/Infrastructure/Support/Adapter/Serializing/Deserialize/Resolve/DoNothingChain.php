@@ -9,7 +9,7 @@ use App\Infrastructure\Support\Adapter\Serializing\Deserialize\Chain;
 
 class DoNothingChain extends Chain
 {
-    public function resolve(mixed $value): ?Value
+    public function resolve(mixed $value): Value
     {
         return new Value($value);
     }

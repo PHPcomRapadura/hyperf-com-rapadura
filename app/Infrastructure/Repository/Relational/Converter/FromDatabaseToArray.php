@@ -12,11 +12,11 @@ class FromDatabaseToArray implements Converter
 {
     public function convert(mixed $value): ?array
     {
-        if ($value === null) {
-            return null;
-        }
         if (is_array($value)) {
             return $value;
+        }
+        if (! is_string($value)) {
+            return null;
         }
         return decode($value);
     }

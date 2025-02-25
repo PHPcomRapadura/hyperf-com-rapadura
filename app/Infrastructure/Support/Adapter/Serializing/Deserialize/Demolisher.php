@@ -12,6 +12,10 @@ use App\Infrastructure\Support\Adapter\Serializing\Serialize\Engine;
 
 class Demolisher extends Engine
 {
+    /**
+     * @param object $instance
+     * @return array<string, mixed>
+     */
     public function demolish(object $instance): array
     {
         $values = $this->extractValues($instance);
@@ -19,20 +23,17 @@ class Demolisher extends Engine
         foreach ($values as $field => $value) {
             $name = $this->normalize($field);
 
-            $resolved = (new DoNothingChain($this->case, $this->converters))
-                ->then(new DependencyChain($this->case, $this->converters))
+            $resolved = (new DoNothingChain($this->case))
+                ->then(new DependencyChain($this->case))
                 ->then(new ConverterChain($this->case, $this->converters))
                 ->resolve($value);
 
-            if ($resolved === null) {
-                continue;
-            }
             $data[$name] = $resolved->value;
         }
         return $data;
     }
 
-    public function extractValues(mixed $instance): array
+    public function extractValues(object $instance): array
     {
         if ($instance instanceof Outputable) {
             return $instance->content()?->toArray() ?? [];

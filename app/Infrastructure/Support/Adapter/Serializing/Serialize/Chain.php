@@ -14,8 +14,7 @@ abstract class Chain extends Engine
 
     final public function then(Chain $chain): Chain
     {
-        /** @phpstan-ignore property.notFound */
-        $chain->previous = $this;
+        $chain->previous($this);
         return $chain;
     }
 
@@ -25,5 +24,10 @@ abstract class Chain extends Engine
             return $this->previous->resolve($parameter, $values);
         }
         return null;
+    }
+
+    protected function previous(Chain $previous): void
+    {
+        $this->previous = $previous;
     }
 }
