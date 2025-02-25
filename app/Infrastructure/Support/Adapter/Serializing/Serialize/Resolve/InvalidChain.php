@@ -11,7 +11,7 @@ use App\Domain\Support\Values;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Chain;
 use ReflectionParameter;
 
-use function App\Infrastructure\Support\Adapter\Mapping\Resolve\gettype;
+use function gettype;
 
 class InvalidChain extends Chain
 {
@@ -30,7 +30,7 @@ class InvalidChain extends Chain
             return new Value($value);
         }
 
-        $types = $this->extractTypes($type);
+        $types = $this->normalizeType($type);
         foreach ($types as $type) {
             if ($this->isValidType($value, $type)) {
                 return new Value($value);

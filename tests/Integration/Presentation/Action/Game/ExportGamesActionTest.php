@@ -16,8 +16,8 @@ class ExportGamesActionTest extends IntegrationTestCase
     final public function testCreateGameSuccessfully(): void
     {
         $game = $this->faker->fake(Game::class);
-        $this->sleek->seed('games', $game->toArray());
-        $this->sleek->seed('games', $this->faker->fake(Game::class)->toArray());
+        $this->sleek->seed(Game::class, 'games', $game->toArray());
+        $this->sleek->seed(Game::class, 'games');
 
         $input = $this->input(class: ExportGamesInput::class, params: ['slug' => $game->get('slug')]);
         $action = $this->make(ExportGamesAction::class);

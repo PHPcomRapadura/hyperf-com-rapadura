@@ -42,7 +42,7 @@ class DependencyChain extends Chain
     private function resolveDependencyClass(ReflectionParameter $parameter): ?string
     {
         $type = $parameter->getType();
-        $classes = $this->extractTypes($type);
+        $classes = $this->normalizeType($type);
         foreach ($classes as $class) {
             if (is_string($class) && class_exists($class)) {
                 return $class;

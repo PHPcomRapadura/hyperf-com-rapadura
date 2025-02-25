@@ -2,11 +2,13 @@
 
 namespace Tests\Integration\Support\Database;
 
+use App\Domain\Support\Values;
+
 interface Helper
 {
     public function truncate(string $resource): void;
 
-    public function seed(string $resource, array $data = []): mixed;
+    public function seed(string $type, string $resource, array $override = []): Values;
 
     public function has(string $resource, array $filters): void;
 

@@ -16,8 +16,7 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testShouldReadGameSuccessfully(): void
     {
-        $values = $this->faker->fake(Game::class);
-        $this->sleek->seed('games', $values->toArray());
+        $values = $this->sleek->seed(Game::class, 'games');
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $game = $repository->getGame($values->get('id'));
@@ -33,8 +32,8 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesReturnsGameCollection(): void
     {
-        $this->sleek->seed('games', $this->faker->fake(Game::class)->toArray());
-        $this->sleek->seed('games', $this->faker->fake(Game::class)->toArray());
+        $this->sleek->seed(Game::class, 'games');
+        $this->sleek->seed(Game::class, 'games');
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $games = $repository->getGames();
@@ -44,8 +43,7 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesContainsExpectedGames(): void
     {
-        $values = $this->faker->fake(Game::class);
-        $this->sleek->seed('games', $values->toArray());
+        $values = $this->sleek->seed(Game::class, 'games');
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $all = $repository->getGames()->all();

@@ -9,7 +9,6 @@ use App\Infrastructure\Repository\Postgres\PostgresGameQueryRepository;
 use Tests\Integration\IntegrationTestCase;
 
 use function Hyperf\Collection\collect;
-use function Util\Type\Json\encode;
 
 class PostgresGameQueryRepositoryTest extends IntegrationTestCase
 {
@@ -17,9 +16,7 @@ class PostgresGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testShouldReadGameSuccessfully(): void
     {
-        $values = $this->faker->fake(Game::class);
-        $data = $values->toArray();
-        $this->postgres->seed('games', $data);
+        $values = $this->postgres->seed(Game::class, 'games');
 
         $repository = $this->make(PostgresGameQueryRepository::class);
         $game = $repository->getGame($values->get('id'));
@@ -35,8 +32,8 @@ class PostgresGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesReturnsGameCollection(): void
     {
-        $this->postgres->seed('games', $this->faker->fake(Game::class)->toArray());
-        $this->postgres->seed('games', $this->faker->fake(Game::class)->toArray());
+        $this->postgres->seed(Game::class, 'games');
+        $this->postgres->seed(Game::class, 'games');
 
         $repository = $this->make(PostgresGameQueryRepository::class);
         $games = $repository->getGames();
@@ -46,10 +43,8 @@ class PostgresGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesContainsExpectedGames(): void
     {
-        $values = $this->faker->fake(Game::class);
-        $data = $values->toArray();
-        $data['data'] = encode($data['data']);
-        $this->postgres->seed('games', $data);
+        $values = $this->postgres->seed(Game::class, 'games');
+        $this->postgres->seed(Game::class, 'games');
 
         $repository = $this->make(PostgresGameQueryRepository::class);
         $all = $repository->getGames()->all();

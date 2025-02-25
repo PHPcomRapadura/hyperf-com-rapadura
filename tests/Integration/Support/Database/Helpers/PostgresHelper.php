@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Support\Database\Helpers;
 
+use App\Domain\Support\Values;
+use App\Infrastructure\Repository\Relational\RelationalDeserializerFactory;
+use App\Infrastructure\Repository\Relational\RelationalSerializerFactory;
 use Hyperf\DB\DB as Database;
 use Tests\Integration\Support\Database\Helper;
 use Tests\TestCase;
@@ -14,10 +17,16 @@ use function Util\Type\Json\encode;
 
 final readonly class PostgresHelper implements Helper
 {
+    private RelationalSerializerFactory $serializerFactory;
+
+    private RelationalDeserializerFactory $deserializerFactory;
+
     public function __construct(
         private Database $database,
         private TestCase $assertion,
     ) {
+        $this->serializerFactory = new RelationalSerializerFactory();
+        $this->deserializerFactory = new RelationalDeserializerFactory();
     }
 
     public function truncate(string $resource): void
@@ -25,8 +34,14 @@ final readonly class PostgresHelper implements Helper
         $this->database->execute(sprintf("delete from %s where true", $resource));
     }
 
-    public function seed(string $resource, array $data = []): mixed
+    public function seed(string $type, string $resource, array $override = []): Values
     {
+        $fake = $this->assertion->faker->fake($type);
+        $serializer = $this->serializerFactory->make($type);
+        $instance = $serializer->serialize($fake->toArray());
+        $deserializer = $this->deserializerFactory->make($type);
+        $datum = $deserializer->deserialize($instance);
+        $data = array_merge($datum, $override);
         $fields = array_keys($data);
         $fields = array_map(fn (string $field) => sprintf('"%s"', $field), $fields);
         $columns = implode(',', $fields);
@@ -35,7 +50,8 @@ final readonly class PostgresHelper implements Helper
         $query = sprintf('insert into "%s" (%s) values (%s)', $resource, $columns, $values);
         $bindings = array_values($data);
 
-        return $this->database->execute($query, $bindings);
+        $this->database->execute($query, $bindings);
+        return new Values($data);
     }
 
     public function has(string $resource, array $filters): void

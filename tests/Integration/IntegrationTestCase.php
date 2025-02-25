@@ -47,6 +47,7 @@ class IntegrationTestCase extends TestCase
         foreach ($this->truncate as $resource => $database) {
             match ($database) {
                 'sleek' => $this->sleek->truncate($resource),
+                'postgres' => $this->postgres->truncate($resource),
                 default => null,
             };
         }

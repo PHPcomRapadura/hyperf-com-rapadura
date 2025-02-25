@@ -7,7 +7,7 @@ namespace App\Infrastructure\Support\Adapter\Serializing\Serialize;
 use App\Domain\Exception\Mapping\NotResolved;
 use App\Domain\Exception\MappingException;
 use App\Domain\Support\Values;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\CastChain;
+use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\ConverterChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\DependencyChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare\EmptyChain;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Resolve\InvalidChain;
@@ -56,7 +56,7 @@ class Builder extends Engine
     {
         foreach ($parameters as $parameter) {
             $resolved = (new DependencyChain($this->case, $this->converters))
-                ->then(new CastChain($this->case, $this->converters))
+                ->then(new ConverterChain($this->case, $this->converters))
                 ->then(new EmptyChain($this->case, $this->converters))
                 ->resolve($parameter, $values);
 

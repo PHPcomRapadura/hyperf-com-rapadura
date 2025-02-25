@@ -6,12 +6,12 @@ namespace App\Infrastructure\Support\Adapter\Serializing\Serialize\Prepare;
 
 use App\Domain\Support\Value;
 use App\Domain\Support\Values;
+use App\Infrastructure\Support\Adapter\Serializing\Converter;
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Chain;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Converter;
 use ReflectionNamedType;
 use ReflectionParameter;
 
-class CastChain extends Chain
+class ConverterChain extends Chain
 {
     public function resolve(ReflectionParameter $parameter, Values $values): ?Value
     {
@@ -25,11 +25,5 @@ class CastChain extends Chain
         }
         $value = $conversor->convert($values->get($this->normalize($parameter)));
         return new Value($value);
-    }
-
-    private function conversor(string $type): ?Converter
-    {
-        $converter = $this->converters[$type] ?? null;
-        return $converter instanceof Converter ? $converter : null;
     }
 }

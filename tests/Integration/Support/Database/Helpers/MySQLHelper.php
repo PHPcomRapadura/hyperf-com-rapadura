@@ -21,7 +21,7 @@ final readonly class MySQLHelper implements Helper
         // TODO: Implement truncate() method.
     }
 
-    public function seed(string $resource, array $data = []): mixed
+    public function seed(string $type, string $resource, array $override = []): mixed
     {
         // TODO: Implement seed() method.
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Support\Adapter\Serializing\Serialize;
 
-use;
+use App\Infrastructure\Support\Adapter\Serializing\Converter;
 use App\Infrastructure\Support\CaseConvention;
 use ReflectionIntersectionType;
 use ReflectionNamedType;
@@ -27,7 +27,7 @@ abstract class Engine
      * @param ?ReflectionType $type
      * @return array<class-string<object>|string>
      */
-    protected function extractTypes(?ReflectionType $type): array
+    protected function normalizeType(?ReflectionType $type): array
     {
         if ($type instanceof ReflectionNamedType) {
             return [$type->getName()];
@@ -43,12 +43,18 @@ abstract class Engine
         return [];
     }
 
-    protected function normalize(ReflectionParameter $parameter): string
+    protected function normalize(ReflectionParameter|string $field): string
     {
-        $name = $parameter->getName();
+        $name = is_string($field) ? $field : $field->getName();
         return match ($this->case) {
             CaseConvention::SNAKE => toSnakeCase($name),
             CaseConvention::NONE => $name,
         };
+    }
+
+    protected function conversor(string $type): ?Converter
+    {
+        $converter = $this->converters[$type] ?? null;
+        return $converter instanceof Converter ? $converter : null;
     }
 }

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Support\Adapter\Serializing\Type;
+namespace App\Infrastructure\Repository\Relational\Converter;
 
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Converter;
+use App\Infrastructure\Support\Adapter\Serializing\Converter;
 
 use function Util\Type\Json\decode;
 
 class FromDatabaseToArray implements Converter
 {
-    public function convert(bool|int|string|array|null $value): ?array
+    public function convert(mixed $value): ?array
     {
         if ($value === null) {
             return null;

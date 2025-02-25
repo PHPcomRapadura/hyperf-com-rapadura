@@ -16,8 +16,7 @@ class ReadGameActionTest extends IntegrationTestCase
 
     final public function testShouldReadGame(): void
     {
-        $values = $this->faker->fake(Game::class);
-        $this->sleek->seed('games', $values->toArray());
+        $values = $this->sleek->seed(Game::class, 'games');
 
         $input = $this->input(class: ReadGameInput::class, params: ['id' => $values->get('id')]);
 

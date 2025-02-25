@@ -8,32 +8,11 @@ use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Exception\GeneratingException;
 use App\Domain\Repository\GameCommandRepository;
 use App\Infrastructure\Repository\PostgresRepository;
-use App\Infrastructure\Support\Adapter\Serializing\Deserializer;
-use App\Infrastructure\Support\Adapter\Serializing\DeserializerFactory;
-use App\Infrastructure\Support\Persistence\Generator;
-use App\Infrastructure\Support\Persistence\Hyperf\HyperfDBFactory;
-use JsonException;
 
 class PostgresGameCommandRepository extends PostgresRepository implements GameCommandRepository
 {
     /**
-     * @var Deserializer<GameCommand>
-     */
-    protected readonly Deserializer $deserializer;
-
-    public function __construct(
-        Generator $generator,
-        HyperfDBFactory $databaseFactory,
-        DeserializerFactory $deserializerFactory,
-    ) {
-        parent::__construct($generator, $databaseFactory);
-
-        $this->deserializer = $deserializerFactory->make(GameCommand::class);
-    }
-
-    /**
      * @throws GeneratingException
-     * @throws JsonException
      */
     public function persist(GameCommand $game): string
     {
@@ -47,11 +26,14 @@ class PostgresGameCommandRepository extends PostgresRepository implements GameCo
             'data',
         ];
         $query = 'insert into games (id, created_at, updated_at, name, slug, data) values (?, ?, ?, ?, ?, ?)';
+
+        $deserialized = $this->deserializerFactory->make(GameCommand::class)
+            ->deserialize($game);
         $values = [
             'id' => $id,
             'created_at' => $this->generator->now(),
             'updated_at' => $this->generator->now(),
-            ...$this->deserializer->deserialize($game),
+            ...$deserialized,
         ];
         $bindings = [];
         foreach ($fields as $field) {

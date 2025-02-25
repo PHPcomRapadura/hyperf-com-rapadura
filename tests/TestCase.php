@@ -18,7 +18,7 @@ use function Hyperf\Support\make;
 
 class TestCase extends PHPUnit
 {
-    protected Faker $faker;
+    public Faker $faker;
 
     protected function setUp(): void
     {
