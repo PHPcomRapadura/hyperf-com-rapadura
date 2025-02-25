@@ -7,31 +7,10 @@ on:
       - main
 
 jobs:
-  test:
+  sonar:
     runs-on: ubuntu-latest
-
-    container:
-      image: devitools/hyperf:8.3-dev
-      env:
-        SCAN_CACHEABLE: false
-        STDOUT_LOG_LEVEL: alert,critical,emergency,error,warning,notice,info
-      options: --cpus 1
-
-#    services:
-#      postgres:
-#        image: postgres:16.2
-#        env:
-#          POSTGRES_USER: postgres
-#          POSTGRES_PASSWORD: root
-#          POSTGRES_DB: database
-#        options: >-
-#          --health-cmd pg_isready
-#          --health-interval 10s
-#          --health-timeout 5s
-#          --health-retries 5
-#        ports:
-#          - '5432:5432'
-
+    env:
+      COMPOSE_RUNNER: "docker compose --compatibility"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,16 +18,12 @@ jobs:
 
       - run: git config --global --add safe.directory /__w/hyperf-com-rapadura/hyperf-com-rapadura
 
-#      - run: composer install
-#
-#      - run: php bin/hyperf.php migrate --database=postgres
-#
-#      - run: composer test
+#      - run: make setup
 
-      - run: |
-          echo "SONAR_SCANNER_VERSION=6.2.1.4610" >> $GITHUB_ENV
-          echo "SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux-x64" >> $GITHUB_ENV
-          echo "PATH=$SONAR_SCANNER_HOME/bin:$PATH" >> $GITHUB_ENV
-          echo "SONAR_SCANNER_OPTS=-server" >> $GITHUB_ENV
+#      - run: make postgres
+
+#      - run: make migrate
+
+#      - run: make test
 
       - run: sonar-scanner -Dsonar.host.url=https://sonarcloud.io
