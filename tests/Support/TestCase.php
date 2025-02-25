@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Support;
 
+use Backbone\Infrastructure\Faker\Faker;
 use BackedEnum;
 use FastRoute\Dispatcher;
 use Hyperf\Context\Context;
@@ -12,7 +13,6 @@ use Hyperf\HttpServer\Router\Dispatched;
 use Hyperf\HttpServer\Router\Handler;
 use PHPUnit\Framework\TestCase as PHPUnit;
 use Psr\Http\Message\ServerRequestInterface;
-use Tests\Support\Faker\Faker;
 
 use function Hyperf\Support\make;
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\Command\GameCommand;
-use App\Domain\Exception\GeneratingException;
+use Backbone\Domain\Exception\GeneratingException;
 
 interface GameCommandRepository
 {

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repository\Postgres;
 
 use App\Domain\Entity\Command\GameCommand;
-use App\Domain\Exception\GeneratingException;
 use App\Domain\Repository\GameCommandRepository;
-use App\Infrastructure\Repository\PostgresRepository;
+use Backbone\Domain\Exception\GeneratingException;
+use Backbone\Infrastructure\Persistence\PostgresRepository;
 
 class PostgresGameCommandRepository extends PostgresRepository implements GameCommandRepository
 {

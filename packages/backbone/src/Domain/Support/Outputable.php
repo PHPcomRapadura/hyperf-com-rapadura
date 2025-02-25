@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Backbone\Domain\Support;
+
+use Backbone\Domain\Contract\Result;
+use Hyperf\Contract\Jsonable;
+use JsonException;
+use JsonSerializable;
+
+use function get_object_vars;
+use function json_encode;
+use function sprintf;
+use function Backbone\Util\Type\String\toSnakeCase;
+
+abstract class Outputable implements Result, JsonSerializable, Jsonable
+{
+    public function properties(): Values
+    {
+        return Values::createFrom([]);
+    }
+
+    final public function content(): ?Values
+    {
+        $values = $this->extract();
+        if (empty($values)) {
+            return null;
+        }
+        return Values::createFrom($values);
+    }
+
+    final public function __toString(): string
+    {
+        try {
+            return json_encode($this, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            return sprintf('{"error": "%s"}', $e->getMessage());
+        }
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    final public function jsonSerialize(): array
+    {
+        return $this->extract();
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function extract(): array
+    {
+        $properties = get_object_vars($this);
+        $extracted = [];
+        foreach ($properties as $key => $value) {
+            $snakeCaseKey = toSnakeCase($key);
+            $extracted[$snakeCaseKey] = $value;
+        }
+        return $extracted;
+    }
+}

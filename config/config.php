@@ -6,7 +6,7 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Psr\Log\LogLevel;
 
 use function Hyperf\Support\env;
-use function Util\Type\Cast\toString;
+use function Backbone\Util\Type\Cast\toString;
 
 $logLevel = toString(env('STDOUT_LOG_LEVEL'));
 

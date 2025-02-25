@@ -7,9 +7,9 @@ namespace Tests\Unit\Application\Service;
 use App\Application\Exception\ExportGamesFailedException;
 use App\Application\Service\ExportGameService;
 use App\Domain\Collection\GameCollection;
-use App\Domain\Contract\Serializer;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
+use Backbone\Domain\Contract\Serializer;
 use DateTimeImmutable;
 use Tests\Support\TestCase;
 

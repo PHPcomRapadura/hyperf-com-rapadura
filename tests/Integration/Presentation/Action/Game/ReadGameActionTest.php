@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Integration\Presentation\Action\Game;
 
 use App\Domain\Entity\Game;
-use App\Infrastructure\Support\Presentation\Output\NotFound;
 use App\Presentation\Action\Game\ReadGameAction;
 use App\Presentation\Input\Game\ReadGameInput;
+use Backbone\Presentation\Output\NotFound;
 use Tests\Support\IntegrationTestCase;
 
 class ReadGameActionTest extends IntegrationTestCase

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Repository\SleekDB;
 
-use App\Infrastructure\Repository\SleekDBRepository;
+use Backbone\Infrastructure\Persistence\SleekDBRepository;
 
 abstract class SleekDBGameRepository extends SleekDBRepository
 {

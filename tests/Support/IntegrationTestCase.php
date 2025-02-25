@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Support;
 
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Builder;
-use App\Infrastructure\Support\Persistence\Hyperf\HyperfDBFactory;
-use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
-use Tests\Integration\Support\Database\Helper;
-use Tests\Integration\Support\Database\Helpers\PostgresHelper;
-use Tests\Integration\Support\Database\Helpers\SleekDBHelper;
+use Backbone\Infrastructure\Adapter\Serializing\Serialize\Builder;
+use Backbone\Infrastructure\Persistence\Factory\HyperfDBFactory;
+use Backbone\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
+use Backbone\Test\Support\Database\Helper;
+use Backbone\Test\Support\Database\Helpers\PostgresHelper;
+use Backbone\Test\Support\Database\Helpers\SleekDBHelper;
 
 class IntegrationTestCase extends TestCase
 {

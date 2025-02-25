@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Presentation\Action\Game;
 
-use App\Domain\Contract\Result;
 use App\Domain\Entity\Command\GameCommand;
-use App\Domain\Exception\GeneratingException;
 use App\Domain\Repository\GameCommandRepository;
-use App\Infrastructure\Support\Adapter\Serializing\Serialize\Builder;
-use App\Infrastructure\Support\Presentation\Output\Accepted;
 use App\Presentation\Input\Game\CreateGameInput;
+use Backbone\Domain\Contract\Result;
+use Backbone\Domain\Exception\GeneratingException;
+use Backbone\Infrastructure\Adapter\Serializing\Serialize\Builder;
+use Backbone\Presentation\Output\Accepted;
 
 readonly class CreateGameAction
 {

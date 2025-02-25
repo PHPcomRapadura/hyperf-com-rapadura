@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Input;
 
-use App\Infrastructure\Support\Adapter\Input;
+use Backbone\Infrastructure\Adapter\Input;
 
 class HomeInput extends Input
 {

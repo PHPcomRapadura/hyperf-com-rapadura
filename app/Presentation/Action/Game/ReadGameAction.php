@@ -6,8 +6,8 @@ namespace App\Presentation\Action\Game;
 
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use App\Infrastructure\Support\Presentation\Output\NotFound;
 use App\Presentation\Input\Game\ReadGameInput;
+use Backbone\Presentation\Output\NotFound;
 
 readonly class ReadGameAction
 {

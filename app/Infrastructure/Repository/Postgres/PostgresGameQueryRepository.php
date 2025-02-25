@@ -7,9 +7,9 @@ namespace App\Infrastructure\Repository\Postgres;
 use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use App\Infrastructure\Repository\PostgresRepository;
+use Backbone\Infrastructure\Persistence\PostgresRepository;
 
-use function Util\Type\Cast\toArray;
+use function Backbone\Util\Type\Cast\toArray;
 
 class PostgresGameQueryRepository extends PostgresRepository implements GameQueryRepository
 {

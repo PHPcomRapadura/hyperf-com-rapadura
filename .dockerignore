@@ -3,4 +3,6 @@
 !app/
 !bin/
 !config/
+!migrations/
+!packages/
 !composer.*
