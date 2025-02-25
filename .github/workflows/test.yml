@@ -45,11 +45,11 @@ jobs:
 
       - run: composer test
 
-      - run: echo "SONAR_SCANNER_OPTS=-Djava.home=$JAVA_HOME" >> $GITHUB_ENV
-
-      - uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.verbose=true
+      - run: |
+          export SONAR_SCANNER_VERSION=6.2.1.4610 \
+          export SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux-x64 \
+          curl --create-dirs -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux-x64.zip \
+          unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/ \
+          export PATH=$SONAR_SCANNER_HOME/bin:$PATH \
+          export SONAR_SCANNER_OPTS="-server" \
+          sonar-scanner -Dsonar.host.url=https://sonarcloud.io
