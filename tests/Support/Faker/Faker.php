@@ -88,7 +88,7 @@ readonly class Faker
         return (new TypedChain($this->faker))
             ->then(new NamedChain($this->faker))
             ->then(new OptionalChain($this->faker))
-            ->resolve(new Value($parameter));
+            ->resolve($parameter);
     }
 
     private function normalize(ReflectionParameter $parameter): string

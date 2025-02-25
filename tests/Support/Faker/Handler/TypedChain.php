@@ -10,17 +10,12 @@ use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionUnionType;
 use RuntimeException;
-use Tests\Support\Faker\FakerHandler;
 use Throwable;
 
-final class TypedChain extends FakerHandler
+final class TypedChain extends Chain
 {
-    public function resolve(Value $value): ?Value
+    public function resolve(ReflectionParameter $parameter): ?Value
     {
-        $parameter = $value->value;
-
-        assert($parameter instanceof ReflectionParameter);
-
         $type = $this->extractType($parameter);
         if ($type === null) {
             return new Value(null);
@@ -30,7 +25,7 @@ final class TypedChain extends FakerHandler
             return new Value($generated);
         } catch (Throwable) {
         }
-        return parent::resolve($value);
+        return parent::resolve($parameter);
     }
 
     public function extractType(ReflectionParameter $parameter): ?string
