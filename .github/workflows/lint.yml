@@ -6,11 +6,19 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    env:
-      COMPOSE_RUNNER: "docker compose --compatibility"
+
+    container:
+      image: devitools/hyperf:8.3-dev
+      env:
+        SCAN_CACHEABLE: false
+        STDOUT_LOG_LEVEL: alert,critical,emergency,error,warning,notice,info
+      options: --cpus 1
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - run: make setup
+      - run: composer install
 
-      - run: make lint
+      - run: composer lint
