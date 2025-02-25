@@ -1,7 +1,7 @@
 services:
   app:
     container_name: template_name-app
-    image: devitools/hyperf:8.3
+    image: devitools/hyperf:8.3-dev
     command: [ "server:watch" ]
     volumes:
       - ./:/opt/www

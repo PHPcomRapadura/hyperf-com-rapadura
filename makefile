@@ -6,8 +6,8 @@ COMPOSE_RUNNER ?= "docker-compose"
 
 
 setup: ## Setup the project
-	@$(COMPOSE_RUNNER) down --remove-orphans --volumes
-	@$(COMPOSE_RUNNER) build --no-cache --pull
+	@$(COMPOSE_RUNNER) --profile postgres down --remove-orphans --volumes
+	@$(COMPOSE_RUNNER) --profile mysql down --remove-orphans --volumes
 	@make install
 
 ##@ Bash controls
