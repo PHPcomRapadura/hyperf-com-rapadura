@@ -20,7 +20,6 @@ jobs:
     services:
       postgres:
         image: postgres:16.2
-        tty: true
         env:
           - POSTGRES_USER=${POSTGRES_DB_USERNAME:-postgres}
           - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD:-root}
