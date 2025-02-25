@@ -45,7 +45,6 @@ jobs:
 
       - run: composer test
 
-      # - run: /bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io -X
-      - run: /bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+      - run: /bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
