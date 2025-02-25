@@ -16,7 +16,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Swow\Psr7\Message\ResponsePlusInterface;
 use Swow\Psr7\Message\ServerRequestPlusInterface;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class AppMiddlewareTest extends TestCase
 {

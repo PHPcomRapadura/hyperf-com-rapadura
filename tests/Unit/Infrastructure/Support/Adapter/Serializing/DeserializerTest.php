@@ -6,7 +6,7 @@ namespace Tests\Unit\Infrastructure\Support\Adapter\Serializing;
 
 use App\Infrastructure\Support\Adapter\Serializing\Deserializer;
 use InvalidArgumentException;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 final class DeserializerTest extends TestCase
 {

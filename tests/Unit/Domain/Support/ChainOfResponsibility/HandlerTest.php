@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Domain\Support\ChainOfResponsibility;
 
 use App\Domain\Support\Value;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class HandlerTest extends TestCase
 {

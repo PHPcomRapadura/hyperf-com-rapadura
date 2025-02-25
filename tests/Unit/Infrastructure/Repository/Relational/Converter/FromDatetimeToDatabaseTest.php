@@ -6,7 +6,7 @@ namespace Tests\Unit\Infrastructure\Repository\Relational\Converter;
 
 use App\Infrastructure\Repository\Relational\Converter\FromDatetimeToDatabase;
 use DateTime;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class FromDatetimeToDatabaseTest extends TestCase
 {

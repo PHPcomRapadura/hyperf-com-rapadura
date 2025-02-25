@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Infrastructure\Support\Adapter\Serializing;
 
 use App\Infrastructure\Support\Adapter\Serializing\Serializer;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class SerializerTest extends TestCase
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Infrastructure\Support\Adapter;
 
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class InputTest extends TestCase
 {

@@ -6,7 +6,7 @@ namespace Tests\Integration\Infrastructure\Repository\Postgres;
 
 use App\Domain\Entity\Command\GameCommand;
 use App\Infrastructure\Repository\Postgres\PostgresGameCommandRepository;
-use Tests\Integration\IntegrationTestCase;
+use Tests\Support\IntegrationTestCase;
 
 class PostgresGameCommandRepositoryTest extends IntegrationTestCase
 {

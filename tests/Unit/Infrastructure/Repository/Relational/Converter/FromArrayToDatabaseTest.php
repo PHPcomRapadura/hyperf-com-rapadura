@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Infrastructure\Repository\Relational\Converter;
 
 use App\Infrastructure\Repository\Relational\Converter\FromArrayToDatabase;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class FromArrayToDatabaseTest extends TestCase
 {

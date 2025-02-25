@@ -9,7 +9,7 @@ use Exception;
 use Hyperf\HttpMessage\Server\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class AppExceptionHandlerTest extends TestCase
 {

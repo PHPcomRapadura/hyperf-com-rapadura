@@ -6,7 +6,7 @@ namespace Tests\Unit\Infrastructure\Support\Persistence;
 
 use App\Domain\Exception\GeneratingException;
 use App\Infrastructure\Support\Persistence\Generator;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class GeneratorTest extends TestCase
 {

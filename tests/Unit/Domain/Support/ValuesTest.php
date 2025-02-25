@@ -6,7 +6,7 @@ namespace Tests\Unit\Domain\Support;
 
 use App\Domain\Support\Values;
 use InvalidArgumentException;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class ValuesTest extends TestCase
 {

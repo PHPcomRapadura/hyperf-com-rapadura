@@ -10,7 +10,7 @@ use Hyperf\Contract\ConfigInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class CorsMiddlewareTest extends TestCase
 {

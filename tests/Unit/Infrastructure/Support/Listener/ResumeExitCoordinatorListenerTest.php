@@ -8,7 +8,7 @@ use App\Infrastructure\Support\Listener\ResumeExitCoordinatorListener;
 use Hyperf\Command\Event\AfterExecute;
 use Hyperf\Coordinator\Constants;
 use Hyperf\Coordinator\CoordinatorManager;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class ResumeExitCoordinatorListenerTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration;
+namespace Tests\Support;
 
 use App\Infrastructure\Support\Adapter\Serializing\Serialize\Builder;
 use App\Infrastructure\Support\Persistence\Hyperf\HyperfDBFactory;
@@ -10,7 +10,6 @@ use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
 use Tests\Integration\Support\Database\Helper;
 use Tests\Integration\Support\Database\Helpers\PostgresHelper;
 use Tests\Integration\Support\Database\Helpers\SleekDBHelper;
-use Tests\TestCase;
 
 class IntegrationTestCase extends TestCase
 {

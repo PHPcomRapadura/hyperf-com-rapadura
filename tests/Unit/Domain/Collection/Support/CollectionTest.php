@@ -6,7 +6,7 @@ namespace Tests\Unit\Domain\Collection\Support;
 
 use DomainException;
 use stdClass;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class CollectionTest extends TestCase
 {

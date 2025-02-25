@@ -8,7 +8,7 @@ use App\Domain\Entity\Game;
 use App\Infrastructure\Support\Presentation\Output\NotFound;
 use App\Presentation\Action\Game\ReadGameAction;
 use App\Presentation\Input\Game\ReadGameInput;
-use Tests\Integration\IntegrationTestCase;
+use Tests\Support\IntegrationTestCase;
 
 class ReadGameActionTest extends IntegrationTestCase
 {

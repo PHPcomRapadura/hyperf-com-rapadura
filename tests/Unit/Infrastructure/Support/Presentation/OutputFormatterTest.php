@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Infrastructure\Support\Presentation;
 
 use App\Infrastructure\Support\Presentation\OutputFormatter;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class OutputFormatterTest extends TestCase
 {

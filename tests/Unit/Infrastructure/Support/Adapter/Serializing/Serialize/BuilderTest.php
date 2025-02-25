@@ -12,7 +12,7 @@ use App\Infrastructure\Support\Adapter\Serializing\Serialize\Builder;
 use App\Infrastructure\Support\CaseConvention;
 use DateTime;
 use stdClass;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 use function Util\Type\Json\encode;
 

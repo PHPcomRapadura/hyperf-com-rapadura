@@ -6,7 +6,7 @@ namespace Tests\Unit\Infrastructure\Support\Adapter\Serializing\Deserialize\Reso
 
 use App\Infrastructure\Support\Adapter\Serializing\Deserialize\Resolve\DependencyChain;
 use stdClass;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class DependencyChainTest extends TestCase
 {

@@ -11,7 +11,7 @@ use App\Domain\Contract\Serializer;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
 use DateTimeImmutable;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class ExportGameServiceTest extends TestCase
 {

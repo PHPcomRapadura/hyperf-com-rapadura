@@ -7,7 +7,7 @@ namespace Tests\Unit\Infrastructure\Support\Logging;
 use App\Infrastructure\Support\Logging\EnvironmentLoggerFactory;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class EnvironmentLoggerFactoryTest extends TestCase
 {

@@ -6,7 +6,7 @@ namespace Tests\Integration\Support\Database\Helpers;
 
 use Hyperf\DB\DB as Database;
 use Tests\Integration\Support\Database\Helper;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 final readonly class MySQLHelper implements Helper
 {

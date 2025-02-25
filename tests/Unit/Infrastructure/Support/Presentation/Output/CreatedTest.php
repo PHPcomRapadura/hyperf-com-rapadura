@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Infrastructure\Support\Presentation\Output;
 
 use App\Infrastructure\Support\Presentation\Output\Created;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 final class CreatedTest extends TestCase
 {

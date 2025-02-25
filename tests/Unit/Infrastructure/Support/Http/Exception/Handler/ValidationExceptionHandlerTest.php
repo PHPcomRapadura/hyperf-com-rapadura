@@ -10,7 +10,7 @@ use Hyperf\Contract\ValidatorInterface;
 use Hyperf\HttpMessage\Server\Response;
 use Hyperf\Validation\ValidationException;
 use Psr\Http\Message\ResponseInterface;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 use Throwable;
 
 class ValidationExceptionHandlerTest extends TestCase

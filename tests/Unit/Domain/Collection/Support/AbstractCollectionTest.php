@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Domain\Collection\Support;
 
 use App\Domain\Collection\Support\AbstractCollection;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class AbstractCollectionTest extends TestCase
 {

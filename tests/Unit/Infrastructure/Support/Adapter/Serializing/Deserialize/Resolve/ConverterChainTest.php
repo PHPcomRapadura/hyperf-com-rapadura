@@ -7,7 +7,7 @@ namespace Tests\Unit\Infrastructure\Support\Adapter\Serializing\Deserialize\Reso
 use App\Infrastructure\Support\Adapter\Serializing\Converter;
 use App\Infrastructure\Support\Adapter\Serializing\Deserialize\Resolve\ConverterChain;
 use PHPUnit\Framework\Attributes\TestWith;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 use function Util\Type\Json\encode;
 

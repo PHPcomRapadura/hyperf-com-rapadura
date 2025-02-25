@@ -6,7 +6,7 @@ namespace Tests\Integration\Presentation\Action;
 
 use App\Presentation\Action\HomeAction;
 use App\Presentation\Input\HomeInput;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class HomeActionTest extends TestCase
 {

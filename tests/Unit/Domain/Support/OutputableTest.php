@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Domain\Support;
 
 use App\Domain\Support\Outputable;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 class OutputableTest extends TestCase
 {

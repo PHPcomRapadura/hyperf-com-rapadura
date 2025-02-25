@@ -9,7 +9,7 @@ use App\Infrastructure\Repository\Relational\RelationalDeserializerFactory;
 use App\Infrastructure\Repository\Relational\RelationalSerializerFactory;
 use Hyperf\DB\DB as Database;
 use Tests\Integration\Support\Database\Helper;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 use function Util\Type\Array\extractNumeric;
 use function Util\Type\Cast\toArray;

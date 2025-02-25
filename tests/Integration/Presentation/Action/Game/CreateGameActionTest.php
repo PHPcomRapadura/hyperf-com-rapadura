@@ -8,7 +8,7 @@ use App\Domain\Entity\Command\GameCommand;
 use App\Infrastructure\Support\Presentation\Output\Accepted;
 use App\Presentation\Action\Game\CreateGameAction;
 use App\Presentation\Input\Game\CreateGameInput;
-use Tests\Integration\IntegrationTestCase;
+use Tests\Support\IntegrationTestCase;
 
 class CreateGameActionTest extends IntegrationTestCase
 {

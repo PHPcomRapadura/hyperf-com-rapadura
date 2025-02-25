@@ -10,7 +10,7 @@ use App\Infrastructure\Support\Adapter\Serializing\SerializerFactory;
 use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
 use JsonException;
 use Tests\Integration\Support\Database\Helper;
-use Tests\TestCase;
+use Tests\Support\TestCase;
 
 final readonly class SleekDBHelper implements Helper
 {
