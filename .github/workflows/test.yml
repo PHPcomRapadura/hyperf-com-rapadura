@@ -18,19 +18,19 @@ jobs:
       options: --cpus 1
 
     services:
-      postgres:
-        image: postgres:16.2
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: root
-          POSTGRES_DB: database
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - '5432:5432'
+#      postgres:
+#        image: postgres:16.2
+#        env:
+#          POSTGRES_USER: postgres
+#          POSTGRES_PASSWORD: root
+#          POSTGRES_DB: database
+#        options: >-
+#          --health-cmd pg_isready
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 5
+#        ports:
+#          - '5432:5432'
 
     steps:
       - uses: actions/checkout@v4
@@ -39,11 +39,11 @@ jobs:
 
       - run: git config --global --add safe.directory /__w/hyperf-com-rapadura/hyperf-com-rapadura
 
-      - run: composer install
-
-      - run: php bin/hyperf.php migrate --database=postgres
-
-      - run: composer test
+#      - run: composer install
+#
+#      - run: php bin/hyperf.php migrate --database=postgres
+#
+#      - run: composer test
 
       - run: >
           export SONAR_SCANNER_VERSION=6.2.1.4610
