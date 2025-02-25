@@ -7,7 +7,7 @@ namespace BackboneTest\Unit\Infrastructure\Logging;
 use Backbone\Infrastructure\Logging\EnvironmentLoggerFactory;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class EnvironmentLoggerFactoryTest extends TestCase
 {

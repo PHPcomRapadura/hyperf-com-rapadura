@@ -7,6 +7,8 @@ namespace Backbone\Domain\Exception;
 use Exception;
 use Throwable;
 
+use function sprintf;
+
 final class GeneratingException extends Exception
 {
     public function __construct(

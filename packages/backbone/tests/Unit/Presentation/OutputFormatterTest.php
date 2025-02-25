@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Presentation;
 
 use Backbone\Presentation\OutputFormatter;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class OutputFormatterTest extends TestCase
 {

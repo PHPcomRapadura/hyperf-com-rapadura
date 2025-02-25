@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Presentation\Output;
 
 use Backbone\Presentation\Output\Created;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 final class CreatedTest extends TestCase
 {

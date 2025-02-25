@@ -14,6 +14,7 @@ use ReflectionUnionType;
 
 use function array_map;
 use function Backbone\Type\String\toSnakeCase;
+use function is_string;
 
 abstract class Engine
 {

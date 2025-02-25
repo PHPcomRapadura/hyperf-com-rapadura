@@ -6,7 +6,7 @@ namespace BackboneTest\Unit\Infrastructure\Persistence\Converter;
 
 use Backbone\Infrastructure\Persistence\Converter\FromDatetimeToDatabase;
 use DateTime;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class FromDatetimeToDatabaseTest extends TestCase
 {

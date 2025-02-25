@@ -10,6 +10,8 @@ use Hyperf\Validation\Request\FormRequest;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_keys;
+use function array_merge;
 use function Hyperf\Collection\data_get;
 
 /**
@@ -42,17 +44,6 @@ abstract class Input extends FormRequest
     }
 
     /**
-     * @deprecated Use `value(string $key, mixed $default = null): mixed` instead
-     */
-    public function post(?string $key = null, mixed $default = null): mixed
-    {
-        if ($key === null) {
-            return $this->values()->toArray();
-        }
-        return $this->value($key, $default);
-    }
-
-    /**
      * @template T of mixed
      * @param T $default
      *
@@ -73,6 +64,17 @@ abstract class Input extends FormRequest
             return $this->values->along($this->validated());
         }
         return $this->values;
+    }
+
+    /**
+     * @deprecated Use `value(string $key, mixed $default = null): mixed` instead
+     */
+    public function post(?string $key = null, mixed $default = null): mixed
+    {
+        if ($key === null) {
+            return $this->values()->toArray();
+        }
+        return $this->value($key, $default);
     }
 
     protected function validationData(): array

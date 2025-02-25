@@ -18,8 +18,8 @@ use Hyperf\Validation\Middleware\ValidationMiddleware;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
-use function Hyperf\Support\env;
 use function Backbone\Type\Cast\toString;
+use function Hyperf\Support\env;
 
 
 class ConfigProvider

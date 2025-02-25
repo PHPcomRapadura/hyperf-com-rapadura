@@ -9,6 +9,11 @@ use Backbone\Domain\Support\Values;
 use InvalidArgumentException;
 use Throwable;
 
+use function array_map;
+use function count;
+use function implode;
+use function sprintf;
+
 final class MappingException extends InvalidArgumentException
 {
     /**
@@ -25,11 +30,6 @@ final class MappingException extends InvalidArgumentException
             message: $this->parse($unresolved, $error),
             previous: $error,
         );
-    }
-
-    public function getUnresolved(): array
-    {
-        return $this->unresolved;
     }
 
     /**
@@ -56,5 +56,10 @@ final class MappingException extends InvalidArgumentException
     private function merge(array $errors): array
     {
         return array_map(fn (NotResolved $error) => $error->message(), $errors);
+    }
+
+    public function getUnresolved(): array
+    {
+        return $this->unresolved;
     }
 }

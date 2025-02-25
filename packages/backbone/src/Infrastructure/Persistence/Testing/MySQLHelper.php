@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Backbone\Infrastructure\Persistence\Testing;
 
 use Backbone\Domain\Support\Values;
+use Backbone\Infrastructure\Testing\TestCase;
 use Hyperf\DB\DB as Database;
-use Tests\Support\TestCase;
 
 final readonly class MySQLHelper implements Helper
 {

@@ -7,7 +7,7 @@ namespace Tests\Integration\Presentation\Action\Game;
 use App\Domain\Entity\Game;
 use App\Presentation\Action\Game\ExportGamesAction;
 use App\Presentation\Input\Game\ExportGamesInput;
-use Tests\Support\IntegrationTestCase;
+use Backbone\Infrastructure\Testing\IntegrationTestCase;
 
 class ExportGamesActionTest extends IntegrationTestCase
 {

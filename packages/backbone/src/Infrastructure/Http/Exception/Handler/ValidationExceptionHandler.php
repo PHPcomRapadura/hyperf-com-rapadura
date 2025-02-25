@@ -13,6 +13,9 @@ use Psr\Http\Message\ResponseInterface;
 use Swow\Psr7\Message\ResponsePlusInterface;
 use Throwable;
 
+use function json_encode;
+use function sprintf;
+
 class ValidationExceptionHandler extends ExceptionHandler
 {
     public function handle(Throwable $throwable, ResponsePlusInterface $response): MessageInterface|ResponseInterface
@@ -28,11 +31,6 @@ class ValidationExceptionHandler extends ExceptionHandler
             ->setBody(new SwooleStream($this->toJson($body)));
     }
 
-    public function isValid(Throwable $throwable): bool
-    {
-        return $throwable instanceof ValidationException;
-    }
-
     private function toJson(array $body): string
     {
         try {
@@ -40,5 +38,10 @@ class ValidationExceptionHandler extends ExceptionHandler
         } catch (JsonException $e) {
             return sprintf('{"error": "%s"}', $e->getMessage());
         }
+    }
+
+    public function isValid(Throwable $throwable): bool
+    {
+        return $throwable instanceof ValidationException;
     }
 }

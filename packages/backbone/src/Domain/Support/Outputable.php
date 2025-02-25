@@ -9,10 +9,10 @@ use Hyperf\Contract\Jsonable;
 use JsonException;
 use JsonSerializable;
 
+use function Backbone\Type\String\toSnakeCase;
 use function get_object_vars;
 use function json_encode;
 use function sprintf;
-use function Backbone\Type\String\toSnakeCase;
 
 abstract class Outputable implements Result, JsonSerializable, Jsonable
 {
@@ -30,6 +30,20 @@ abstract class Outputable implements Result, JsonSerializable, Jsonable
         return Values::createFrom($values);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function extract(): array
+    {
+        $properties = get_object_vars($this);
+        $extracted = [];
+        foreach ($properties as $key => $value) {
+            $snakeCaseKey = toSnakeCase($key);
+            $extracted[$snakeCaseKey] = $value;
+        }
+        return $extracted;
+    }
+
     final public function __toString(): string
     {
         try {
@@ -45,19 +59,5 @@ abstract class Outputable implements Result, JsonSerializable, Jsonable
     final public function jsonSerialize(): array
     {
         return $this->extract();
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function extract(): array
-    {
-        $properties = get_object_vars($this);
-        $extracted = [];
-        foreach ($properties as $key => $value) {
-            $snakeCaseKey = toSnakeCase($key);
-            $extracted[$snakeCaseKey] = $value;
-        }
-        return $extracted;
     }
 }

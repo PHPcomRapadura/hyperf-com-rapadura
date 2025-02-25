@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Backbone\Domain\Exception\Mapping;
 
+use function sprintf;
+
 final readonly class NotResolved
 {
     public function __construct(

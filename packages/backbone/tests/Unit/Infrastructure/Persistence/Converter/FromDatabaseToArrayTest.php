@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Persistence\Converter;
 
 use Backbone\Infrastructure\Persistence\Converter\FromDatabaseToArray;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class FromDatabaseToArrayTest extends TestCase
 {

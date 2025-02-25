@@ -7,7 +7,7 @@ namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resol
 use Backbone\Infrastructure\Adapter\Serializing\Converter;
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\ConverterChain;
 use PHPUnit\Framework\Attributes\TestWith;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 use function Backbone\Type\Json\encode;
 
@@ -24,7 +24,7 @@ class ConverterChainTest extends TestCase
         $chain = new ConverterChain();
         $result = $chain->resolve($value);
 
-        $this->assertSame($value, $result->value);
+        $this->assertSame($value, $result->content);
     }
 
     final public function testResolveWithArrayValue(): void
@@ -39,6 +39,6 @@ class ConverterChainTest extends TestCase
         $value = ['key' => 'value'];
         $result = $chain->resolve($value);
 
-        $this->assertEquals('{"key":"value"}', $result->value);
+        $this->assertEquals('{"key":"value"}', $result->content);
     }
 }

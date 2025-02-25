@@ -56,13 +56,13 @@ abstract class AbstractCollection extends Outputable implements Iterator, Counta
         return array_map($callback, $this->data());
     }
 
-    final protected function datum(): mixed
-    {
-        return $this->data[$this->cursor] ?? null;
-    }
-
     final protected function data(): array
     {
         return $this->data;
+    }
+
+    final protected function datum(): mixed
+    {
+        return $this->data[$this->cursor] ?? null;
     }
 }

@@ -7,8 +7,9 @@ namespace Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
 use Backbone\Domain\Support\Value;
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Chain;
 
-use function gettype;
 use function Backbone\Type\Cast\toString;
+use function gettype;
+use function is_object;
 
 class ConverterChain extends Chain
 {

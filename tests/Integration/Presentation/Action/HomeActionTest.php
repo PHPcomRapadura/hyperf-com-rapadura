@@ -6,7 +6,7 @@ namespace Tests\Integration\Presentation\Action;
 
 use App\Presentation\Action\HomeAction;
 use App\Presentation\Input\HomeInput;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class HomeActionTest extends TestCase
 {

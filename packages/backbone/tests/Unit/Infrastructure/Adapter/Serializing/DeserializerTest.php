@@ -6,7 +6,7 @@ namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing;
 
 use Backbone\Infrastructure\Adapter\Serializing\Deserializer;
 use InvalidArgumentException;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 final class DeserializerTest extends TestCase
 {

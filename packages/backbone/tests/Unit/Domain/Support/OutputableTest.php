@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Domain\Support;
 
 use Backbone\Domain\Support\Outputable;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class OutputableTest extends TestCase
 {

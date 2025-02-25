@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Backbone\Presentation\Output;
 
+use function sprintf;
+
 class NotFound extends Output
 {
     public function __construct(string $missing, string|int $what)

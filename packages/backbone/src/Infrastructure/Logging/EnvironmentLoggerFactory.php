@@ -9,14 +9,14 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Psr\Log\LoggerInterface;
 
-use function Hyperf\Support\env;
 use function Backbone\Type\Cast\toString;
+use function Hyperf\Support\env;
 
-class EnvironmentLoggerFactory
+readonly class EnvironmentLoggerFactory
 {
     public function __construct(
-        private readonly StdoutLoggerInterface $stdoutLogger,
-        private readonly ConfigInterface $config,
+        private StdoutLoggerInterface $stdoutLogger,
+        private ConfigInterface $config,
     ) {
     }
 

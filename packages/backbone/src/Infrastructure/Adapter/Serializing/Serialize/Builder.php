@@ -65,7 +65,7 @@ class Builder extends Engine
             }
 
             $name = $this->normalize($parameter);
-            $value = $resolved->value;
+            $value = $resolved->content;
             if ($value instanceof Context) {
                 /** @phpstan-ignore argument.type, argument.templateType */
                 $value = $this->build($value->class, $value->values);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Support;
+namespace Backbone\Infrastructure\Testing;
 
 use Backbone\Infrastructure\Faker\Faker;
 use BackedEnum;
@@ -27,6 +27,18 @@ class TestCase extends PHPUnit
         $this->faker = $this->make(Faker::class);
     }
 
+    /**
+     * @template T of mixed
+     * @param class-string<T> $class
+     * @param array<string, mixed> $args
+     *
+     * @return T
+     */
+    protected function make(string $class, array $args = []): mixed
+    {
+        return make($class, $args);
+    }
+
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -38,18 +50,6 @@ class TestCase extends PHPUnit
     protected function assertEnumValue(BackedEnum $enum, string $value): void
     {
         $this->assertEquals($enum->value, $value);
-    }
-
-    /**
-     * @template T of mixed
-     * @param class-string<T> $class
-     * @param array<string, mixed> $args
-     *
-     * @return T
-     */
-    protected function make(string $class, array $args = []): mixed
-    {
-        return make($class, $args);
     }
 
     /**

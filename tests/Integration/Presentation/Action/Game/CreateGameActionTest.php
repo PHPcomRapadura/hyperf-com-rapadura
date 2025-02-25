@@ -7,8 +7,8 @@ namespace Tests\Integration\Presentation\Action\Game;
 use App\Domain\Entity\Command\GameCommand;
 use App\Presentation\Action\Game\CreateGameAction;
 use App\Presentation\Input\Game\CreateGameInput;
+use Backbone\Infrastructure\Testing\IntegrationTestCase;
 use Backbone\Presentation\Output\Accepted;
-use Tests\Support\IntegrationTestCase;
 
 class CreateGameActionTest extends IntegrationTestCase
 {

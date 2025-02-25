@@ -11,7 +11,10 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
 
+use function array_key_exists;
 use function Backbone\Type\Cast\toArray;
+use function class_exists;
+use function is_string;
 
 class DependencyChain extends Chain
 {

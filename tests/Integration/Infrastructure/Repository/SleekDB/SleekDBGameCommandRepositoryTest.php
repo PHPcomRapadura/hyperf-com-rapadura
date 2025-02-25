@@ -6,7 +6,7 @@ namespace Tests\Integration\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Command\GameCommand;
 use App\Infrastructure\Repository\SleekDB\SleekDBGameCommandRepository;
-use Tests\Support\IntegrationTestCase;
+use Backbone\Infrastructure\Testing\IntegrationTestCase;
 
 class SleekDBGameCommandRepositoryTest extends IntegrationTestCase
 {

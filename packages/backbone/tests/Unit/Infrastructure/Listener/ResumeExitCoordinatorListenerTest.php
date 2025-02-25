@@ -8,7 +8,7 @@ use Backbone\Infrastructure\Listener\ResumeExitCoordinatorListener;
 use Hyperf\Command\Event\AfterExecute;
 use Hyperf\Coordinator\Constants;
 use Hyperf\Coordinator\CoordinatorManager;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class ResumeExitCoordinatorListenerTest extends TestCase
 {

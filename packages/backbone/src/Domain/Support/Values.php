@@ -50,6 +50,14 @@ final readonly class Values
         return new self(array_merge($this->toArray(), [$field => $value]));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return array_map(fn ($value) => is_object($value) ? clone $value : $value, $this->data);
+    }
+
     public function along(array $values): self
     {
         return new self(array_merge($this->toArray(), $values));
@@ -58,13 +66,5 @@ final readonly class Values
     public function has(string $field): bool
     {
         return array_key_exists($field, $this->data);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function toArray(): array
-    {
-        return array_map(fn ($value) => is_object($value) ? clone $value : $value, $this->data);
     }
 }

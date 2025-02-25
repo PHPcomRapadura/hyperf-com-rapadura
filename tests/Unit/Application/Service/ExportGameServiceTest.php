@@ -10,8 +10,8 @@ use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
 use Backbone\Domain\Contract\Serializer;
+use Backbone\Infrastructure\Testing\TestCase;
 use DateTimeImmutable;
-use Tests\Support\TestCase;
 
 class ExportGameServiceTest extends TestCase
 {

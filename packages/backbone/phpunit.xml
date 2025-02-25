@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         bootstrap="tests/bootstrap.php"
-         backupGlobals="false"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          colors="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
-         cacheDirectory=".phpunit.cache"
-         backupStaticProperties="false"
+         testdox="true"
+         cacheDirectory="tests/.phpunit/cache"
+         cacheResultFile="tests/.phpunit/result.cache"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         failOnDeprecation="true"
+         failOnRisky="true"
+         failOnWarning="true"
 >
-    <testsuite name="Testsuite">
-        <directory>./tests/</directory>
-    </testsuite>
+    <coverage disableCodeCoverageIgnore="true">
+        <report>
+            <html outputDirectory="tests/.phpunit/report/html"/>
+            <clover outputFile="tests/.phpunit/report/clover.xml"/>
+        </report>
+    </coverage>
+
+    <logging>
+        <junit outputFile="tests/.phpunit/logging.xml"/>
+    </logging>
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </source>
+
+    <extensions>
+        <bootstrap class="RobinIngelbrecht\PHPUnitPrettyPrint\PhpUnitExtension">
+            <parameter name="displayProfiling" value="true"/>
+            <parameter name="displayMemory" value="true"/>
+        </bootstrap>
+    </extensions>
 </phpunit>

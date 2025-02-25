@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Domain\Collection\Support;
 
 use Backbone\Domain\Collection\AbstractCollection;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class AbstractCollectionTest extends TestCase
 {

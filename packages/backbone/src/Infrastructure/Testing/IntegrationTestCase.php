@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Support;
+namespace Backbone\Infrastructure\Testing;
 
 use Backbone\Infrastructure\Adapter\Serializing\Serialize\Builder;
 use Backbone\Infrastructure\Persistence\Factory\HyperfDBFactory;
@@ -34,13 +34,6 @@ class IntegrationTestCase extends TestCase
         $this->truncate();
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        $this->truncate();
-    }
-
     protected function truncate(): void
     {
         foreach ($this->truncate as $resource => $database) {
@@ -50,5 +43,12 @@ class IntegrationTestCase extends TestCase
                 default => null,
             };
         }
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        $this->truncate();
     }
 }

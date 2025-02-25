@@ -78,17 +78,9 @@ readonly class Faker
             if ($generated === null) {
                 continue;
             }
-            $values[$field] = $generated->value;
+            $values[$field] = $generated->content;
         }
         return Values::createFrom($values);
-    }
-
-    private function generateValue(ReflectionParameter $parameter): ?Value
-    {
-        return (new TypedChain($this->faker))
-            ->then(new NamedChain($this->faker))
-            ->then(new OptionalChain($this->faker))
-            ->resolve($parameter);
     }
 
     private function normalize(ReflectionParameter $parameter): string
@@ -98,5 +90,13 @@ readonly class Faker
             CaseConvention::SNAKE => toSnakeCase($name),
             CaseConvention::NONE => $name,
         };
+    }
+
+    private function generateValue(ReflectionParameter $parameter): ?Value
+    {
+        return (new TypedChain($this->faker))
+            ->then(new NamedChain($this->faker))
+            ->then(new OptionalChain($this->faker))
+            ->resolve($parameter);
     }
 }

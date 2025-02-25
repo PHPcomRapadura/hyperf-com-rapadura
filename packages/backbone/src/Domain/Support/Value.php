@@ -6,7 +6,7 @@ namespace Backbone\Domain\Support;
 
 readonly class Value
 {
-    public function __construct(public mixed $value)
+    public function __construct(public mixed $content)
     {
     }
 }

@@ -10,6 +10,8 @@ use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\DependencyCh
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\DoNothingChain;
 use Backbone\Infrastructure\Adapter\Serializing\Serialize\Engine;
 
+use function get_object_vars;
+
 class Demolisher extends Engine
 {
     /**
@@ -28,7 +30,7 @@ class Demolisher extends Engine
                 ->then(new ConverterChain($this->case, $this->converters))
                 ->resolve($value);
 
-            $data[$name] = $resolved->value;
+            $data[$name] = $resolved->content;
         }
         return $data;
     }

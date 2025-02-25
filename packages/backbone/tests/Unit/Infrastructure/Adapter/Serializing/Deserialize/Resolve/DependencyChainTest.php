@@ -6,7 +6,7 @@ namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resol
 
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\DependencyChain;
 use stdClass;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class DependencyChainTest extends TestCase
 {
@@ -16,7 +16,7 @@ class DependencyChainTest extends TestCase
         $object = new stdClass();
         $result = $chain->resolve($object);
 
-        $this->assertIsArray($result->value);
+        $this->assertIsArray($result->content);
     }
 
     final public function testResolveNonObject(): void
@@ -25,6 +25,6 @@ class DependencyChainTest extends TestCase
         $value = 'test';
         $result = $chain->resolve($value);
 
-        $this->assertEquals('test', $result->value);
+        $this->assertEquals('test', $result->content);
     }
 }

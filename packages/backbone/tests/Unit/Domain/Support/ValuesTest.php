@@ -6,7 +6,7 @@ namespace BackboneTest\Unit\Domain\Support;
 
 use Backbone\Domain\Support\Values;
 use InvalidArgumentException;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class ValuesTest extends TestCase
 {

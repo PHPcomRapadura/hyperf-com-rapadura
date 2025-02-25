@@ -6,7 +6,7 @@ namespace BackboneTest\Unit\Infrastructure\Persistence;
 
 use Backbone\Domain\Exception\GeneratingException;
 use Backbone\Infrastructure\Persistence\Generator;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class GeneratorTest extends TestCase
 {

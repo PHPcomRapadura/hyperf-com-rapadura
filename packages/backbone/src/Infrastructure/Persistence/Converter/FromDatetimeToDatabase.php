@@ -7,6 +7,8 @@ namespace Backbone\Infrastructure\Persistence\Converter;
 use Backbone\Infrastructure\Adapter\Serializing\Converter;
 use DateTimeInterface;
 
+use function is_string;
+
 class FromDatetimeToDatabase implements Converter
 {
     public function convert(mixed $value): ?string

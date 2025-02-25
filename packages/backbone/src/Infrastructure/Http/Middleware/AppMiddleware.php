@@ -17,6 +17,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Swow\Psr7\Message\ResponsePlusInterface;
 
 use function Backbone\Type\Cast\toInt;
+use function is_string;
+use function sprintf;
 
 class AppMiddleware extends Hyperf
 {

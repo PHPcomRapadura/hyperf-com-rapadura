@@ -21,11 +21,11 @@ class Consolidator
 
     public function consolidate(Value $resolved): void
     {
-        if ($resolved->value instanceof NotResolved) {
-            $this->errors[] = $resolved->value;
+        if ($resolved->content instanceof NotResolved) {
+            $this->errors[] = $resolved->content;
             return;
         }
-        $this->args[] = $resolved->value;
+        $this->args[] = $resolved->content;
     }
 
     /**

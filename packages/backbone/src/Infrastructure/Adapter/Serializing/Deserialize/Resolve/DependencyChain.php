@@ -7,6 +7,8 @@ namespace Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
 use Backbone\Domain\Support\Value;
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Chain;
 
+use function is_object;
+
 class DependencyChain extends Chain
 {
     public function resolve(mixed $value): Value

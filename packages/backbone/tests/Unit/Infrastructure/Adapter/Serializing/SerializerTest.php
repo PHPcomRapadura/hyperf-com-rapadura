@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing;
 
 use Backbone\Infrastructure\Adapter\Serializing\Serializer;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 class SerializerTest extends TestCase
 {

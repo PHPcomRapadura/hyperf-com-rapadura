@@ -12,8 +12,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
+use function array_map;
 use function Backbone\Type\Cast\toInt;
 use function Backbone\Type\Cast\toString;
+use function in_array;
+use function sprintf;
 
 class AppExceptionHandler extends ExceptionHandler
 {
@@ -53,14 +56,14 @@ class AppExceptionHandler extends ExceptionHandler
             ->withBody(new SwooleStream($this->toPayload($statusCode, $context)));
     }
 
+    private function extractCode(Throwable $throwable): int
+    {
+        return ($code = $throwable->getCode()) >= 400 && $code < 600 ? toInt($code) : 500;
+    }
+
     public function isValid(Throwable $throwable): bool
     {
         $haystack = array_map(fn (mixed $candidate) => toString($candidate), $this->ignored);
         return ! in_array($throwable::class, $haystack, true);
-    }
-
-    private function extractCode(Throwable $throwable): int
-    {
-        return ($code = $throwable->getCode()) >= 400 && $code < 600 ? toInt($code) : 500;
     }
 }

@@ -6,6 +6,9 @@ namespace Backbone\Presentation;
 
 use JsonException;
 
+use function json_encode;
+use function sprintf;
+
 trait OutputFormatter
 {
     public function toPayload(int $statusCode, mixed $body = null): string

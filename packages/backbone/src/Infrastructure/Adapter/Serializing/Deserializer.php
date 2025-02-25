@@ -9,6 +9,8 @@ use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Demolisher;
 use Backbone\Infrastructure\CaseConvention;
 use InvalidArgumentException;
 
+use function is_object;
+
 /**
  * @template T of object
  * @implements Contract<T>

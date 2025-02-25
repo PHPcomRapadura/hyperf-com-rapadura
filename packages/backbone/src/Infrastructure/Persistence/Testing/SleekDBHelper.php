@@ -8,8 +8,8 @@ use Backbone\Domain\Support\Values;
 use Backbone\Infrastructure\Adapter\Serializing\DeserializerFactory;
 use Backbone\Infrastructure\Adapter\Serializing\SerializerFactory;
 use Backbone\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
+use Backbone\Infrastructure\Testing\TestCase;
 use JsonException;
-use Tests\Support\TestCase;
 
 final readonly class SleekDBHelper implements Helper
 {
@@ -58,21 +58,6 @@ final readonly class SleekDBHelper implements Helper
         );
     }
 
-    public function assertHasNot(string $resource, array $filters): void
-    {
-        // TODO: Implement hasNot() method.
-    }
-
-    public function assertHasCount(int $expected, string $resource, array $filters): void
-    {
-        // TODO: Implement hasCount() method.
-    }
-
-    public function assertIsEmpty(string $resource): void
-    {
-        // TODO: Implement isEmpty() method.
-    }
-
     private function count(string $resource, array $filters = []): int
     {
         $database = $this->factory->make($resource);
@@ -86,5 +71,20 @@ final readonly class SleekDBHelper implements Helper
         } catch (JsonException $e) {
             return $e->getMessage();
         }
+    }
+
+    public function assertHasNot(string $resource, array $filters): void
+    {
+        // TODO: Implement hasNot() method.
+    }
+
+    public function assertHasCount(int $expected, string $resource, array $filters): void
+    {
+        // TODO: Implement hasCount() method.
+    }
+
+    public function assertIsEmpty(string $resource): void
+    {
+        // TODO: Implement isEmpty() method.
     }
 }

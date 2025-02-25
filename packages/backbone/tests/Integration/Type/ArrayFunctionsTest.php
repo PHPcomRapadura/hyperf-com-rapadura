@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BackboneTest\Util\Type;
+namespace BackboneTest\Integration\Type;
 
 use PHPUnit\Framework\TestCase;
 

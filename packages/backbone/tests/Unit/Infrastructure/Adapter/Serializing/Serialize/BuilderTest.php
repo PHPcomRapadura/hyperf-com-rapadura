@@ -12,7 +12,7 @@ use Backbone\Infrastructure\CaseConvention;
 use Backbone\Infrastructure\Persistence\Converter\FromDatabaseToArray;
 use DateTime;
 use stdClass;
-use Tests\Support\TestCase;
+use Backbone\Infrastructure\Testing\TestCase;
 
 use function Backbone\Type\Json\encode;
 

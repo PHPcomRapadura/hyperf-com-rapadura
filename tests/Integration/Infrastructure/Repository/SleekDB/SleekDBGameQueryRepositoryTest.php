@@ -6,7 +6,7 @@ namespace Tests\Integration\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Game;
 use App\Infrastructure\Repository\SleekDB\SleekDBGameQueryRepository;
-use Tests\Support\IntegrationTestCase;
+use Backbone\Infrastructure\Testing\IntegrationTestCase;
 
 use function Hyperf\Collection\collect;
 
