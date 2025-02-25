@@ -7,6 +7,10 @@ namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing;
 use Backbone\Infrastructure\Adapter\Serializing\Serializer;
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class SerializerTest extends TestCase
 {
     private Serializer $serializer;

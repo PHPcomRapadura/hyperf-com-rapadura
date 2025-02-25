@@ -5,12 +5,16 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Http\Exception\Handler;
 
 use Backbone\Infrastructure\Http\Exception\Handler\AppExceptionHandler;
+use Backbone\Infrastructure\Testing\TestCase;
 use Exception;
 use Hyperf\HttpMessage\Server\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class AppExceptionHandlerTest extends TestCase
 {
     public function testHandleShouldLogErrorAndReturnFormattedResponseWith500Code(): void

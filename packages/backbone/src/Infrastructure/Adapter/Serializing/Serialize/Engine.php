@@ -25,7 +25,6 @@ abstract class Engine
     }
 
     /**
-     * @param ?ReflectionType $type
      * @return array<class-string<object>|string>
      */
     protected function normalizeType(?ReflectionType $type): array
@@ -37,7 +36,7 @@ abstract class Engine
             /** @var array<ReflectionNamedType> $reflectionNamedTypes */
             $reflectionNamedTypes = $type->getTypes();
             return array_map(
-                fn (ReflectionNamedType|ReflectionIntersectionType $type) => $type->getName(),
+                fn (ReflectionIntersectionType|ReflectionNamedType $type) => $type->getName(),
                 $reflectionNamedTypes
             );
         }

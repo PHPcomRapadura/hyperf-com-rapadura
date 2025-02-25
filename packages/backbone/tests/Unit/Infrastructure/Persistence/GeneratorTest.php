@@ -8,6 +8,10 @@ use Backbone\Domain\Exception\GeneratingException;
 use Backbone\Infrastructure\Persistence\Generator;
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class GeneratorTest extends TestCase
 {
     final public function testId(): void

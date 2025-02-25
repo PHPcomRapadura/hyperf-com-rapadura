@@ -5,14 +5,18 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Http\Exception\Handler;
 
 use Backbone\Infrastructure\Http\Exception\Handler\ValidationExceptionHandler;
+use Backbone\Infrastructure\Testing\TestCase;
 use Hyperf\Contract\MessageBag;
 use Hyperf\Contract\ValidatorInterface;
 use Hyperf\HttpMessage\Server\Response;
 use Hyperf\Validation\ValidationException;
 use Psr\Http\Message\ResponseInterface;
-use Backbone\Infrastructure\Testing\TestCase;
 use Throwable;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ValidationExceptionHandlerTest extends TestCase
 {
     public function testHandleShouldReturnValidationErrors(): void

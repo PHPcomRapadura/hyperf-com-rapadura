@@ -29,7 +29,7 @@ readonly class Faker
     ) {
         $this->faker = Factory::create('pt_BR');
         $this->faker->addProvider(
-            new class ($generator) {
+            new class($generator) {
                 public function __construct(private readonly Generator $generator)
                 {
                 }

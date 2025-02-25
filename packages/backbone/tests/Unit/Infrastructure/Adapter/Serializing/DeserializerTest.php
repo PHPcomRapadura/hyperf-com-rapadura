@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing;
 
 use Backbone\Infrastructure\Adapter\Serializing\Deserializer;
-use InvalidArgumentException;
 use Backbone\Infrastructure\Testing\TestCase;
+use InvalidArgumentException;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class DeserializerTest extends TestCase
 {
     private Deserializer $deserializer;

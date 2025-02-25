@@ -6,6 +6,10 @@ namespace BackboneTest\Unit\Infrastructure\Adapter;
 
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class InputTest extends TestCase
 {
     final public function testShouldAuthorize(): void

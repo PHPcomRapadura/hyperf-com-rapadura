@@ -5,14 +5,20 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Logging;
 
 use Backbone\Infrastructure\Logging\EnvironmentLoggerFactory;
+use Backbone\Infrastructure\Testing\TestCase;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
-use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class EnvironmentLoggerFactoryTest extends TestCase
 {
     private StdoutLoggerInterface $stdoutLogger;
+
     private ConfigInterface $config;
+
     private EnvironmentLoggerFactory $factory;
 
     protected function setUp(): void

@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Domain\Support;
 
 use Backbone\Domain\Support\Values;
-use InvalidArgumentException;
 use Backbone\Infrastructure\Testing\TestCase;
+use InvalidArgumentException;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ValuesTest extends TestCase
 {
     public function testCreateFromArray(): void

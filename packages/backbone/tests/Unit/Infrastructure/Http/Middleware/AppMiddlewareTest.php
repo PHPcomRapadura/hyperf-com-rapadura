@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Http\Middleware;
 
 use Backbone\Infrastructure\Http\Middleware\AppMiddleware;
+use Backbone\Infrastructure\Testing\TestCase;
 use Backbone\Presentation\Output\NoContent;
 use Backbone\Presentation\Output\Output;
 use FastRoute\Dispatcher;
@@ -16,8 +17,11 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Swow\Psr7\Message\ResponsePlusInterface;
 use Swow\Psr7\Message\ServerRequestPlusInterface;
-use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class AppMiddlewareTest extends TestCase
 {
     final public function testShouldRenderOutputResponse(): void

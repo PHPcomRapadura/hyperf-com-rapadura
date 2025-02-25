@@ -16,16 +16,16 @@ abstract class Chain extends Demolisher
         return $chain;
     }
 
-    protected function previous(Chain $previous): void
-    {
-        $this->previous = $previous;
-    }
-
     public function resolve(mixed $value): Value
     {
         if (! isset($this->previous)) {
             return new Value($value);
         }
         return $this->previous->resolve($value);
+    }
+
+    protected function previous(Chain $previous): void
+    {
+        $this->previous = $previous;
     }
 }

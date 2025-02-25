@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace BackboneTest\Unit\Presentation\Output;
 
-use Backbone\Presentation\Output\Accepted;
 use Backbone\Infrastructure\Testing\TestCase;
+use Backbone\Presentation\Output\Accepted;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class AcceptedTest extends TestCase
 {
     public function testShouldHaveTokenOnContent(): void

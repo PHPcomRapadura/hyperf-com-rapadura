@@ -6,11 +6,16 @@ namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resol
 
 use Backbone\Infrastructure\Adapter\Serializing\Converter;
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\ConverterChain;
-use PHPUnit\Framework\Attributes\TestWith;
 use Backbone\Infrastructure\Testing\TestCase;
+use PHPUnit\Framework\Attributes\TestWith;
+use stdClass;
 
 use function Backbone\Type\Json\encode;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ConverterChainTest extends TestCase
 {
     #[TestWith(['string'])]
@@ -18,7 +23,7 @@ class ConverterChainTest extends TestCase
     #[TestWith([10.5])]
     #[TestWith([true])]
     #[TestWith([null])]
-    #[TestWith([new \stdClass()])]
+    #[TestWith([new stdClass()])]
     final public function testResolveWithoutConverter(mixed $value): void
     {
         $chain = new ConverterChain();

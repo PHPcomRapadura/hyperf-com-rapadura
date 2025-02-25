@@ -21,7 +21,6 @@ use Psr\Log\LoggerInterface;
 use function Backbone\Type\Cast\toString;
 use function Hyperf\Support\env;
 
-
 class ConfigProvider
 {
     public function __invoke(): array

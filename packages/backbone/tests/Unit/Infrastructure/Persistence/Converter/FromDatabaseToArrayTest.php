@@ -7,6 +7,10 @@ namespace BackboneTest\Unit\Infrastructure\Persistence\Converter;
 use Backbone\Infrastructure\Persistence\Converter\FromDatabaseToArray;
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class FromDatabaseToArrayTest extends TestCase
 {
     final public function testConvertStringToArray(): void

@@ -21,7 +21,6 @@ class Builder extends Engine
     /**
      * @template T of object
      * @param class-string<T> $class
-     * @param Values $values
      *
      * @return T
      * @throws MappingException
@@ -49,8 +48,6 @@ class Builder extends Engine
 
     /**
      * @param array<ReflectionParameter> $parameters
-     * @param Values $values
-     * @return Values
      */
     private function prepare(array $parameters, Values $values): Values
     {
@@ -78,8 +75,6 @@ class Builder extends Engine
 
     /**
      * @param array<ReflectionParameter> $parameters
-     * @param Values $values
-     * @return array
      */
     private function resolve(array $parameters, Values $values): array
     {

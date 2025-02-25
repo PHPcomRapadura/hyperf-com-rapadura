@@ -5,13 +5,17 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Http\Middleware;
 
 use Backbone\Infrastructure\Http\Middleware\CorsMiddleware;
+use Backbone\Infrastructure\Testing\TestCase;
 use Hyperf\Context\Context;
 use Hyperf\Contract\ConfigInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class CorsMiddlewareTest extends TestCase
 {
     final public function testShouldAllowCors(): void

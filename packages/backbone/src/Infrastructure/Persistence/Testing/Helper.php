@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Backbone\Infrastructure\Persistence\Testing;
 
 use Backbone\Domain\Support\Values;

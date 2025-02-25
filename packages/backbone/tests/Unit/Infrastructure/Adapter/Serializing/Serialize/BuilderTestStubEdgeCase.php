@@ -13,7 +13,7 @@ class BuilderTestStubEdgeCase
 
     public function __construct(
         public readonly int|string $union,
-        public readonly Iterator&Countable $intersection,
+        public readonly Countable&Iterator $intersection,
         public readonly BuilderTestStubWithConstructor $nested,
         $whatever,
     ) {

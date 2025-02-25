@@ -31,6 +31,11 @@ class ValidationExceptionHandler extends ExceptionHandler
             ->setBody(new SwooleStream($this->toJson($body)));
     }
 
+    public function isValid(Throwable $throwable): bool
+    {
+        return $throwable instanceof ValidationException;
+    }
+
     private function toJson(array $body): string
     {
         try {
@@ -38,10 +43,5 @@ class ValidationExceptionHandler extends ExceptionHandler
         } catch (JsonException $e) {
             return sprintf('{"error": "%s"}', $e->getMessage());
         }
-    }
-
-    public function isValid(Throwable $throwable): bool
-    {
-        return $throwable instanceof ValidationException;
     }
 }

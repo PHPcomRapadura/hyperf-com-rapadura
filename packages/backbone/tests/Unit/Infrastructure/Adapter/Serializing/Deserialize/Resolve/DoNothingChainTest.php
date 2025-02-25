@@ -7,6 +7,10 @@ namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resol
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\DoNothingChain;
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class DoNothingChainTest extends TestCase
 {
     final public function testResolveValue(): void

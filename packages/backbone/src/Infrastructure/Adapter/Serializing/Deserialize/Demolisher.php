@@ -15,7 +15,6 @@ use function get_object_vars;
 class Demolisher extends Engine
 {
     /**
-     * @param object $instance
      * @return array<string, mixed>
      */
     public function demolish(object $instance): array

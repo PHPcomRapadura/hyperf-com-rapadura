@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Persistence\Converter;
 
 use Backbone\Infrastructure\Persistence\Converter\FromDatetimeToDatabase;
-use DateTime;
 use Backbone\Infrastructure\Testing\TestCase;
+use DateTime;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class FromDatetimeToDatabaseTest extends TestCase
 {
     final public function testConvertDatetimeToString(): void

@@ -56,7 +56,6 @@ abstract class Input extends FormRequest
 
     /**
      * @SuppressWarnings(StaticAccess)
-     * @return Values
      */
     final public function values(): Values
     {

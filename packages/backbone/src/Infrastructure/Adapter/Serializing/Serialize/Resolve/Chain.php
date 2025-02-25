@@ -19,13 +19,13 @@ abstract class Chain extends Engine
         return $chain;
     }
 
-    protected function previous(Chain $previous): void
-    {
-        $this->previous = $previous;
-    }
-
     public function resolve(ReflectionParameter $parameter, Values $values): Value
     {
         return isset($this->previous) ? $this->previous->resolve($parameter, $values) : new Value(null);
+    }
+
+    protected function previous(Chain $previous): void
+    {
+        $this->previous = $previous;
     }
 }

@@ -27,7 +27,6 @@ class Serializer extends Builder implements Contract
     }
 
     /**
-     * @param array $datum
      * @return T
      */
     public function serialize(array $datum): mixed

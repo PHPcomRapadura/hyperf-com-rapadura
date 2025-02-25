@@ -11,6 +11,10 @@ use function Backbone\Type\Cast\toBool;
 use function Backbone\Type\Cast\toInt;
 use function Backbone\Type\Cast\toString;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class CastFunctionsTest extends TestCase
 {
     public function testToArrayReturnsArrayWhenValueIsArray(): void

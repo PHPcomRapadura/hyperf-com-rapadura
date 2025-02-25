@@ -16,6 +16,15 @@ use function sprintf;
 
 abstract class Outputable implements Result, JsonSerializable, Jsonable
 {
+    final public function __toString(): string
+    {
+        try {
+            return json_encode($this, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            return sprintf('{"error": "%s"}', $e->getMessage());
+        }
+    }
+
     public function properties(): Values
     {
         return Values::createFrom([]);
@@ -42,15 +51,6 @@ abstract class Outputable implements Result, JsonSerializable, Jsonable
             $extracted[$snakeCaseKey] = $value;
         }
         return $extracted;
-    }
-
-    final public function __toString(): string
-    {
-        try {
-            return json_encode($this, JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-            return sprintf('{"error": "%s"}', $e->getMessage());
-        }
     }
 
     /**

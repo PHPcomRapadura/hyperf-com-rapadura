@@ -7,6 +7,10 @@ namespace BackboneTest\Unit\Domain\Support;
 use Backbone\Domain\Support\Outputable;
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class OutputableTest extends TestCase
 {
     public function testJsonSerializeReturnsObjectVars(): void

@@ -22,16 +22,16 @@ abstract class Chain
         return $chain;
     }
 
-    private function previous(Chain $previous): void
-    {
-        $this->previous = $previous;
-    }
-
     public function resolve(ReflectionParameter $parameter): ?Value
     {
         if (isset($this->previous)) {
             return $this->previous->resolve($parameter);
         }
         return null;
+    }
+
+    private function previous(Chain $previous): void
+    {
+        $this->previous = $previous;
     }
 }

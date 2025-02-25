@@ -38,7 +38,22 @@ class DependencyChain extends Chain
     }
 
     /**
-     * @param ReflectionParameter $parameter
+     * @param array<ReflectionParameter> $parameters
+     */
+    protected function parseParametersToValues(array $parameters, mixed $value): Values
+    {
+        $input = toArray($value, [$value]);
+        $values = [];
+        foreach ($parameters as $index => $parameter) {
+            $name = $this->normalize($parameter);
+            if (array_key_exists($name, $input) || array_key_exists($index, $input)) {
+                $values[$name] = $input[$name] ?? $input[$index];
+            }
+        }
+        return Values::createFrom($values);
+    }
+
+    /**
      * @return null|class-string<object>
      */
     private function resolveDependencyClass(ReflectionParameter $parameter): ?string
@@ -56,8 +71,6 @@ class DependencyChain extends Chain
     /**
      * @template T of object
      * @param class-string<T> $class
-     * @param mixed $value
-     * @return null|Values
      * @throws ReflectionException
      */
     private function resolveDependencyArgs(string $class, mixed $value): ?Values
@@ -72,23 +85,5 @@ class DependencyChain extends Chain
             return null;
         }
         return $this->parseParametersToValues($parameters, $value);
-    }
-
-    /**
-     * @param array<ReflectionParameter> $parameters
-     * @param mixed $value
-     * @return Values
-     */
-    protected function parseParametersToValues(array $parameters, mixed $value): Values
-    {
-        $input = toArray($value, [$value]);
-        $values = [];
-        foreach ($parameters as $index => $parameter) {
-            $name = $this->normalize($parameter);
-            if (array_key_exists($name, $input) || array_key_exists($index, $input)) {
-                $values[$name] = $input[$name] ?? $input[$index];
-            }
-        }
-        return Values::createFrom($values);
     }
 }

@@ -7,6 +7,10 @@ namespace BackboneTest\Unit\Domain\Collection\Support;
 use Backbone\Domain\Collection\AbstractCollection;
 use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class AbstractCollectionTest extends TestCase
 {
     final public function testShouldRewind(): void

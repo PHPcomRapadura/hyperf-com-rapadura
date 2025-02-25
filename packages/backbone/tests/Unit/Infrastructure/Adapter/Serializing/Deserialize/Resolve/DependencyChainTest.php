@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Adapter\Serializing\Deserialize\Resolve;
 
 use Backbone\Infrastructure\Adapter\Serializing\Deserialize\Resolve\DependencyChain;
-use stdClass;
 use Backbone\Infrastructure\Testing\TestCase;
+use stdClass;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class DependencyChainTest extends TestCase
 {
     final public function testResolveObject(): void

@@ -11,6 +11,10 @@ use Backbone\Infrastructure\Persistence\Testing\Helper;
 use Backbone\Infrastructure\Persistence\Testing\PostgresHelper;
 use Backbone\Infrastructure\Persistence\Testing\SleekDBHelper;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class IntegrationTestCase extends TestCase
 {
     protected Helper $sleek;
@@ -34,6 +38,13 @@ class IntegrationTestCase extends TestCase
         $this->truncate();
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        $this->truncate();
+    }
+
     protected function truncate(): void
     {
         foreach ($this->truncate as $resource => $database) {
@@ -43,12 +54,5 @@ class IntegrationTestCase extends TestCase
                 default => null,
             };
         }
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        $this->truncate();
     }
 }

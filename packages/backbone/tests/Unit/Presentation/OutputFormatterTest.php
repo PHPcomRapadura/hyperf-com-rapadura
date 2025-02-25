@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace BackboneTest\Unit\Presentation;
 
-use Backbone\Presentation\OutputFormatter;
 use Backbone\Infrastructure\Testing\TestCase;
+use Backbone\Presentation\OutputFormatter;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class OutputFormatterTest extends TestCase
 {
     use OutputFormatter;

@@ -17,9 +17,7 @@ use function sprintf;
 final class MappingException extends InvalidArgumentException
 {
     /**
-     * @param Values $values
      * @param array<NotResolved> $unresolved
-     * @param Throwable|null $error
      */
     public function __construct(
         public readonly Values $values,
@@ -32,10 +30,13 @@ final class MappingException extends InvalidArgumentException
         );
     }
 
+    public function getUnresolved(): array
+    {
+        return $this->unresolved;
+    }
+
     /**
      * @param array<NotResolved> $notResolved
-     * @param Throwable|null $error
-     * @return string
      */
     private function parse(array $notResolved, ?Throwable $error = null): string
     {
@@ -56,10 +57,5 @@ final class MappingException extends InvalidArgumentException
     private function merge(array $errors): array
     {
         return array_map(fn (NotResolved $error) => $error->message(), $errors);
-    }
-
-    public function getUnresolved(): array
-    {
-        return $this->unresolved;
     }
 }

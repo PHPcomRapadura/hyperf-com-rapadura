@@ -11,6 +11,10 @@ use function Backbone\Type\Array\extractBool;
 use function Backbone\Type\Array\extractInt;
 use function Backbone\Type\Array\extractString;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ArrayFunctionsTest extends TestCase
 {
     public function testExtractArrayReturnsArrayWhenPropertyExists(): void

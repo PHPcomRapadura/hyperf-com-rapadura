@@ -5,11 +5,15 @@ declare(strict_types=1);
 namespace BackboneTest\Unit\Infrastructure\Listener;
 
 use Backbone\Infrastructure\Listener\ResumeExitCoordinatorListener;
+use Backbone\Infrastructure\Testing\TestCase;
 use Hyperf\Command\Event\AfterExecute;
 use Hyperf\Coordinator\Constants;
 use Hyperf\Coordinator\CoordinatorManager;
-use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ResumeExitCoordinatorListenerTest extends TestCase
 {
     public function testShouldListenToAfterExecuteEvent(): void

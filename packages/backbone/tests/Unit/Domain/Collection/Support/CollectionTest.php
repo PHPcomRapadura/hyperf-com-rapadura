@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace BackboneTest\Unit\Domain\Collection\Support;
 
+use Backbone\Infrastructure\Testing\TestCase;
 use DomainException;
 use stdClass;
-use Backbone\Infrastructure\Testing\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class CollectionTest extends TestCase
 {
     final public function testShouldCreateFromArray(): void

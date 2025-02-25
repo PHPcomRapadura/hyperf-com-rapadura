@@ -10,12 +10,16 @@ use Backbone\Domain\Support\Values;
 use Backbone\Infrastructure\Adapter\Serializing\Serialize\Builder;
 use Backbone\Infrastructure\CaseConvention;
 use Backbone\Infrastructure\Persistence\Converter\FromDatabaseToArray;
+use Backbone\Infrastructure\Testing\TestCase;
 use DateTime;
 use stdClass;
-use Backbone\Infrastructure\Testing\TestCase;
 
 use function Backbone\Type\Json\encode;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class BuilderTest extends TestCase
 {
     final public function testMapWithValidValues(): void

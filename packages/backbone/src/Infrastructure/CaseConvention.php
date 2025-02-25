@@ -7,6 +7,5 @@ namespace Backbone\Infrastructure;
 enum CaseConvention
 {
     case SNAKE;
-
     case NONE;
 }

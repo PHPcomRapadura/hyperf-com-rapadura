@@ -20,7 +20,6 @@ abstract class Collection extends AbstractCollection
 
     /**
      * @param array<array<string, mixed>> $data
-     * @param Serializer $serializer
      * @return static<T>
      */
     final public static function createFrom(array $data, Serializer $serializer): static
@@ -38,7 +37,6 @@ abstract class Collection extends AbstractCollection
 
     /**
      * @param array<string, mixed> $datum
-     * @return void
      */
     final protected function append(array $datum): void
     {

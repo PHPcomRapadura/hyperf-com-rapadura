@@ -30,7 +30,7 @@ final readonly class PostgresHelper implements Helper
 
     public function truncate(string $resource): void
     {
-        $this->database->execute(sprintf("delete from %s where true", $resource));
+        $this->database->execute(sprintf('delete from %s where true', $resource));
     }
 
     public function seed(string $type, string $resource, array $override = []): Values
@@ -64,31 +64,6 @@ final readonly class PostgresHelper implements Helper
         $this->assertion->assertTrue($count > 0, $message);
     }
 
-    protected function count(string $table, array $filters): int
-    {
-        $callback = function (string $key, mixed $value) {
-            if ($value === null) {
-                return sprintf('"%s" is null', $key);
-            }
-            return sprintf('"%s" = ?', $key);
-        };
-        $wildcards = array_map($callback, array_keys($filters), array_values($filters));
-        $where = implode(' and ', $wildcards);
-        $query = sprintf(
-            "select count(*) as count from %s where %s",
-            sprintf('"%s"', $table),
-            $where
-        );
-        $bindings = array_values(array_filter($filters, fn (mixed $value) => $value !== null));
-        $result = toArray($this->database->fetch($query, $bindings));
-        return (int) extractNumeric($result, 'count', 0);
-    }
-
-    protected function json(array $filters): ?string
-    {
-        return encode($filters);
-    }
-
     public function assertHasNot(string $resource, array $filters): void
     {
         $count = $this->count($resource, $filters);
@@ -116,5 +91,30 @@ final readonly class PostgresHelper implements Helper
     public function assertIsEmpty(string $resource): void
     {
         // TODO: Implement isEmpty() method.
+    }
+
+    private function count(string $table, array $filters): int
+    {
+        $callback = function (string $key, mixed $value) {
+            if ($value === null) {
+                return sprintf('"%s" is null', $key);
+            }
+            return sprintf('"%s" = ?', $key);
+        };
+        $wildcards = array_map($callback, array_keys($filters), array_values($filters));
+        $where = implode(' and ', $wildcards);
+        $query = sprintf(
+            'select count(*) as count from %s where %s',
+            sprintf('"%s"', $table),
+            $where
+        );
+        $bindings = array_values(array_filter($filters, fn (mixed $value) => $value !== null));
+        $result = toArray($this->database->fetch($query, $bindings));
+        return (int) extractNumeric($result, 'count', 0);
+    }
+
+    private function json(array $filters): ?string
+    {
+        return encode($filters);
     }
 }

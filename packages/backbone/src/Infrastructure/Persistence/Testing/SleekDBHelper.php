@@ -58,21 +58,6 @@ final readonly class SleekDBHelper implements Helper
         );
     }
 
-    private function count(string $resource, array $filters = []): int
-    {
-        $database = $this->factory->make($resource);
-        return count($database->findBy($filters));
-    }
-
-    private function json(array $filters): string
-    {
-        try {
-            return json_encode($filters, JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-            return $e->getMessage();
-        }
-    }
-
     public function assertHasNot(string $resource, array $filters): void
     {
         // TODO: Implement hasNot() method.
@@ -86,5 +71,20 @@ final readonly class SleekDBHelper implements Helper
     public function assertIsEmpty(string $resource): void
     {
         // TODO: Implement isEmpty() method.
+    }
+
+    private function count(string $resource, array $filters = []): int
+    {
+        $database = $this->factory->make($resource);
+        return count($database->findBy($filters));
+    }
+
+    private function json(array $filters): string
+    {
+        try {
+            return json_encode($filters, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            return $e->getMessage();
+        }
     }
 }

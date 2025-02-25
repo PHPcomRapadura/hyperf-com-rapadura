@@ -16,6 +16,10 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function Hyperf\Support\make;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class TestCase extends PHPUnit
 {
     public Faker $faker;
@@ -25,6 +29,14 @@ class TestCase extends PHPUnit
         parent::setUp();
 
         $this->faker = $this->make(Faker::class);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        gc_collect_cycles();
+        Context::destroy(ServerRequestInterface::class);
+        Context::destroy('http.request.parsedData');
     }
 
     /**
@@ -39,14 +51,6 @@ class TestCase extends PHPUnit
         return make($class, $args);
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        gc_collect_cycles();
-        Context::destroy(ServerRequestInterface::class);
-        Context::destroy('http.request.parsedData');
-    }
-
     protected function assertEnumValue(BackedEnum $enum, string $value): void
     {
         $this->assertEquals($enum->value, $value);
@@ -55,9 +59,6 @@ class TestCase extends PHPUnit
     /**
      * @template T of mixed
      * @param class-string<T> $class
-     * @param array $data
-     * @param array $queryParams
-     * @param array $params
      * @return T
      */
     protected function input(string $class, array $data = [], array $queryParams = [], array $params = []): mixed

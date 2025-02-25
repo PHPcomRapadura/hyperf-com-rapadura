@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace BackboneTest\Unit\Presentation\Output;
 
-use Backbone\Presentation\Output\NoContent;
 use Backbone\Infrastructure\Testing\TestCase;
+use Backbone\Presentation\Output\NoContent;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class NoContentTest extends TestCase
 {
     public function testShouldHaveIdOnContent(): void

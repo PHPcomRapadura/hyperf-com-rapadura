@@ -6,7 +6,7 @@ namespace Backbone\Presentation\Output;
 
 class Accepted extends Output
 {
-    public function __construct(string|int $token)
+    public function __construct(int|string $token)
     {
         parent::__construct(content: ['token' => $token]);
     }
