@@ -45,7 +45,7 @@ jobs:
 
       - run: composer test
 
-      - run apk add --no-cache openjdk17 wget unzip
+      - run: apk add --no-cache openjdk17 wget unzip
 
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
