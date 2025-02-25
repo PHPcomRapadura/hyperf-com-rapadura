@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BackboneTest\Support\Database\Helpers;
+namespace Backbone\Infrastructure\Persistence\Testing;
 
 use Backbone\Domain\Support\Values;
 use Backbone\Infrastructure\Persistence\Serializing\RelationalDeserializerFactory;
 use Backbone\Infrastructure\Persistence\Serializing\RelationalSerializerFactory;
-use BackboneTest\Support\Database\Helper;
 use Hyperf\DB\DB as Database;
 use Tests\Support\TestCase;
 

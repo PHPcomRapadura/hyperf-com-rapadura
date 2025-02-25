@@ -1,6 +1,6 @@
 <?php
 
-namespace BackboneTest\Support\Database;
+namespace Backbone\Infrastructure\Persistence\Testing;
 
 use Backbone\Domain\Support\Values;
 

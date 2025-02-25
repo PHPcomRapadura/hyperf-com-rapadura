@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BackboneTest\Support\Database\Helpers;
+namespace Backbone\Infrastructure\Persistence\Testing;
 
 use Backbone\Domain\Support\Values;
 use Backbone\Infrastructure\Adapter\Serializing\DeserializerFactory;
 use Backbone\Infrastructure\Adapter\Serializing\SerializerFactory;
 use Backbone\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
-use BackboneTest\Support\Database\Helper;
 use JsonException;
 use Tests\Support\TestCase;
 

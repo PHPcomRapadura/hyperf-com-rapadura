@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da881abdafc435f500c94933f6f7e762",
+    "content-hash": "d64ad11605cde8849e7aeb4bb9be4610",
     "packages": [
         {
             "name": "bnf/phpstan-psr-container",
@@ -194,11 +194,11 @@
         },
         {
             "name": "devitools/backbone",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "dist": {
                 "type": "path",
                 "url": "packages/backbone",
-                "reference": "f5de697ca561eea1635386abd75dd99e3eb86038"
+                "reference": "15e94dc74ee9f7c223f5cb2849b44658ad960d35"
             },
             "require": {
                 "hyperf/di": "3.1.*",

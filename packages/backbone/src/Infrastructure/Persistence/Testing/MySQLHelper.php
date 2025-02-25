@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BackboneTest\Support\Database\Helpers;
+namespace Backbone\Infrastructure\Persistence\Testing;
 
-use BackboneTest\Support\Database\Helper;
+use Backbone\Domain\Support\Values;
 use Hyperf\DB\DB as Database;
 use Tests\Support\TestCase;
 
@@ -21,7 +21,7 @@ final readonly class MySQLHelper implements Helper
         // TODO: Implement truncate() method.
     }
 
-    public function seed(string $type, string $resource, array $override = []): mixed
+    public function seed(string $type, string $resource, array $override = []): Values
     {
         // TODO: Implement seed() method.
     }
