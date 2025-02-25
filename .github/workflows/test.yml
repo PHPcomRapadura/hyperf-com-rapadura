@@ -45,8 +45,10 @@ jobs:
 #
 #      - run: composer test
 
-      - run: export SONAR_SCANNER_VERSION=6.2.1.4610
-      - run: export SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux-x64
-      - run: export PATH=$SONAR_SCANNER_HOME/bin:$PATH
-      - run: export SONAR_SCANNER_OPTS="-server"
+      - run: |
+          echo "SONAR_SCANNER_VERSION=6.2.1.4610" >> $GITHUB_ENV
+          echo "SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux-x64" >> $GITHUB_ENV
+          echo "PATH=$SONAR_SCANNER_HOME/bin:$PATH" >> $GITHUB_ENV
+          echo "SONAR_SCANNER_OPTS=-server" >> $GITHUB_ENV
+
       - run: sonar-scanner -Dsonar.host.url=https://sonarcloud.io
