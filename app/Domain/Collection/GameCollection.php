@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Collection;
 
 use App\Domain\Entity\Game;
-use Backbone\Domain\Collection\Collection;
+use Serendipity\Domain\Collection\Collection;
 
 /**
  * @extends Collection<Game>

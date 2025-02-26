@@ -18,7 +18,7 @@
     "ext-pdo": "*",
     "ext-swoole": "^5.0",
     "bnf/phpstan-psr-container": "^1.1",
-    "devitools/backbone": "^1.0.3",
+    "devitools/serendipity": "^1.0.3",
     "google/cloud-logging": "^1.32",
     "hyperf/cache": "~3.1.0",
     "hyperf/command": "~3.1.0",
@@ -134,11 +134,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/opencodeco/hyperf-watcher.git"
+      "url": "https://github.com/devitools/hyperf-watcher.git"
     },
     {
       "type": "path",
-      "url": "packages/backbone"
+      "url": "packages/serendipity"
     }
   ]
 }

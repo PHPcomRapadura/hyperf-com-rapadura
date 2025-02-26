@@ -7,10 +7,10 @@ namespace App\Infrastructure\Repository\SleekDB;
 use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use Backbone\Infrastructure\Adapter\Serializing\Serializer;
-use Backbone\Infrastructure\Adapter\Serializing\SerializerFactory;
-use Backbone\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
-use Backbone\Infrastructure\Persistence\Generator;
+use Serendipity\Infrastructure\Adapter\Serializing\Serializer;
+use Serendipity\Infrastructure\Adapter\Serializing\SerializerFactory;
+use Serendipity\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
+use Serendipity\Infrastructure\Persistence\Generator;
 use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
 

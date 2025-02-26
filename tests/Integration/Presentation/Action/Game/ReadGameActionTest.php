@@ -7,8 +7,8 @@ namespace Tests\Integration\Presentation\Action\Game;
 use App\Domain\Entity\Game;
 use App\Presentation\Action\Game\ReadGameAction;
 use App\Presentation\Input\Game\ReadGameInput;
-use Backbone\Infrastructure\Testing\IntegrationTestCase;
-use Backbone\Presentation\Output\NotFound;
+use Serendipity\Infrastructure\Testing\IntegrationTestCase;
+use Serendipity\Presentation\Output\NotFound;
 
 class ReadGameActionTest extends IntegrationTestCase
 {

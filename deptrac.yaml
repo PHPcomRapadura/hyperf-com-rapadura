@@ -7,22 +7,22 @@ parameters:
     - name: Application
       collectors:
         - type: className
-          regex: ^App\\Application\\.*|^Backbone\\Application\\.*
+          regex: ^App\\Application\\.*|^Serendipity\\Application\\.*
 
     - name: Domain
       collectors:
         - type: className
-          regex: ^App\\Domain\\.*|^Backbone\\Domain\\.*
+          regex: ^App\\Domain\\.*|^Serendipity\\Domain\\.*
 
     - name: Infrastructure
       collectors:
         - type: className
-          regex: ^App\\Infrastructure\\.*|^Backbone\\Infrastructure\\.*
+          regex: ^App\\Infrastructure\\.*|^Serendipity\\Infrastructure\\.*
 
     - name: Presentation
       collectors:
         - type: className
-          regex: ^App\\Presentation\\.*|^Backbone\\Presentation\\.*
+          regex: ^App\\Presentation\\.*|^Serendipity\\Presentation\\.*
 
     - name: Native
       collectors:

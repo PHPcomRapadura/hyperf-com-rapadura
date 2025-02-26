@@ -6,11 +6,11 @@ namespace App\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Repository\GameCommandRepository;
-use Backbone\Domain\Exception\GeneratingException;
-use Backbone\Infrastructure\Adapter\Serializing\Deserializer;
-use Backbone\Infrastructure\Adapter\Serializing\DeserializerFactory;
-use Backbone\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
-use Backbone\Infrastructure\Persistence\Generator;
+use Serendipity\Domain\Exception\GeneratingException;
+use Serendipity\Infrastructure\Adapter\Serializing\Deserializer;
+use Serendipity\Infrastructure\Adapter\Serializing\DeserializerFactory;
+use Serendipity\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
+use Serendipity\Infrastructure\Persistence\Generator;
 use JsonException as SerializationError;
 use SleekDB\Exceptions\IdNotAllowedException;
 use SleekDB\Exceptions\InvalidArgumentException;

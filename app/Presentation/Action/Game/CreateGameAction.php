@@ -7,10 +7,10 @@ namespace App\Presentation\Action\Game;
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Repository\GameCommandRepository;
 use App\Presentation\Input\Game\CreateGameInput;
-use Backbone\Domain\Contract\Result;
-use Backbone\Domain\Exception\GeneratingException;
-use Backbone\Infrastructure\Adapter\Serializing\Serialize\Builder;
-use Backbone\Presentation\Output\Accepted;
+use Serendipity\Domain\Contract\Result;
+use Serendipity\Domain\Exception\GeneratingException;
+use Serendipity\Infrastructure\Adapter\Serializing\Serialize\Builder;
+use Serendipity\Presentation\Output\Accepted;
 
 readonly class CreateGameAction
 {

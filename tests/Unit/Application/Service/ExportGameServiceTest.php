@@ -9,8 +9,8 @@ use App\Application\Service\ExportGameService;
 use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use Backbone\Domain\Contract\Serializer;
-use Backbone\Infrastructure\Testing\TestCase;
+use Serendipity\Domain\Contract\Serializer;
+use Serendipity\Infrastructure\Testing\TestCase;
 use DateTimeImmutable;
 
 class ExportGameServiceTest extends TestCase

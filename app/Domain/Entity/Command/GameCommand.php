@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Entity\Command;
 
-use Backbone\Domain\Entity\Entity;
+use Serendipity\Domain\Entity\Entity;
 
 class GameCommand extends Entity
 {

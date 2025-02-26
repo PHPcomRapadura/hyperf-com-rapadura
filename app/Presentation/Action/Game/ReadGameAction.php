@@ -7,7 +7,7 @@ namespace App\Presentation\Action\Game;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
 use App\Presentation\Input\Game\ReadGameInput;
-use Backbone\Presentation\Output\NotFound;
+use Serendipity\Presentation\Output\NotFound;
 
 readonly class ReadGameAction
 {

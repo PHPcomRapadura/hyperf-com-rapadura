@@ -6,8 +6,8 @@ namespace App\Infrastructure\Repository\Postgres;
 
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Repository\GameCommandRepository;
-use Backbone\Domain\Exception\GeneratingException;
-use Backbone\Infrastructure\Persistence\PostgresRepository;
+use Serendipity\Domain\Exception\GeneratingException;
+use Serendipity\Infrastructure\Persistence\PostgresRepository;
 
 class PostgresGameCommandRepository extends PostgresRepository implements GameCommandRepository
 {
@@ -25,7 +25,8 @@ class PostgresGameCommandRepository extends PostgresRepository implements GameCo
             'slug',
             'data',
         ];
-        $query = 'insert into games (id, created_at, updated_at, name, slug, data) values (?, ?, ?, ?, ?, ?)';
+        $query = 'insert into "games" ("id", "created_at", "updated_at", "name", "slug", "data") 
+                  values (?, ?, ?, ?, ?, ?)';
 
         $bindings = $this->bindings($game, $id, $fields);
         $this->database->execute($query, $bindings);
