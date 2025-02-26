@@ -10,7 +10,9 @@ use Serendipity\Infrastructure\Testing\IntegrationTestCase;
 
 class PostgresGameCommandRepositoryTest extends IntegrationTestCase
 {
-    protected array $truncate = ['games' => 'postgres'];
+    protected ?string $helper = 'postgres';
+
+    protected ?string $resource = 'games';
 
     public function testShouldPersistSuccessfully(): void
     {
@@ -19,8 +21,6 @@ class PostgresGameCommandRepositoryTest extends IntegrationTestCase
         $game = $this->mapper->build(GameCommand::class, $values);
         $id = $repository->persist($game);
 
-        $this->postgres->assertHas('games', [
-            'id' => $id,
-        ]);
+        $this->assertHas(['id' => $id]);
     }
 }

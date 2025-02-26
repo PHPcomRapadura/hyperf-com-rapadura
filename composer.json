@@ -17,7 +17,6 @@
     "ext-json": "*",
     "ext-pdo": "*",
     "ext-swoole": "^5.0",
-    "bnf/phpstan-psr-container": "^1.1",
     "devitools/serendipity": "^1.0.3",
     "google/cloud-logging": "^1.32",
     "hyperf/cache": "~3.1.0",
@@ -56,11 +55,12 @@
     "visus/cuid2": "^4.1"
   },
   "require-dev": {
+    "bnf/phpstan-psr-container": "^1.1",
+    "devitools/hyperf-watcher": "^3.1@dev",
     "fakerphp/faker": "^1.24",
     "friendsofphp/php-cs-fixer": "^3.0",
     "hyperf/devtool": "~3.1.0",
     "hyperf/testing": "~3.1.0",
-    "hyperf/watcher": "^3.1@dev",
     "phpmd/phpmd": "^2.15",
     "phpstan/phpstan": "^2",
     "phpunit/phpunit": "^10.5",
@@ -111,7 +111,7 @@
     "lint:deptrac": "deptrac analyse --report-uncovered --fail-on-uncovered",
     "lint:phpmd": "phpmd app ansi phpmd.xml",
     "lint:rector": "rector --dry-run",
-    "lint:psalm": "psalm",
+    "lint:psalm": "psalm --diff",
     "lint": [
       "composer lint:phpcs",
       "composer lint:phpstan",
@@ -130,15 +130,5 @@
       "php-cs-fixer fix config",
       "php-cs-fixer fix tests"
     ]
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/devitools/hyperf-watcher.git"
-    },
-    {
-      "type": "path",
-      "url": "packages/serendipity"
-    }
-  ]
+  }
 }

@@ -12,11 +12,13 @@ use function Hyperf\Collection\collect;
 
 class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 {
-    protected array $truncate = ['games' => 'sleek'];
+    protected ?string $helper = 'sleek';
+
+    protected ?string $resource = 'games';
 
     public function testShouldReadGameSuccessfully(): void
     {
-        $values = $this->sleek->seed(Game::class, 'games');
+        $values = $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $game = $repository->getGame($values->get('id'));
@@ -32,8 +34,8 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesReturnsGameCollection(): void
     {
-        $this->sleek->seed(Game::class, 'games');
-        $this->sleek->seed(Game::class, 'games');
+        $this->seed(Game::class);
+        $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $games = $repository->getGames();
@@ -43,7 +45,7 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesContainsExpectedGames(): void
     {
-        $values = $this->sleek->seed(Game::class, 'games');
+        $values = $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $all = $repository->getGames()->all();

@@ -21,11 +21,6 @@ return static function (RectorConfig $config): void {
     $config->rule(InlineConstructorDefaultToPropertyRector::class);
 
     $config->skip([AddOverrideAttributeToOverriddenMethodsRector::class]);
-    $config->skip([
-        ClassPropertyAssignToConstructorPromotionRector::class => [
-            __DIR__ . '/tests/Unit/Infrastructure/Support/Adapter/Serializing/Serialize/BuilderTestStubEdgeCase.php',
-        ],
-    ]);
 
     // define sets of rules
     $config->sets([

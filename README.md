@@ -1,4 +1,16 @@
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-dark.svg)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-dark.svg)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=ncloc&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=coverage&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=sqale_index&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=alert_status&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=reliability_rating&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=duplicated_lines_density&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=vulnerabilities&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=bugs&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=security_rating&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=sqale_rating&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=PHPcomRapadura_hyperf-com-rapadura&metric=code_smells&token=17b88fd5cd050204f8244a01405cdeaf1a8555af)](https://sonarcloud.io/summary/new_code?id=PHPcomRapadura_hyperf-com-rapadura)
 
 ---
 
@@ -31,14 +43,7 @@ Execute the following command to setup the application
 make setup
 ```
 
-Use the command up to put it to run
-
-```
-make up
-```
-
 > The application will be available at http://localhost:9501
-
 
 ### About `docker-compose` / `docker compose`
 

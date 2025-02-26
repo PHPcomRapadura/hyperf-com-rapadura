@@ -12,11 +12,13 @@ use Serendipity\Presentation\Output\NotFound;
 
 class ReadGameActionTest extends IntegrationTestCase
 {
-    protected array $truncate = ['games' => 'sleek'];
+    protected ?string $helper = 'sleek';
+
+    protected ?string $resource = 'games';
 
     final public function testShouldReadGame(): void
     {
-        $values = $this->sleek->seed(Game::class, 'games');
+        $values = $this->seed(Game::class);
 
         $input = $this->input(class: ReadGameInput::class, params: ['id' => $values->get('id')]);
 

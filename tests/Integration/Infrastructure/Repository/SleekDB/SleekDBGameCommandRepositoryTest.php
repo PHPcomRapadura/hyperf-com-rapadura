@@ -10,7 +10,9 @@ use Serendipity\Infrastructure\Testing\IntegrationTestCase;
 
 class SleekDBGameCommandRepositoryTest extends IntegrationTestCase
 {
-    protected array $truncate = ['games' => 'sleek'];
+    protected ?string $helper = 'sleek';
+
+    protected ?string $resource = 'games';
 
     public function testShouldPersistSuccessfully(): void
     {
@@ -19,8 +21,6 @@ class SleekDBGameCommandRepositoryTest extends IntegrationTestCase
         $game = $this->mapper->build(GameCommand::class, $values);
         $id = $repository->persist($game);
 
-        $this->sleek->assertHas('games', [
-            ['id', '=', $id],
-        ]);
+        $this->assertHas([['id', '=', $id]]);
     }
 }

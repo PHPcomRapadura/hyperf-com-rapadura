@@ -11,13 +11,15 @@ use Serendipity\Infrastructure\Testing\IntegrationTestCase;
 
 class ExportGamesActionTest extends IntegrationTestCase
 {
-    protected array $truncate = ['games' => 'sleek'];
+    protected ?string $helper = 'sleek';
+
+    protected ?string $resource = 'games';
 
     final public function testCreateGameSuccessfully(): void
     {
         $game = $this->faker->fake(Game::class);
-        $this->sleek->seed(Game::class, 'games', $game->toArray());
-        $this->sleek->seed(Game::class, 'games');
+        $this->seed(Game::class, $game->toArray());
+        $this->seed(Game::class);
 
         $input = $this->input(class: ExportGamesInput::class, params: ['slug' => $game->get('slug')]);
         $action = $this->make(ExportGamesAction::class);
