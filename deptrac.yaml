@@ -7,28 +7,22 @@ parameters:
     - name: Application
       collectors:
         - type: className
-          regex: ^App\\Application.*
+          regex: ^App\\Application\\.*|^Serendipity\\Application\\.*
 
     - name: Domain
       collectors:
         - type: className
-          regex: ^App\\Domain.*
+          regex: ^App\\Domain\\.*|^Serendipity\\Domain\\.*
 
     - name: Infrastructure
       collectors:
         - type: className
-          regex: ^App\\Infrastructure.*
+          regex: ^App\\Infrastructure\\.*|^Serendipity\\Infrastructure\\.*
 
     - name: Presentation
       collectors:
         - type: className
-          regex: ^App\\Presentation.*
-
-    # Define the supported global layers
-    - name: Contract
-      collectors:
-        - type: className
-          regex: ^Hyperf\\Contract\\.*
+          regex: ^App\\Presentation\\.*|^Serendipity\\Presentation\\.*
 
     - name: Native
       collectors:
@@ -37,50 +31,21 @@ parameters:
 
     - name: Vendor
       collectors:
-        - type: bool
-          must:
-            - type: className
-              regex:
-                ^Psr\\(Http|Log|Container)\\.*|\
-                ^Hyperf\\(Command|Context|Coordinator|DB|Event|ExceptionHandler|HttpMessage|HttpServer)\\.*|\
-                ^Google\\.*|\
-                ^SleekDB\\.*|\
-                ^Visus\\Cuid2\\.*|\
-                ^Swow\\.*
-          must_not:
-            - type: className
-              regex:
-                ^Psr\\Container\\ContainerInterface$|\
-                ^Psr\\Http\\Message\\ServerRequestInterface$|\
-                ^Hyperf\\Context\\Context$|\
-                ^Hyperf\\Validation\\ValidationException$|\
-                ^Hyperf\\Validation\\Request\\FormRequest$
-
-    - name: Validation
-      collectors:
         - type: className
           regex:
-            ^Psr\\Container\\ContainerInterface$|\
-            ^Psr\\Http\\Message\\ServerRequestInterface$|\
-            ^Hyperf\\Context\\Context$|\
-            ^Hyperf\\Validation\\ValidationException$|\
-            ^Hyperf\\Validation\\Request\\FormRequest$
+            ^SleekDB\\.*
 
   ruleset:
     Application:
       - Domain
       - Native
     Domain:
-      - Contract
       - Native
     Infrastructure:
       - Domain
-      - Contract
       - Native
       - Vendor
-      - Validation
     Presentation:
       - Application
       - Domain
       - Infrastructure
-      - Validation

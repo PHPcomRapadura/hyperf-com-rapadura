@@ -5,7 +5,7 @@ declare(strict_types=1);
 use SleekDB\Query;
 
 use function Hyperf\Support\env;
-use function Util\Type\Cast\toFloat;
+use function Serendipity\Type\Cast\toFloat;
 
 return [
     'postgres' => [

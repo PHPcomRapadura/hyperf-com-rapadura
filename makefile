@@ -6,9 +6,9 @@ COMPOSE_RUNNER ?= "docker-compose"
 
 
 setup: ## Setup the project
-	@$(COMPOSE_RUNNER) --profile postgres down --remove-orphans --volumes
-	@$(COMPOSE_RUNNER) --profile mysql down --remove-orphans --volumes
+	@make prune
 	@make install
+	@make migrate
 
 ##@ Bash controls
 
@@ -16,8 +16,17 @@ bash: ## Start nginx bash
 	@$(COMPOSE_RUNNER) run --rm --entrypoint sh app
 
 up: ## Start the project
-	@$(COMPOSE_RUNNER) up -d
+	@$(COMPOSE_RUNNER) --profile postgres up -d
+	@$(COMPOSE_RUNNER) --profile mysql up -d
 	@$(COMPOSE_RUNNER) logs -f app
+
+down: ## Stop the project
+	@$(COMPOSE_RUNNER) --profile postgres down --remove-orphans
+	@$(COMPOSE_RUNNER) --profile mysql down --remove-orphans
+
+prune: ## Prune the project
+	@$(COMPOSE_RUNNER) --profile postgres down --remove-orphans --volumes
+	@$(COMPOSE_RUNNER) --profile mysql down --remove-orphans --volumes
 
 ##@ Composer
 

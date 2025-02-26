@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Input\Game;
 
-use App\Infrastructure\Support\Adapter\Input;
+use Serendipity\Infrastructure\Adapter\Input;
 
 class ExportGamesInput extends Input
 {

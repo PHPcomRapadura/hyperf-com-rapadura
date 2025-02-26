@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repository\SleekDB;
 
 use App\Domain\Entity\Command\GameCommand;
-use App\Domain\Exception\GeneratingException;
 use App\Domain\Repository\GameCommandRepository;
-use App\Infrastructure\Support\Adapter\Serializing\Deserializer;
-use App\Infrastructure\Support\Adapter\Serializing\DeserializerFactory;
-use App\Infrastructure\Support\Persistence\Generator;
-use App\Infrastructure\Support\Persistence\SleekDB\SleekDBDatabaseFactory;
+use Serendipity\Domain\Exception\GeneratingException;
+use Serendipity\Infrastructure\Adapter\Serializing\Deserializer;
+use Serendipity\Infrastructure\Adapter\Serializing\DeserializerFactory;
+use Serendipity\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
+use Serendipity\Infrastructure\Persistence\Generator;
 use JsonException as SerializationError;
 use SleekDB\Exceptions\IdNotAllowedException;
 use SleekDB\Exceptions\InvalidArgumentException;

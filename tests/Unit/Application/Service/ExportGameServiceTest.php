@@ -7,11 +7,11 @@ namespace Tests\Unit\Application\Service;
 use App\Application\Exception\ExportGamesFailedException;
 use App\Application\Service\ExportGameService;
 use App\Domain\Collection\GameCollection;
-use App\Domain\Contract\Serializer;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
+use Serendipity\Domain\Contract\Serializer;
+use Serendipity\Infrastructure\Testing\TestCase;
 use DateTimeImmutable;
-use Tests\Support\TestCase;
 
 class ExportGameServiceTest extends TestCase
 {

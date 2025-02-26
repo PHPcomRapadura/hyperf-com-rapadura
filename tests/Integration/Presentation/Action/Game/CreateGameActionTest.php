@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tests\Integration\Presentation\Action\Game;
 
 use App\Domain\Entity\Command\GameCommand;
-use App\Infrastructure\Support\Presentation\Output\Accepted;
 use App\Presentation\Action\Game\CreateGameAction;
 use App\Presentation\Input\Game\CreateGameInput;
-use Tests\Support\IntegrationTestCase;
+use Serendipity\Infrastructure\Testing\IntegrationTestCase;
+use Serendipity\Presentation\Output\Accepted;
 
 class CreateGameActionTest extends IntegrationTestCase
 {

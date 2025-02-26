@@ -18,6 +18,7 @@
     "ext-pdo": "*",
     "ext-swoole": "^5.0",
     "bnf/phpstan-psr-container": "^1.1",
+    "devitools/serendipity": "^1.0.3",
     "google/cloud-logging": "^1.32",
     "hyperf/cache": "~3.1.0",
     "hyperf/command": "~3.1.0",
@@ -80,10 +81,7 @@
   "autoload": {
     "psr-4": {
       "App\\": "app/"
-    },
-    "files": [
-      "config/functions.php"
-    ]
+    }
   },
   "autoload-dev": {
     "psr-4": {
@@ -136,7 +134,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/opencodeco/hyperf-watcher.git"
+      "url": "https://github.com/devitools/hyperf-watcher.git"
+    },
+    {
+      "type": "path",
+      "url": "packages/serendipity"
     }
   ]
 }

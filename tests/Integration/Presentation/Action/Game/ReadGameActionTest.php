@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tests\Integration\Presentation\Action\Game;
 
 use App\Domain\Entity\Game;
-use App\Infrastructure\Support\Presentation\Output\NotFound;
 use App\Presentation\Action\Game\ReadGameAction;
 use App\Presentation\Input\Game\ReadGameInput;
-use Tests\Support\IntegrationTestCase;
+use Serendipity\Infrastructure\Testing\IntegrationTestCase;
+use Serendipity\Presentation\Output\NotFound;
 
 class ReadGameActionTest extends IntegrationTestCase
 {

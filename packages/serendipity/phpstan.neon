@@ -1,0 +1,15 @@
+parameters:
+  level: 10
+  bootstrapFiles:
+    - config/constants.php
+  paths:
+    - config
+    - app
+  reportUnmatchedIgnoredErrors: false
+  treatPhpDocTypesAsCertain: false
+  ignoreErrors:
+    - identifier: missingType.generics
+    - identifier: missingType.iterableValue
+    - '#Method [a-zA-Z0-9\\_\\:\(\)]+ should return static\([a-zA-Z0-9\\_\\:\(\)]+<T>\) but returns static\([a-zA-Z0-9\\_\\:\(\)]+<mixed>\)#'
+includes:
+  - vendor/bnf/phpstan-psr-container/extension.neon

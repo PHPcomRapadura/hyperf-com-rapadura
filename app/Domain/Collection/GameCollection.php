@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Collection;
 
-use App\Domain\Collection\Support\Collection;
 use App\Domain\Entity\Game;
+use Serendipity\Domain\Collection\Collection;
 
 /**
  * @extends Collection<Game>

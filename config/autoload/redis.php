@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use function Hyperf\Support\env;
-use function Util\Type\Cast\toInt;
-use function Util\Type\Cast\toFloat;
+use function Serendipity\Type\Cast\toInt;
+use function Serendipity\Type\Cast\toFloat;
 
 return [
     'default' => [

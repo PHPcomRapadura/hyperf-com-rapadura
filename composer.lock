@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49c2ebe8c77741e9e1a467bbcf4175f1",
+    "content-hash": "6acf023b66b47a773b4f8085d5703f9a",
     "packages": [
         {
             "name": "bnf/phpstan-psr-container",
@@ -191,6 +191,136 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "devitools/serendipity",
+            "version": "1.0.3",
+            "dist": {
+                "type": "path",
+                "url": "packages/serendipity",
+                "reference": "cc93ddaa5f4d72a2b06d8e0a691006b90f5e9417"
+            },
+            "require": {
+                "google/cloud-logging": "^1.32",
+                "hyperf/command": "^3.1",
+                "hyperf/context": "^3.1",
+                "hyperf/contract": "^3.1",
+                "hyperf/coordinator": "^3.1",
+                "hyperf/db": "^3.1",
+                "hyperf/di": "3.1.*",
+                "hyperf/event": "^3.1",
+                "hyperf/exception-handler": "^3.1",
+                "hyperf/framework": "3.1.*",
+                "hyperf/http-message": "^3.1",
+                "hyperf/http-server": "^3.1",
+                "hyperf/support": "^3.1",
+                "hyperf/validation": "^3.1",
+                "php": ">=8.1",
+                "psr/container": "^2.0",
+                "psr/http-message": "^2.0",
+                "psr/http-server-handler": "^1.0",
+                "psr/log": "^3.0",
+                "rakibtg/sleekdb": "^2.15",
+                "swow/psr7-plus": "^1.1",
+                "visus/cuid2": "^4.1"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.24",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "hyperf/devtool": "~3.1.0",
+                "hyperf/testing": "~3.1.0",
+                "hyperf/watcher": "^3.1@dev",
+                "phpmd/phpmd": "^2.15",
+                "phpstan/phpstan": "^2",
+                "phpunit/phpunit": "^10.5",
+                "qossmic/deptrac-shim": "^1.0",
+                "rector/rector": "^2",
+                "roave/security-advisories": "dev-latest",
+                "robiningelbrecht/phpunit-pretty-print": "^1.3",
+                "squizlabs/php_codesniffer": "^3.11",
+                "swoole/ide-helper": "^5.0",
+                "vimeo/psalm": "^5.26"
+            },
+            "suggest": {
+                "swow/swow": "Required to create swow components."
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "Serendipity\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Serendipity\\": "src/"
+                },
+                "files": [
+                    "config/functions.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Serendipity\\Test\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test:unit": [
+                    "@composer test -- --testsuite=Unit"
+                ],
+                "test:integration": [
+                    "@composer test -- --testsuite=Integration"
+                ],
+                "test": [
+                    "bin/phpunit.php"
+                ],
+                "lint:phpcs": [
+                    "phpcs --standard=PSR12,phpcs.xml -s src"
+                ],
+                "lint:phpstan": [
+                    "phpstan analyse --memory-limit 512M"
+                ],
+                "lint:deptrac": [
+                    "deptrac analyse --report-uncovered --fail-on-uncovered"
+                ],
+                "lint:phpmd": [
+                    "phpmd src ansi phpmd.xml"
+                ],
+                "lint:rector": [
+                    "rector --dry-run"
+                ],
+                "lint:psalm": [
+                    "psalm"
+                ],
+                "lint": [
+                    "composer lint:phpcs",
+                    "composer lint:phpstan",
+                    "composer lint:deptrac",
+                    "composer lint:phpmd",
+                    "composer lint:rector",
+                    "composer lint:psalm"
+                ],
+                "ci": [
+                    "composer lint",
+                    "composer test"
+                ],
+                "fix": [
+                    "php-cs-fixer fix src",
+                    "php-cs-fixer fix bin",
+                    "php-cs-fixer fix config",
+                    "php-cs-fixer fix tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "The Hyperf missing component",
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "doctrine/deprecations",
@@ -665,22 +795,22 @@
         },
         {
             "name": "ezimuel/ringphp",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezimuel/ringphp.git",
-                "reference": "648a9c3c8b5f2591a317d31aa7a18a784011b00d"
+                "reference": "5e4ee1dfc7a323b87873b83f17c69c76ba047793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezimuel/ringphp/zipball/648a9c3c8b5f2591a317d31aa7a18a784011b00d",
-                "reference": "648a9c3c8b5f2591a317d31aa7a18a784011b00d",
+                "url": "https://api.github.com/repos/ezimuel/ringphp/zipball/5e4ee1dfc7a323b87873b83f17c69c76ba047793",
+                "reference": "5e4ee1dfc7a323b87873b83f17c69c76ba047793",
                 "shasum": ""
             },
             "require": {
                 "ezimuel/guzzlestreams": "^3.0.1",
                 "php": ">=5.4.0",
-                "react/promise": "~2.0"
+                "react/promise": "^2.0 || ^3.0"
             },
             "replace": {
                 "guzzlehttp/ringphp": "self.version"
@@ -716,9 +846,9 @@
             ],
             "description": "Fork of guzzle/RingPHP (abandoned) to be used with elasticsearch-php",
             "support": {
-                "source": "https://github.com/ezimuel/ringphp/tree/1.2.3"
+                "source": "https://github.com/ezimuel/ringphp/tree/1.3.0"
             },
-            "time": "2025-01-14T12:59:43+00:00"
+            "time": "2025-02-24T10:29:27+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -902,16 +1032,16 @@
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.62.0",
+            "version": "v1.62.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-core.git",
-                "reference": "8de597fbd6fcac35a33594672d180c5e271fb4f0"
+                "reference": "824a617d5c2b1b571673d1111856f5c2f064a0fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/8de597fbd6fcac35a33594672d180c5e271fb4f0",
-                "reference": "8de597fbd6fcac35a33594672d180c5e271fb4f0",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/824a617d5c2b1b571673d1111856f5c2f064a0fd",
+                "reference": "824a617d5c2b1b571673d1111856f5c2f064a0fd",
                 "shasum": ""
             },
             "require": {
@@ -962,9 +1092,9 @@
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.62.0"
+                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.62.1"
             },
-            "time": "2025-02-08T00:05:17+00:00"
+            "time": "2025-02-22T00:57:16+00:00"
         },
         {
             "name": "google/cloud-logging",
@@ -1150,16 +1280,16 @@
         },
         {
             "name": "google/grpc-gcp",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GoogleCloudPlatform/grpc-gcp-php.git",
-                "reference": "2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9"
+                "reference": "e585b7721bbe806ef45b5c52ae43dfc2bff89968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GoogleCloudPlatform/grpc-gcp-php/zipball/2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9",
-                "reference": "2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9",
+                "url": "https://api.github.com/repos/GoogleCloudPlatform/grpc-gcp-php/zipball/e585b7721bbe806ef45b5c52ae43dfc2bff89968",
+                "reference": "e585b7721bbe806ef45b5c52ae43dfc2bff89968",
                 "shasum": ""
             },
             "require": {
@@ -1189,9 +1319,9 @@
             "description": "gRPC GCP library for channel management",
             "support": {
                 "issues": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/issues",
-                "source": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/tree/v0.4.0"
+                "source": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/tree/v0.4.1"
             },
-            "time": "2024-04-03T16:37:55+00:00"
+            "time": "2025-02-19T21:53:22+00:00"
         },
         {
             "name": "google/longrunning",
@@ -7131,23 +7261,24 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.11.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "1a8460931ea36dc5c76838fec5734d55c88c6831"
+                "reference": "8a164643313c71354582dc850b42b33fa12a4b63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/1a8460931ea36dc5c76838fec5734d55c88c6831",
-                "reference": "1a8460931ea36dc5c76838fec5734d55c88c6831",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/8a164643313c71354582dc850b42b33fa12a4b63",
+                "reference": "8a164643313c71354582dc850b42b33fa12a4b63",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.6 || ^5.7 || ^4.8.36"
+                "phpstan/phpstan": "1.10.39 || 1.4.10",
+                "phpunit/phpunit": "^9.6 || ^7.5"
             },
             "type": "library",
             "autoload": {
@@ -7191,7 +7322,7 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/promise/issues",
-                "source": "https://github.com/reactphp/promise/tree/v2.11.0"
+                "source": "https://github.com/reactphp/promise/tree/v3.2.0"
             },
             "funding": [
                 {
@@ -7199,7 +7330,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-11-16T16:16:50+00:00"
+            "time": "2024-05-24T10:39:05+00:00"
         },
         {
             "name": "rize/uri-template",
@@ -9339,16 +9470,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.69.1",
+            "version": "v3.70.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "13b0c0eede38c11cd674b080f2b485d0f14ffa9f"
+                "reference": "2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/13b0c0eede38c11cd674b080f2b485d0f14ffa9f",
-                "reference": "13b0c0eede38c11cd674b080f2b485d0f14ffa9f",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e",
+                "reference": "2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e",
                 "shasum": ""
             },
             "require": {
@@ -9430,7 +9561,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.69.1"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.70.0"
             },
             "funding": [
                 {
@@ -9438,7 +9569,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-18T23:57:43+00:00"
+            "time": "2025-02-22T23:30:51+00:00"
         },
         {
             "name": "hyperf/devtool",
@@ -9584,12 +9715,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/opencodeco/hyperf-watcher.git",
+                "url": "https://github.com/devitools/hyperf-watcher.git",
                 "reference": "2af5f5879521c6fe3c508aef4a6762cacba71688"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opencodeco/hyperf-watcher/zipball/2af5f5879521c6fe3c508aef4a6762cacba71688",
+                "url": "https://api.github.com/repos/devitools/hyperf-watcher/zipball/2af5f5879521c6fe3c508aef4a6762cacba71688",
                 "reference": "2af5f5879521c6fe3c508aef4a6762cacba71688",
                 "shasum": ""
             },
@@ -9635,7 +9766,7 @@
                 "php"
             ],
             "support": {
-                "source": "https://github.com/opencodeco/hyperf-watcher/tree/master"
+                "source": "https://github.com/devitools/hyperf-watcher/tree/master"
             },
             "time": "2025-02-18T18:56:19+00:00"
         },
@@ -11416,12 +11547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "70eb886a27427421cf1bd612067810c9fb1cbb5c"
+                "reference": "eec07a3f265e855f870e52b7c18c44822208e303"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/70eb886a27427421cf1bd612067810c9fb1cbb5c",
-                "reference": "70eb886a27427421cf1bd612067810c9fb1cbb5c",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/eec07a3f265e855f870e52b7c18c44822208e303",
+                "reference": "eec07a3f265e855f870e52b7c18c44822208e303",
                 "shasum": ""
             },
             "conflict": {
@@ -11760,6 +11891,7 @@
                 "league/commonmark": "<2.6",
                 "league/flysystem": "<1.1.4|>=2,<2.1.1",
                 "league/oauth2-server": ">=8.3.2,<8.4.2|>=8.5,<8.5.3",
+                "leantime/leantime": "<3.3",
                 "lexik/jwt-authentication-bundle": "<2.10.7|>=2.11,<2.11.3",
                 "libreform/libreform": ">=2,<=2.0.8",
                 "librenms/librenms": "<2017.08.18",
@@ -11784,7 +11916,7 @@
                 "mantisbt/mantisbt": "<=2.26.3",
                 "marcwillmann/turn": "<0.3.3",
                 "matyhtf/framework": "<3.0.6",
-                "mautic/core": "<4.4.13|>=5,<5.1.1",
+                "mautic/core": "<4.4.13|>=5.0.0.0-alpha,<5.1.1",
                 "mautic/core-lib": ">=1.0.0.0-beta,<4.4.13|>=5.0.0.0-alpha,<5.1.1",
                 "maximebf/debugbar": "<1.19",
                 "mdanter/ecc": "<2",
@@ -11811,7 +11943,7 @@
                 "mojo42/jirafeau": "<4.4",
                 "mongodb/mongodb": ">=1,<1.9.2",
                 "monolog/monolog": ">=1.8,<1.12",
-                "moodle/moodle": "<4.3.8|>=4.4,<4.4.4",
+                "moodle/moodle": "<4.3.10|>=4.4,<4.4.6|>=4.5.0.0-beta,<4.5.2",
                 "mos/cimage": "<0.7.19",
                 "movim/moxl": ">=0.8,<=0.10",
                 "movingbytes/social-network": "<=1.2.1",
@@ -11970,7 +12102,7 @@
                 "s-cart/s-cart": "<6.9",
                 "sabberworm/php-css-parser": ">=1,<1.0.1|>=2,<2.0.1|>=3,<3.0.1|>=4,<4.0.1|>=5,<5.0.9|>=5.1,<5.1.3|>=5.2,<5.2.1|>=6,<6.0.2|>=7,<7.0.4|>=8,<8.0.1|>=8.1,<8.1.1|>=8.2,<8.2.1|>=8.3,<8.3.1",
                 "sabre/dav": ">=1.6,<1.7.11|>=1.8,<1.8.9",
-                "samwilson/unlinked-wikibase": "<1.39.6|>=1.40,<1.40.2|>=1.41,<1.41.1",
+                "samwilson/unlinked-wikibase": "<1.42",
                 "scheb/two-factor-bundle": "<3.26|>=4,<4.11",
                 "sensiolabs/connect": "<4.2.3",
                 "serluck/phpwhois": "<=4.2.6",
@@ -12283,7 +12415,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-18T20:05:22+00:00"
+            "time": "2025-02-25T16:05:58+00:00"
         },
         {
             "name": "robiningelbrecht/phpunit-pretty-print",
@@ -14551,7 +14683,7 @@
         "ext-ds": "*",
         "ext-json": "*",
         "ext-pdo": "*",
-        "ext-swoole": "^6.0"
+        "ext-swoole": "^5.0"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
