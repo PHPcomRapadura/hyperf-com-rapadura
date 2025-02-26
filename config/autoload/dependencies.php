@@ -8,7 +8,6 @@ use App\Infrastructure\Repository\SleekDB\SleekDBGameCommandRepository;
 use App\Infrastructure\Repository\SleekDB\SleekDBGameQueryRepository;
 
 return [
-
     GameCommandRepository::class => SleekDBGameCommandRepository::class,
     GameQueryRepository::class => SleekDBGameQueryRepository::class,
 ];
