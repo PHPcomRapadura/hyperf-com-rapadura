@@ -56,7 +56,7 @@
   },
   "require-dev": {
     "bnf/phpstan-psr-container": "^1.1",
-    "devitools/hyperf-watcher": "^3.1@dev",
+    "devitools/hyperf-watcher": "^3.1",
     "fakerphp/faker": "^1.24",
     "friendsofphp/php-cs-fixer": "^3.0",
     "hyperf/devtool": "~3.1.0",

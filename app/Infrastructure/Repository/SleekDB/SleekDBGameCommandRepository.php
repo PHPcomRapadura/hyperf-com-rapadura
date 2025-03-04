@@ -11,7 +11,6 @@ use Serendipity\Infrastructure\Adapter\Serializing\Deserializer;
 use Serendipity\Infrastructure\Adapter\Serializing\DeserializerFactory;
 use Serendipity\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
 use Serendipity\Infrastructure\Persistence\Generator;
-use JsonException as SerializationError;
 use SleekDB\Exceptions\IdNotAllowedException;
 use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
@@ -40,7 +39,6 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
      * @throws IdNotAllowedException
      * @throws InvalidArgumentException
      * @throws GeneratingException
-     * @throws SerializationError
      */
     public function persist(GameCommand $game): string
     {

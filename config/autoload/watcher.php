@@ -15,4 +15,5 @@ return [
         'scan_interval' => 2000,
     ],
     'ext' => ['.php', '.env'],
+    'command' => 'vendor/devitools/hyperf-watcher/watcher.php start',
 ];

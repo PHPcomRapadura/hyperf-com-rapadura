@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe10b32f55737eeab2488521f2f53a68",
+    "content-hash": "ada590122ee46bb008fbe61623ed6127",
     "packages": [
         {
             "name": "brick/math",
@@ -9075,16 +9075,16 @@
         },
         {
             "name": "devitools/hyperf-watcher",
-            "version": "dev-master",
+            "version": "3.1.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devitools/hyperf-watcher.git",
-                "reference": "bffb7c9aa08ad9817f5faa1890c48d6d933744a4"
+                "reference": "add4b566eeae6296d9727972d35bab98a9786eeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devitools/hyperf-watcher/zipball/bffb7c9aa08ad9817f5faa1890c48d6d933744a4",
-                "reference": "bffb7c9aa08ad9817f5faa1890c48d6d933744a4",
+                "url": "https://api.github.com/repos/devitools/hyperf-watcher/zipball/add4b566eeae6296d9727972d35bab98a9786eeb",
+                "reference": "add4b566eeae6296d9727972d35bab98a9786eeb",
                 "shasum": ""
             },
             "require": {
@@ -9096,7 +9096,6 @@
                 "hyperf/support": "~3.1.0",
                 "php": ">=8.1"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "hyperf": {
@@ -9125,9 +9124,9 @@
                 "php"
             ],
             "support": {
-                "source": "https://github.com/devitools/hyperf-watcher/tree/master"
+                "source": "https://github.com/devitools/hyperf-watcher/tree/3.1.99"
             },
-            "time": "2025-02-26T12:49:23+00:00"
+            "time": "2025-03-01T04:03:53+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -14649,7 +14648,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "devitools/hyperf-watcher": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,

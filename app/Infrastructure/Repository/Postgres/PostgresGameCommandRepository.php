@@ -28,25 +28,9 @@ class PostgresGameCommandRepository extends PostgresRepository implements GameCo
         $query = 'insert into "games" ("id", "created_at", "updated_at", "name", "slug", "data") ' .
                  'values (?, ?, ?, ?, ?, ?)';
 
-        $bindings = $this->bindings($game, $id, $fields);
+
+        $bindings = $this->bindings($game, $fields, ['id' => $id]);
         $this->database->execute($query, $bindings);
         return $id;
-    }
-
-    private function bindings(GameCommand $game, string $id, array $fields): array
-    {
-        $deserialized = $this->deserializerFactory->make(GameCommand::class)
-            ->deserialize($game);
-        $values = [
-            'id' => $id,
-            'created_at' => $this->generator->now(),
-            'updated_at' => $this->generator->now(),
-            ...$deserialized,
-        ];
-        $bindings = [];
-        foreach ($fields as $field) {
-            $bindings[] = $values[$field] ?? null;
-        }
-        return $bindings;
     }
 }
