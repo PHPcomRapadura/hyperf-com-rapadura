@@ -6,12 +6,12 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Psr\Log\LogLevel;
 
 use function Hyperf\Support\env;
-use function Serendipity\Type\Cast\toString;
+use function Serendipity\Type\Cast\stringify;
 
-$logLevel = toString(env('STDOUT_LOG_LEVEL'));
+$logLevel = stringify(env('STDOUT_LOG_LEVEL'));
 
 return [
-    'app_name' => env('APP_NAME', 'skeleton'),
+    'app_name' => env('APP_NAME', 'template_name'),
     'app_env' => env('APP_ENV', 'dev'),
     'app_release' => env('APP_RELEASE', '1.0.0'),
     'scan_cacheable' => env('SCAN_CACHEABLE', false),

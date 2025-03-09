@@ -7,28 +7,22 @@ namespace App\Infrastructure\Repository\SleekDB;
 use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use Serendipity\Infrastructure\Adapter\Serializing\Serializer;
-use Serendipity\Infrastructure\Adapter\Serializing\SerializerFactory;
-use Serendipity\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
-use Serendipity\Infrastructure\Persistence\Generator;
+use Serendipity\Infrastructure\Adapter\SerializerFactory;
+use Serendipity\Infrastructure\Database\Document\SleekDBFactory;
+use Serendipity\Infrastructure\Database\Managed;
 use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
 
+use function Serendipity\Type\Cast\arrayify;
+
 class SleekDBGameQueryRepository extends SleekDBGameRepository implements GameQueryRepository
 {
-    /**
-     * @var Serializer<Game>
-     */
-    protected readonly Serializer $serializer;
-
     public function __construct(
-        Generator $generator,
-        SleekDBDatabaseFactory $databaseFactory,
-        SerializerFactory $serializerFactory,
+        Managed $generator,
+        SleekDBFactory $databaseFactory,
+        protected readonly SerializerFactory $serializerFactory,
     ) {
         parent::__construct($generator, $databaseFactory);
-
-        $this->serializer = $serializerFactory->make(Game::class);
     }
 
     /**
@@ -37,23 +31,27 @@ class SleekDBGameQueryRepository extends SleekDBGameRepository implements GameQu
      */
     public function getGame(string $id): ?Game
     {
-        $data = $this->database->findBy(['id', '=', $id]);
-        if (empty($data)) {
-            return null;
-        }
-        /** @var array<string, mixed> $datum */
-        $datum = $data[0];
-        return $this->serializer->serialize($datum);
+        $data = arrayify($this->database->findBy(['id', '=', $id]));
+        $serializer = $this->serializerFactory->make(Game::class);
+        return $this->entity($serializer, $data);
     }
 
     /**
      * @throws IOException
      * @throws InvalidArgumentException
      */
-    public function getGames(): GameCollection
+    public function getGames(array $filters = []): GameCollection
     {
-        /** @var array<array<string, mixed>> $data */
-        $data = $this->database->findAll();
-        return GameCollection::createFrom($data, $this->serializer);
+        $serializer = $this->serializerFactory->make(Game::class);
+        if (empty($filters)) {
+            $data = arrayify($this->database->findAll());
+            return $this->collection($serializer, $data, GameCollection::class);
+        }
+        $criteria = [];
+        foreach ($filters as $key => $value) {
+            $criteria[] = [$key, '=', $value];
+        }
+        $data = arrayify($this->database->findBy($criteria));
+        return $this->collection($serializer, $data, GameCollection::class);
     }
 }

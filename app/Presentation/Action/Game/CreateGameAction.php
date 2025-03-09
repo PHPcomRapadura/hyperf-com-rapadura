@@ -7,9 +7,9 @@ namespace App\Presentation\Action\Game;
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Repository\GameCommandRepository;
 use App\Presentation\Input\Game\CreateGameInput;
-use Serendipity\Domain\Contract\Result;
-use Serendipity\Domain\Exception\GeneratingException;
-use Serendipity\Infrastructure\Adapter\Serializing\Serialize\Builder;
+use Serendipity\Domain\Contract\Message;
+use Serendipity\Domain\Exception\ManagedException;
+use Serendipity\Infrastructure\Adapter\Serialize\Builder;
 use Serendipity\Presentation\Output\Accepted;
 
 readonly class CreateGameAction
@@ -21,12 +21,12 @@ readonly class CreateGameAction
     }
 
     /**
-     * @throws GeneratingException
+     * @throws ManagedException
      */
-    public function __invoke(CreateGameInput $input): Result
+    public function __invoke(CreateGameInput $input): Message
     {
         $game = $this->builder->build(GameCommand::class, $input->values());
         $id = $this->gameCommandRepository->persist($game);
-        return new Accepted($id);
+        return Accepted::createFrom($id);
     }
 }

@@ -2,19 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Infrastructure\Repository\SleekDB;
+namespace Tests\Integration\Infrastructure\SleekDB;
 
 use App\Domain\Entity\Game;
 use App\Infrastructure\Repository\SleekDB\SleekDBGameQueryRepository;
-use Serendipity\Infrastructure\Testing\IntegrationTestCase;
+use Tests\Integration\InfrastructureTestCase;
+use Serendipity\Testing\Extension\ManagedExtension;
 
 use function Hyperf\Collection\collect;
 
-class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
+/**
+ * @internal
+ */
+class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
 {
-    protected ?string $helper = 'sleek';
+    use ManagedExtension;
 
-    protected ?string $resource = 'games';
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setUpResource('games', 'sleek');
+    }
 
     public function testShouldReadGameSuccessfully(): void
     {
@@ -27,7 +36,7 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     final public function testShouldReturnNullWhenGameNotExists(): void
     {
-        $id = $this->faker->generator->id();
+        $id = $this->managed()->id();
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $this->assertNull($repository->getGame($id));
     }
@@ -45,7 +54,11 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
 
     public function testGetGamesContainsExpectedGames(): void
     {
+        $this->seed(Game::class);
+        $this->seed(Game::class);
         $values = $this->seed(Game::class);
+        $this->seed(Game::class);
+        $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $all = $repository->getGames()->all();
@@ -53,6 +66,22 @@ class SleekDBGameQueryRepositoryTest extends IntegrationTestCase
             ->filter(fn ($game) => $game->id === $values->get('id'))
             ->count();
         $this->assertEquals(1, $count);
+    }
+
+    public function testGetGamesContainsExpectedSlug(): void
+    {
+        $slug = $this->generator()->slug();
+        $this->seed(Game::class);
+        $this->seed(Game::class);
+        $values = $this->seed(Game::class, ['slug' => $slug]);
+        $this->seed(Game::class);
+        $this->seed(Game::class);
+
+        $repository = $this->make(SleekDBGameQueryRepository::class);
+        $game = $repository
+            ->getGames(['id' => $values->get('id')])
+            ->current();
+        $this->assertEquals($slug, $game->slug);
     }
 
     public function testGetGamesReturnsEmptyCollectionWhenNoGames(): void

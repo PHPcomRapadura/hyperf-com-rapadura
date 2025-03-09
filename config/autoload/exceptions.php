@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 
 use Hyperf\HttpServer\Exception\Handler\HttpExceptionHandler;
-use Serendipity\Infrastructure\Http\Exception\Handler\AppExceptionHandler;
-use Serendipity\Infrastructure\Http\Exception\Handler\ValidationExceptionHandler;
+use Serendipity\Hyperf\Exception\AppExceptionHandler;
+use Serendipity\Hyperf\Exception\ValidationExceptionHandler;
 
 return [
     'handler' => [

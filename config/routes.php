@@ -2,17 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Presentation\Action\Game\CreateGameAction;
-use App\Presentation\Action\Game\ExportGamesAction;
-use App\Presentation\Action\Game\ReadGameAction;
-use App\Presentation\Action\HomeAction;
+use App\Presentation\Action\GetQuoteRxmgAction;
+use App\Presentation\Action\HealthAction;
+use App\Presentation\Action\ProcessRxmgAction;
 use Hyperf\HttpServer\Router\Router;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', HomeAction::class);
+Router::addRoute(['GET', 'POST', 'HEAD'], '/health', HealthAction::class);
 
 Router::get('/favicon.ico', static fn () => '');
-
-Router::post('/error', static fn () => throw new Exception('Error!'));
 
 Router::addGroup('/api/v1/', function () {
     Router::post('games', CreateGameAction::class);

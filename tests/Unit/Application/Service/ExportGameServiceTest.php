@@ -7,31 +7,17 @@ namespace Tests\Unit\Application\Service;
 use App\Application\Exception\ExportGamesFailedException;
 use App\Application\Service\ExportGameService;
 use App\Domain\Collection\GameCollection;
-use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use Serendipity\Domain\Contract\Serializer;
-use Serendipity\Infrastructure\Testing\TestCase;
-use DateTimeImmutable;
+use PHPUnit\Framework\TestCase;
 
 class ExportGameServiceTest extends TestCase
 {
     public function testShouldExportGameSuccessfully(): void
     {
-        $serializer = $this->createMock(Serializer::class);
-        $serializer->expects($this->once())
-            ->method('serialize')
-            ->willReturn(new Game(
-                id: 'cool',
-                createdAt: new DateTimeImmutable(),
-                updatedAt: new DateTimeImmutable(),
-                name: 'Cool Game',
-                slug: 'cool-game',
-            ));
-
         $gameQueryRepository = $this->createMock(GameQueryRepository::class);
         $gameQueryRepository->expects($this->once())
             ->method('getGames')
-            ->willReturn(GameCollection::createFrom([[]], $serializer));
+            ->willReturn(new GameCollection());
 
         $service = new ExportGameService($gameQueryRepository);
         $service->exportGames('cool-game');
@@ -41,11 +27,10 @@ class ExportGameServiceTest extends TestCase
     {
         $this->expectException(ExportGamesFailedException::class);
 
-        $serializer = $this->createMock(Serializer::class);
         $gameQueryRepository = $this->createMock(GameQueryRepository::class);
         $gameQueryRepository->expects($this->once())
             ->method('getGames')
-            ->willReturn(GameCollection::createFrom([], $serializer));
+            ->willReturn(new GameCollection());
 
         $service = new ExportGameService($gameQueryRepository);
         $service->exportGames('cool-game');

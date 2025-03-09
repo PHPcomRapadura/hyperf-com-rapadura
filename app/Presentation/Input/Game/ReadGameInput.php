@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Input\Game;
 
-use Serendipity\Infrastructure\Adapter\Input;
+use Serendipity\Presentation\Input;
 
 class ReadGameInput extends Input
 {

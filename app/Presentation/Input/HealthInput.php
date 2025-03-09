@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Presentation\Input;
 
-use Serendipity\Infrastructure\Adapter\Input;
+use Serendipity\Presentation\Input;
 
-class HomeInput extends Input
+final class HealthInput extends Input
 {
     public function rules(): array
     {

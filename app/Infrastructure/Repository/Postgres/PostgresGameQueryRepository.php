@@ -7,30 +7,26 @@ namespace App\Infrastructure\Repository\Postgres;
 use App\Domain\Collection\GameCollection;
 use App\Domain\Entity\Game;
 use App\Domain\Repository\GameQueryRepository;
-use Serendipity\Infrastructure\Persistence\PostgresRepository;
-
-use function Serendipity\Type\Cast\toArray;
+use Serendipity\Infrastructure\Repository\PostgresRepository;
 
 class PostgresGameQueryRepository extends PostgresRepository implements GameQueryRepository
 {
     public function getGame(string $id): ?Game
     {
+        /* @noinspection SqlNoDataSourceInspection, SqlResolve */
         $query = 'select "id", "created_at", "updated_at", "name", "slug", "data" from "games" where "id" = ?';
         $bindings = [$id];
-        $data = toArray($this->database->query($query, $bindings));
-        if (empty($data)) {
-            return null;
-        }
-        /** @var array<string, mixed> $datum */
-        $datum = $data[0];
-        return $this->serializerFactory->make(Game::class)->serialize($datum);
+        $data = $this->database->query($query, $bindings);
+        $serializer = $this->serializerFactory->make(Game::class);
+        return $this->entity($serializer, $data);
     }
 
-    public function getGames(): GameCollection
+    public function getGames(array $filters = []): GameCollection
     {
+        /* @noinspection SqlNoDataSourceInspection, SqlResolve */
         $query = 'select "id", "created_at", "updated_at", "name", "slug", "data" from "games"';
-        /** @var array<array<string, mixed>> $data */
-        $data = toArray($this->database->query($query));
-        return GameCollection::createFrom($data, $this->serializerFactory->make(Game::class));
+        $data = $this->database->query($query);
+        $serializer = $this->serializerFactory->make(Game::class);
+        return $this->collection($serializer, $data, GameCollection::class);
     }
 }

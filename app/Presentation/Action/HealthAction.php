@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Presentation\Action;
 
-use App\Presentation\Input\HomeInput;
+use App\Presentation\Input\HealthInput;
 
-readonly class HomeAction
+readonly class HealthAction
 {
-    public function __invoke(HomeInput $input): array
+    public function __invoke(HealthInput $input): array
     {
         return [
             'method' => $input->getMethod(),

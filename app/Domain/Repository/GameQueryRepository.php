@@ -11,5 +11,5 @@ interface GameQueryRepository
 {
     public function getGame(string $id): ?Game;
 
-    public function getGames(): GameCollection;
+    public function getGames(array $filters = []): GameCollection;
 }

@@ -6,14 +6,13 @@ namespace App\Presentation\Input\Game;
 
 use Serendipity\Presentation\Input;
 
-class CreateGameInput extends Input
+class SearchGamesInput extends Input
 {
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'slug' => ['required', 'string'],
-            'data' => ['sometimes', 'array'],
+            'name' => ['sometimes', 'string'],
+            'slug' => ['sometimes', 'string'],
         ];
     }
 }

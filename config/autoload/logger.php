@@ -37,6 +37,14 @@ return [
     ],
 
     'gcloud' => [
-        'batch' => false,
+        'project_id' => env('GOOGLE_CLOUD_PROJECT', 'unknown'),
+        'service_name' => env('GOOGLE_CLOUD_SERVICE_NAME', 'unknown'),
+        'options' => [
+            'batchEnabled' => true,
+            'batchOptions' => [
+                'batchSize' => 50,
+                'callPeriod' => 5,
+            ],
+        ],
     ],
 ];

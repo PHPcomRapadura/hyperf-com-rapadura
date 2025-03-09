@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Hyperf\HttpServer\CoreMiddleware;
 use Hyperf\Validation\Middleware\ValidationMiddleware;
-use Serendipity\Infrastructure\Http\Middleware\AppMiddleware;
+use Serendipity\Hyperf\Middleware\AppMiddleware;
 
 return [
     'http' => [

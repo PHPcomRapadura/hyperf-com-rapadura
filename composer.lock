@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ada590122ee46bb008fbe61623ed6127",
+    "content-hash": "f917005bbe11f40fcdc2fd5ac3cfa637",
     "packages": [
         {
             "name": "brick/math",
@@ -137,16 +137,16 @@
         },
         {
             "name": "devitools/serendipity",
-            "version": "1.0.4",
+            "version": "1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devitools/serendipity.git",
-                "reference": "79e7ffd0d08ca4ad7e4a72065de5edbd8d380089"
+                "reference": "27c3ebf790752ce76f90101d3d626b796290a9b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devitools/serendipity/zipball/79e7ffd0d08ca4ad7e4a72065de5edbd8d380089",
-                "reference": "79e7ffd0d08ca4ad7e4a72065de5edbd8d380089",
+                "url": "https://api.github.com/repos/devitools/serendipity/zipball/27c3ebf790752ce76f90101d3d626b796290a9b2",
+                "reference": "27c3ebf790752ce76f90101d3d626b796290a9b2",
                 "shasum": ""
             },
             "require": {
@@ -155,7 +155,10 @@
                 "ext-pdo": "*",
                 "fakerphp/faker": "^1.24",
                 "google/cloud-logging": "^1.32",
+                "guzzlehttp/guzzle": "^7.9",
+                "guzzlehttp/psr7": "^2.7",
                 "hyperf/cache": "~3.1.0",
+                "hyperf/collection": "^3.1",
                 "hyperf/command": "^3.1",
                 "hyperf/config": "~3.1.0",
                 "hyperf/config-apollo": "~3.1.0",
@@ -164,6 +167,7 @@
                 "hyperf/context": "^3.1",
                 "hyperf/contract": "^3.1",
                 "hyperf/coordinator": "^3.1",
+                "hyperf/coroutine": "^3.1",
                 "hyperf/database": "^3.1",
                 "hyperf/database-pgsql": "^3.1",
                 "hyperf/db": "^3.1",
@@ -193,6 +197,7 @@
                 "php": "^8.3",
                 "php-ds/php-ds": "^1.5",
                 "psr/container": "^2.0",
+                "psr/http-client": "^1.0",
                 "psr/http-message": "^2.0",
                 "psr/http-server-handler": "^1.0",
                 "psr/log": "^3.0",
@@ -224,7 +229,8 @@
             },
             "autoload": {
                 "files": [
-                    "config/functions.php"
+                    "config/functions.php",
+                    "config/polyfill.php"
                 ],
                 "psr-4": {
                     "Serendipity\\": "src/"
@@ -241,9 +247,9 @@
             ],
             "support": {
                 "issues": "https://github.com/devitools/serendipity/issues",
-                "source": "https://github.com/devitools/serendipity/tree/1.0.4"
+                "source": "https://github.com/devitools/serendipity/tree/1.8.6"
             },
-            "time": "2025-02-26T17:52:28+00:00"
+            "time": "2025-03-07T19:23:42+00:00"
         },
         {
             "name": "doctrine/deprecations",

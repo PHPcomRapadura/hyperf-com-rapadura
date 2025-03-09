@@ -2,19 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Infrastructure\Repository\Postgres;
+namespace Tests\Integration\Infrastructure\Postgres;
 
 use App\Domain\Entity\Game;
 use App\Infrastructure\Repository\Postgres\PostgresGameQueryRepository;
-use Serendipity\Infrastructure\Testing\IntegrationTestCase;
+use Tests\Integration\InfrastructureTestCase;
+use Serendipity\Testing\Extension\ManagedExtension;
 
 use function Hyperf\Collection\collect;
 
-class PostgresGameQueryRepositoryTest extends IntegrationTestCase
+/**
+ * @internal
+ */
+class PostgresGameQueryRepositoryTest extends InfrastructureTestCase
 {
-    protected ?string $helper = 'postgres';
+    use ManagedExtension;
 
-    protected ?string $resource = 'games';
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setUpResource('games', 'postgres');
+    }
 
     public function testShouldReadGameSuccessfully(): void
     {
@@ -27,7 +36,7 @@ class PostgresGameQueryRepositoryTest extends IntegrationTestCase
 
     final public function testShouldReturnNullWhenGameNotExists(): void
     {
-        $id = $this->faker->generator->id();
+        $id = $this->managed()->id();
         $repository = $this->make(PostgresGameQueryRepository::class);
         $this->assertNull($repository->getGame($id));
     }

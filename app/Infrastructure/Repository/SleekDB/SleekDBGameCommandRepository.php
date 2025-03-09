@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Repository\SleekDB;
 
+use Serendipity\Domain\Contract\Adapter\Deserializer;
+use Serendipity\Domain\Exception\ManagedException;
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Repository\GameCommandRepository;
-use Serendipity\Domain\Exception\GeneratingException;
-use Serendipity\Infrastructure\Adapter\Serializing\Deserializer;
-use Serendipity\Infrastructure\Adapter\Serializing\DeserializerFactory;
-use Serendipity\Infrastructure\Persistence\Factory\SleekDBDatabaseFactory;
-use Serendipity\Infrastructure\Persistence\Generator;
+use Serendipity\Infrastructure\Adapter\DeserializerFactory;
+use Serendipity\Infrastructure\Database\Document\SleekDBFactory;
+use Serendipity\Infrastructure\Database\Managed;
 use SleekDB\Exceptions\IdNotAllowedException;
 use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
@@ -24,8 +24,8 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
     protected readonly Deserializer $deserializer;
 
     public function __construct(
-        Generator $generator,
-        SleekDBDatabaseFactory $databaseFactory,
+        Managed $generator,
+        SleekDBFactory $databaseFactory,
         DeserializerFactory $deserializerFactory,
     ) {
         parent::__construct($generator, $databaseFactory);
@@ -38,7 +38,7 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
      * @throws JsonException
      * @throws IdNotAllowedException
      * @throws InvalidArgumentException
-     * @throws GeneratingException
+     * @throws ManagedException
      */
     public function persist(GameCommand $game): string
     {
@@ -49,5 +49,14 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
         $datum['updated_at'] = $this->generator->now();
         $this->database->insert($datum);
         return $id;
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws IOException
+     */
+    public function destroy(string $id): bool
+    {
+        return (bool) $this->database->deleteBy(['id', '=', $id]);
     }
 }
