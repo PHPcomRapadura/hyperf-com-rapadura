@@ -40,7 +40,7 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
      * @throws InvalidArgumentException
      * @throws ManagedException
      */
-    public function persist(GameCommand $game): string
+    public function create(GameCommand $game): string
     {
         $datum = $this->deserializer->deserialize($game);
         $id = $this->generator->id();
@@ -52,10 +52,22 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
     }
 
     /**
+     * @throws JsonException
      * @throws InvalidArgumentException
      * @throws IOException
      */
-    public function destroy(string $id): bool
+    public function update(int|string $id, GameCommand $game): bool
+    {
+        $datum = $this->deserializer->deserialize($game);
+        $datum['updated_at'] = $this->generator->now();
+        return (bool) $this->database->updateById($id, $datum);
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     * @throws IOException
+     */
+    public function delete(int|string $id): bool
     {
         return (bool) $this->database->deleteBy(['id', '=', $id]);
     }

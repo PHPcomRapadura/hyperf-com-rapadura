@@ -6,7 +6,7 @@ namespace App\Presentation\Input\Game;
 
 use Serendipity\Presentation\Input;
 
-class ReadGameInput extends Input
+class GameInput extends Input
 {
     public function rules(): array
     {

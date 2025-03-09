@@ -37,7 +37,8 @@ parameters:
             ^Hyperf\\DB\\Exception\\QueryException$|\
             ^Hyperf\\Guzzle\\ClientFactory$|\
             ^Psr\\Log\\LoggerInterface$|\
-            ^Serendipity\\Hyperf\\.*$
+            ^Serendipity\\Hyperf\\.*$|\
+            ^SleekDB\\.*$
 
     - name: Validation
       collectors:

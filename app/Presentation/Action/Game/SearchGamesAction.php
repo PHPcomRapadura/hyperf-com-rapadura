@@ -19,7 +19,7 @@ readonly class SearchGamesAction
     {
         $name = $input->value('name');
         $slug = $input->value('slug');
-        $games = $this->gameQueryRepository->getGames([
+        $games = $this->gameQueryRepository->search([
             'names' => $name,
             'slug' => $slug,
         ]);

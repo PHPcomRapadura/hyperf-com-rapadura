@@ -30,7 +30,7 @@ class PostgresGameQueryRepositoryTest extends InfrastructureTestCase
         $values = $this->seed(Game::class);
 
         $repository = $this->make(PostgresGameQueryRepository::class);
-        $game = $repository->getGame($values->get('id'));
+        $game = $repository->read($values->get('id'));
         $this->assertEquals($values->get('name'), $game->name);
     }
 
@@ -38,7 +38,7 @@ class PostgresGameQueryRepositoryTest extends InfrastructureTestCase
     {
         $id = $this->managed()->id();
         $repository = $this->make(PostgresGameQueryRepository::class);
-        $this->assertNull($repository->getGame($id));
+        $this->assertNull($repository->read($id));
     }
 
     public function testGetGamesReturnsGameCollection(): void
@@ -47,7 +47,7 @@ class PostgresGameQueryRepositoryTest extends InfrastructureTestCase
         $this->seed(Game::class);
 
         $repository = $this->make(PostgresGameQueryRepository::class);
-        $games = $repository->getGames();
+        $games = $repository->search();
 
         $this->assertCount(2, $games);
     }
@@ -58,7 +58,7 @@ class PostgresGameQueryRepositoryTest extends InfrastructureTestCase
         $this->seed(Game::class);
 
         $repository = $this->make(PostgresGameQueryRepository::class);
-        $all = $repository->getGames()->all();
+        $all = $repository->search()->all();
         $count = collect($all)
             ->filter(fn ($game) => $game->id === $values->get('id'))
             ->count();
@@ -68,7 +68,7 @@ class PostgresGameQueryRepositoryTest extends InfrastructureTestCase
     public function testGetGamesReturnsEmptyCollectionWhenNoGames(): void
     {
         $repository = $this->make(PostgresGameQueryRepository::class);
-        $games = $repository->getGames();
+        $games = $repository->search();
         $this->assertCount(0, $games);
     }
 }

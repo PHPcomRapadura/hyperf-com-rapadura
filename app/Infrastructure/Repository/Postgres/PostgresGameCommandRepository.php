@@ -21,7 +21,7 @@ class PostgresGameCommandRepository extends PostgresRepository implements GameCo
      * @throws ManagedException
      * @throws Exception|UniqueKeyViolationException
      */
-    public function persist(GameCommand $game): string
+    public function create(GameCommand $game): string
     {
         $id = $this->managed->id();
         $fields = [
@@ -47,7 +47,25 @@ class PostgresGameCommandRepository extends PostgresRepository implements GameCo
         return $id;
     }
 
-    public function destroy(string $id): bool
+    /**
+     * @throws ManagedException
+     */
+    public function update(int|string $id, GameCommand $game): bool
+    {
+        $fields = [
+            'updated_at',
+            'name',
+            'slug',
+            'data',
+        ];
+        /* @noinspection SqlNoDataSourceInspection, SqlResolve */
+        $query = 'update "games" set "updated_at" = ?, "name" = ?, "slug" = ?, "data" = ? where "id" = ?';
+        $bindings = $this->bindings($game, $fields, ['id' => $id]);
+        $affected = $this->database->execute($query, $bindings);
+        return $affected > 0;
+    }
+
+    public function delete(int|string $id): bool
     {
         /* @noinspection SqlNoDataSourceInspection, SqlResolve */
         $query = 'delete from "games" where "id" = ?';

@@ -9,9 +9,11 @@ use App\Infrastructure\Repository\SleekDB\SleekDBGameQueryRepository;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Psr\Container\ContainerInterface as Container;
 use Psr\Log\LoggerInterface;
+use Serendipity\Hyperf\Database\Document\HyperfSleekDBFactory;
 use Serendipity\Hyperf\Database\Relational\HyperfConnectionFactory;
 use Serendipity\Hyperf\Logging\GoogleCloudLoggerFactory;
-use Serendipity\Hyperf\Testing\Observability\MemoryLogger;
+use Serendipity\Hyperf\Testing\Observability\Logger\InMemory\InMemoryLogger;
+use Serendipity\Infrastructure\Database\Document\SleekDBFactory;
 use Serendipity\Infrastructure\Database\Relational\ConnectionFactory;
 
 use function Hyperf\Support\env;
@@ -23,10 +25,12 @@ if (! defined('APP_ENV')) {
 
 return [
     LoggerInterface::class => fn (Container $container) => match (APP_ENV) {
-        'test' => $container->get(MemoryLogger::class),
+        'test' => $container->get(InMemoryLogger::class),
         'prd', 'hom', 'liv', 'stg' => $container->get(GoogleCloudLoggerFactory::class)->make(APP_ENV),
         default => $container->get(StdoutLoggerInterface::class),
     },
+
+    SleekDBFactory::class => fn (Container $container) => (new HyperfSleekDBFactory())->make($container),
     ConnectionFactory::class => HyperfConnectionFactory::class,
 
     GameCommandRepository::class => SleekDBGameCommandRepository::class,

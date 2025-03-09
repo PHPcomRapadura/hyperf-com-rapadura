@@ -11,9 +11,9 @@ return new class extends Migration {
     {
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('_id');
-            $table->string('id');
+            $table->char('id', 10)->unique();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->json('data');
             $table->datetimes();
         });

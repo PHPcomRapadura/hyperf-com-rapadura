@@ -29,7 +29,7 @@ class SleekDBGameQueryRepository extends SleekDBGameRepository implements GameQu
      * @throws InvalidArgumentException
      * @throws IOException
      */
-    public function getGame(string $id): ?Game
+    public function read(string $id): ?Game
     {
         $data = arrayify($this->database->findBy(['id', '=', $id]));
         $serializer = $this->serializerFactory->make(Game::class);
@@ -40,7 +40,7 @@ class SleekDBGameQueryRepository extends SleekDBGameRepository implements GameQu
      * @throws IOException
      * @throws InvalidArgumentException
      */
-    public function getGames(array $filters = []): GameCollection
+    public function search(array $filters = []): GameCollection
     {
         $serializer = $this->serializerFactory->make(Game::class);
         if (empty($filters)) {

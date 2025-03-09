@@ -19,7 +19,7 @@ class ExportGameService
      */
     public function exportGames(string $slug): Game
     {
-        $games = $this->gameQueryRepository->getGames();
+        $games = $this->gameQueryRepository->search();
         foreach ($games as $game) {
             if ($game->slug === $slug) {
                 return $game;

@@ -26,7 +26,7 @@ readonly class CreateGameAction
     public function __invoke(CreateGameInput $input): Message
     {
         $game = $this->builder->build(GameCommand::class, $input->values());
-        $id = $this->gameCommandRepository->persist($game);
+        $id = $this->gameCommandRepository->create($game);
         return Accepted::createFrom($id);
     }
 }

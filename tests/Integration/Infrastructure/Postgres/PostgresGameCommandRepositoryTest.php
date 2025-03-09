@@ -37,7 +37,7 @@ final class PostgresGameCommandRepositoryTest extends InfrastructureTestCase
 
         # ## Act
         // call the method that is being tested
-        $id = $repository->persist($game);
+        $id = $repository->create($game);
 
         # ## Assert
         // check if there is a record on database with the same ID
@@ -58,8 +58,8 @@ final class PostgresGameCommandRepositoryTest extends InfrastructureTestCase
 
         # ## Act
         // call the same method twice to force the duplicity
-        $repository->persist($game1);
-        $repository->persist($game2);
+        $repository->create($game1);
+        $repository->create($game2);
     }
 
     public function testShouldDestroySuccessfully(): void
@@ -67,7 +67,7 @@ final class PostgresGameCommandRepositoryTest extends InfrastructureTestCase
         $values = $this->seed(Game::class);
         $id = $values->get('id');
         $repository = $this->make(PostgresGameCommandRepository::class);
-        $repository->destroy($id);
+        $repository->delete($id);
         $this->assertHasNot(['id' => $id]);
     }
 }

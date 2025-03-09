@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Integration\Presentation\Game;
 
 use App\Domain\Entity\Game;
-use App\Presentation\Action\Game\RetriveGameAction;
-use App\Presentation\Input\Game\ReadGameInput;
-use Serendipity\Presentation\Output\NotFound;
+use App\Presentation\Action\Game\ReadGameAction;
+use App\Presentation\Input\Game\GameInput;
+use Serendipity\Presentation\Output\Fail\NotFound;
 use Serendipity\Presentation\Output\Ok;
 use Tests\Integration\PresentationTestCase;
 
@@ -27,9 +27,9 @@ class ReadGameActionTest extends PresentationTestCase
     {
         $values = $this->seed(Game::class);
 
-        $input = $this->input(class: ReadGameInput::class, params: ['id' => $values->get('id')]);
+        $input = $this->input(class: GameInput::class, params: ['id' => $values->get('id')]);
 
-        $action = $this->make(RetriveGameAction::class);
+        $action = $this->make(ReadGameAction::class);
         $actual = $action($input);
 
         $this->assertInstanceOf(Ok::class, $actual);
@@ -39,9 +39,9 @@ class ReadGameActionTest extends PresentationTestCase
 
     final public function testShouldReturnNotFound(): void
     {
-        $input = $this->input(class: ReadGameInput::class, params: ['id' => $this->generator()->uuid()]);
+        $input = $this->input(class: GameInput::class, params: ['id' => $this->generator()->uuid()]);
 
-        $action = $this->make(RetriveGameAction::class);
+        $action = $this->make(ReadGameAction::class);
         $actual = $action($input);
 
         $this->assertInstanceOf(NotFound::class, $actual);

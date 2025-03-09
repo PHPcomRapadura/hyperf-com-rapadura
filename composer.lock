@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5340d8b2b2196f7dcaf21809e6ba038",
+    "content-hash": "409ae6258c81a088eaadedf840416462",
     "packages": [
         {
             "name": "brick/math",
@@ -137,16 +137,16 @@
         },
         {
             "name": "devitools/serendipity",
-            "version": "1.8.6",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devitools/serendipity.git",
-                "reference": "27c3ebf790752ce76f90101d3d626b796290a9b2"
+                "reference": "b76ea9bb804f50e02274aa546feeae03cbe03f54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devitools/serendipity/zipball/27c3ebf790752ce76f90101d3d626b796290a9b2",
-                "reference": "27c3ebf790752ce76f90101d3d626b796290a9b2",
+                "url": "https://api.github.com/repos/devitools/serendipity/zipball/b76ea9bb804f50e02274aa546feeae03cbe03f54",
+                "reference": "b76ea9bb804f50e02274aa546feeae03cbe03f54",
                 "shasum": ""
             },
             "require": {
@@ -247,9 +247,9 @@
             ],
             "support": {
                 "issues": "https://github.com/devitools/serendipity/issues",
-                "source": "https://github.com/devitools/serendipity/tree/1.8.6"
+                "source": "https://github.com/devitools/serendipity/tree/1.9.0"
             },
-            "time": "2025-03-07T19:23:42+00:00"
+            "time": "2025-03-09T20:15:12+00:00"
         },
         {
             "name": "doctrine/deprecations",

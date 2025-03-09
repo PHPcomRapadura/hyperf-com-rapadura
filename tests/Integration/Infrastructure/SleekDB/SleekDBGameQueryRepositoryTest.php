@@ -30,7 +30,7 @@ class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
         $values = $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
-        $game = $repository->getGame($values->get('id'));
+        $game = $repository->read($values->get('id'));
         $this->assertEquals($values->get('name'), $game->name);
     }
 
@@ -38,7 +38,7 @@ class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
     {
         $id = $this->managed()->id();
         $repository = $this->make(SleekDBGameQueryRepository::class);
-        $this->assertNull($repository->getGame($id));
+        $this->assertNull($repository->read($id));
     }
 
     public function testGetGamesReturnsGameCollection(): void
@@ -47,7 +47,7 @@ class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
         $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
-        $games = $repository->getGames();
+        $games = $repository->search();
 
         $this->assertCount(2, $games);
     }
@@ -61,7 +61,7 @@ class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
         $this->seed(Game::class);
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
-        $all = $repository->getGames()->all();
+        $all = $repository->search()->all();
         $count = collect($all)
             ->filter(fn ($game) => $game->id === $values->get('id'))
             ->count();
@@ -79,7 +79,7 @@ class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
 
         $repository = $this->make(SleekDBGameQueryRepository::class);
         $game = $repository
-            ->getGames(['id' => $values->get('id')])
+            ->search(['id' => $values->get('id')])
             ->current();
         $this->assertEquals($slug, $game->slug);
     }
@@ -87,7 +87,7 @@ class SleekDBGameQueryRepositoryTest extends InfrastructureTestCase
     public function testGetGamesReturnsEmptyCollectionWhenNoGames(): void
     {
         $repository = $this->make(SleekDBGameQueryRepository::class);
-        $games = $repository->getGames();
+        $games = $repository->search();
         $this->assertCount(0, $games);
     }
 }

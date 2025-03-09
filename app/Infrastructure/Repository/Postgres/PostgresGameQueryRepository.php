@@ -11,7 +11,7 @@ use Serendipity\Infrastructure\Repository\PostgresRepository;
 
 class PostgresGameQueryRepository extends PostgresRepository implements GameQueryRepository
 {
-    public function getGame(string $id): ?Game
+    public function read(string $id): ?Game
     {
         /* @noinspection SqlNoDataSourceInspection, SqlResolve */
         $query = 'select "id", "created_at", "updated_at", "name", "slug", "data" from "games" where "id" = ?';
@@ -21,7 +21,7 @@ class PostgresGameQueryRepository extends PostgresRepository implements GameQuer
         return $this->entity($serializer, $data);
     }
 
-    public function getGames(array $filters = []): GameCollection
+    public function search(array $filters = []): GameCollection
     {
         /* @noinspection SqlNoDataSourceInspection, SqlResolve */
         $query = 'select "id", "created_at", "updated_at", "name", "slug", "data" from "games"';

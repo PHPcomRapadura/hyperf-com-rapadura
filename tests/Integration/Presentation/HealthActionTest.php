@@ -36,6 +36,6 @@ final class HealthActionTest extends ExtensibleTestCase
         $input = $this->input(HealthInput::class, ['message' => $message]);
         $action = $this->make(HealthAction::class);
         $result = $action($input);
-        $this->assertEquals($message, $result);
+        $this->assertEquals(['method' => 'POST', 'message' => $message], $result);
     }
 }

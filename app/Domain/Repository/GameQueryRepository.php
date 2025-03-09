@@ -9,7 +9,7 @@ use App\Domain\Entity\Game;
 
 interface GameQueryRepository
 {
-    public function getGame(string $id): ?Game;
+    public function read(string $id): ?Game;
 
-    public function getGames(array $filters = []): GameCollection;
+    public function search(array $filters = []): GameCollection;
 }

@@ -29,7 +29,7 @@ class SleekDBGameCommandRepositoryTest extends InfrastructureTestCase
         $repository = $this->make(SleekDBGameCommandRepository::class);
         $values = $this->faker()->fake(GameCommand::class);
         $game = $this->builder()->build(GameCommand::class, $values);
-        $id = $repository->persist($game);
+        $id = $repository->create($game);
 
         $this->assertHas([['id', '=', $id]]);
     }
@@ -43,7 +43,7 @@ class SleekDBGameCommandRepositoryTest extends InfrastructureTestCase
 
         $this->assertHasExactly(1, [['id', '=', $id]]);
 
-        $repository->destroy($id);
+        $repository->delete($id);
 
         $this->assertHasNot([['id', '=', $id]]);
     }
