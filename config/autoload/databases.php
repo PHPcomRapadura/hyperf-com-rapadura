@@ -64,8 +64,8 @@ $connections = [
         ],
         'write' => [
             'host' => env('DB_MYSQL_READ_HOST', env('DB_MYSQL_HOST', 'mysql')),
-            'username' => env('DB_MYSQL_READ_USERNAME', env('DB_MYSQL_USERNAME', 'mysql')),
-            'password' => env('DB_MYSQL_READ_PASSWORD', env('DB_MYSQL_PASSWORD', 'root')),
+            'username' => env('DB_MYSQL_READ_USERNAME', env('DB_MYSQL_USERNAME', 'username')),
+            'password' => env('DB_MYSQL_READ_PASSWORD', env('DB_MYSQL_PASSWORD', 'password')),
             'port' => env('DB_MYSQL_READ_PORT', env('DB_MYSQL_PORT', 3306)),
         ],
         'database' => env('DB_MYSQL__NAME', 'database'),

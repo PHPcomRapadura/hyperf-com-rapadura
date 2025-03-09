@@ -11,7 +11,7 @@ use Serendipity\Domain\Contract\Message;
 use Serendipity\Presentation\Output\NotFound;
 use Serendipity\Presentation\Output\Ok;
 
-readonly class ReadGameAction
+readonly class RetriveGameAction
 {
     public function __construct(private GameQueryRepository $gameQueryRepository)
     {

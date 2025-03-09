@@ -11,6 +11,7 @@
          failOnDeprecation="true"
          failOnRisky="true"
          failOnWarning="true"
+         beStrictAboutTestsThatDoNotTestAnything="false"
 >
     <coverage disableCodeCoverageIgnore="true">
         <report>

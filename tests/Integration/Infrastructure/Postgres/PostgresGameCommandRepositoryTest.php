@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Infrastructure\Postgres;
 
-use Serendipity\Domain\Exception\UniqueKeyViolationException;
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Entity\Game;
 use App\Infrastructure\Repository\Postgres\PostgresGameCommandRepository;
-use Tests\Integration\InfrastructureTestCase;
+use Serendipity\Domain\Exception\UniqueKeyViolationException;
 use Serendipity\Testing\Extension\BuilderExtension;
+use Tests\Integration\InfrastructureTestCase;
 
 /**
  * @internal

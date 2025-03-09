@@ -8,9 +8,9 @@ use Serendipity\Hyperf\Testing\Extension\InputExtension;
 use Serendipity\Hyperf\Testing\Extension\MakeExtension;
 use Serendipity\Hyperf\Testing\PostgresHelper;
 use Serendipity\Hyperf\Testing\SleekDBHelper;
-use Tests\ExtensibleTestCase;
 use Serendipity\Testing\Extension\FakerExtension;
 use Serendipity\Testing\Extension\ResourceExtension;
+use Tests\ExtensibleTestCase;
 
 /**
  * @internal

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Repository;
 
-use Serendipity\Domain\Exception\ManagedException;
 use App\Domain\Entity\Command\GameCommand;
+use Serendipity\Domain\Exception\ManagedException;
 
 interface GameCommandRepository
 {

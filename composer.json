@@ -19,6 +19,7 @@
     "ext-swoole": "^5.0",
     "devitools/serendipity": "^1.8",
     "google/cloud-logging": "^1.32",
+    "guzzlehttp/guzzle": "^7.9",
     "hyperf/cache": "~3.1.0",
     "hyperf/command": "~3.1.0",
     "hyperf/config": "~3.1.0",
@@ -75,6 +76,7 @@
   "suggest": {
     "ext-openssl": "Required to use HTTPS.",
     "ext-json": "Required to use JSON.",
+    "ext-pdo": "Required to use MySQL and Postgres Client.",
     "ext-pdo_mysql": "Required to use MySQL Client.",
     "ext-redis": "Required to use Redis Client."
   },

@@ -7,8 +7,8 @@ namespace Tests\Integration\Infrastructure\SleekDB;
 use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Entity\Game;
 use App\Infrastructure\Repository\SleekDB\SleekDBGameCommandRepository;
-use Tests\Integration\InfrastructureTestCase;
 use Serendipity\Testing\Extension\BuilderExtension;
+use Tests\Integration\InfrastructureTestCase;
 
 /**
  * @internal

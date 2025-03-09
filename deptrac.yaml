@@ -33,7 +33,17 @@ parameters:
       collectors:
         - type: className
           regex:
-            ^SleekDB\\.*
+            ^Hyperf\\Contract\\ConfigInterface$|\
+            ^Hyperf\\DB\\Exception\\QueryException$|\
+            ^Hyperf\\Guzzle\\ClientFactory$|\
+            ^Psr\\Log\\LoggerInterface$|\
+            ^Serendipity\\Hyperf\\.*$
+
+    - name: Validation
+      collectors:
+        - type: className
+          regex:
+            ^Hyperf\\Validation\\Rule$
 
   ruleset:
     Application:
@@ -49,3 +59,4 @@ parameters:
       - Application
       - Domain
       - Infrastructure
+      - Validation

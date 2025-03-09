@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Repository\Postgres;
 
+use App\Domain\Entity\Command\GameCommand;
+use App\Domain\Repository\GameCommandRepository;
 use Exception;
 use Hyperf\DB\Exception\QueryException;
 use Serendipity\Domain\Exception\ManagedException;
 use Serendipity\Domain\Exception\UniqueKeyViolationException;
-use App\Domain\Entity\Command\GameCommand;
-use App\Domain\Repository\GameCommandRepository;
 use Serendipity\Hyperf\Database\Relational\Support\HasPostgresUniqueConstraint;
 use Serendipity\Infrastructure\Repository\PostgresRepository;
 

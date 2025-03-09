@@ -11,7 +11,8 @@ setup: ## Setup the project
 	@make up
 	@make migrate
 
-##@ Bash controls
+
+##@ Management controls
 
 bash: ## Start nginx bash
 	@$(COMPOSE_RUNNER) run --rm --entrypoint sh app
@@ -29,6 +30,7 @@ prune: ## Prune the project
 	@$(COMPOSE_RUNNER) --profile mysql down --remove-orphans --volumes
 
 watch: ## Start the project in watch mode
+	@make down
 	@make up
 	@$(COMPOSE_RUNNER) logs -f app
 
@@ -40,6 +42,7 @@ install: ## Composer install dependencies
 
 dump: ## Run the composer dump
 	@$(COMPOSE_RUNNER) run --rm --entrypoint composer app dump-autoload
+
 
 ##@ Code analysis
 
@@ -67,6 +70,7 @@ lint-psalm: ## Perform code style list using psalm
 fix: ## Perform code style fix
 	@$(COMPOSE_RUNNER) run --rm --entrypoint composer app fix
 
+
 ##@ Tests
 
 test: ## Execute suite's test unit and integration
@@ -92,6 +96,13 @@ postgres: ## Start the postgres container
 
 migrate: ## Execute the migrations
 	@$(COMPOSE_RUNNER) run --rm --entrypoint "php bin/hyperf.php" app migrate --database=postgres
+
+
+## Quality
+
+sonar: ## Run the sonar analysis
+	@$(COMPOSE_RUNNER) run --rm --entrypoint "/bin/sonar-scanner" app -Dsonar.host.url=https://sonarcloud.io -X
+
 
 ##@ Docs
 

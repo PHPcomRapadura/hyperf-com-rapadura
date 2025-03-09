@@ -10,6 +10,9 @@ use App\Domain\Collection\GameCollection;
 use App\Domain\Repository\GameQueryRepository;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class ExportGameServiceTest extends TestCase
 {
     public function testShouldExportGameSuccessfully(): void

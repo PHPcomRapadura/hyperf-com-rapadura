@@ -82,6 +82,7 @@ return (new Config())
         'standardize_not_equals' => true,
         'multiline_comment_opening_closing' => true,
         'single_line_empty_body' => false,
+        'php_unit_test_class_requires_covers' => false,
     ])
     ->setFinder(
         Finder::create()

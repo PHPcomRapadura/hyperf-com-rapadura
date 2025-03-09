@@ -10,6 +10,7 @@ services:
     environment:
       - SCAN_CACHEABLE=false
       - STDOUT_LOG_LEVEL=alert,critical,emergency,error,warning,notice,info
+      - SONAR_TOKEN=${SONAR_TOKEN:-undefined}
     networks:
       - template_name-network
     restart: on-failure
@@ -21,13 +22,22 @@ services:
     image: postgres:16.2
     tty: true
     environment:
-      - POSTGRES_USER=${POSTGRES_DB_USERNAME:-postgres}
-      - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD:-root}
-      - POSTGRES_DB=${POSTGRES_DB_NAME:-database}
+      - POSTGRES_DB=${DB_POSTGRES_NAME:-database}
+      - POSTGRES_USER=${DB_POSTGRES_USERNAME:-username}
+      - POSTGRES_PASSWORD=${DB_POSTGRES_PASSWORD:-password}
     ports:
       - '5432:5432'
     volumes:
       - template_name-postgres-data:/var/lib/postgresql/data
+    networks:
+      - template_name-network
+
+  outsider:
+    container_name: template_name-outsider
+    image: mockoon/cli:8
+    command: --data /data --port 3000 --log-transaction
+    volumes:
+      - ./tests/.mockoon/outsider.json:/data
     networks:
       - template_name-network
 

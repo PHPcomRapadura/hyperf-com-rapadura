@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Integration\Presentation\Game;
 
 use App\Domain\Entity\Game;
-use App\Presentation\Action\Game\ReadGameAction;
+use App\Presentation\Action\Game\RetriveGameAction;
 use App\Presentation\Input\Game\ReadGameInput;
 use Serendipity\Presentation\Output\NotFound;
 use Serendipity\Presentation\Output\Ok;
@@ -29,7 +29,7 @@ class ReadGameActionTest extends PresentationTestCase
 
         $input = $this->input(class: ReadGameInput::class, params: ['id' => $values->get('id')]);
 
-        $action = $this->make(ReadGameAction::class);
+        $action = $this->make(RetriveGameAction::class);
         $actual = $action($input);
 
         $this->assertInstanceOf(Ok::class, $actual);
@@ -41,7 +41,7 @@ class ReadGameActionTest extends PresentationTestCase
     {
         $input = $this->input(class: ReadGameInput::class, params: ['id' => $this->generator()->uuid()]);
 
-        $action = $this->make(ReadGameAction::class);
+        $action = $this->make(RetriveGameAction::class);
         $actual = $action($input);
 
         $this->assertInstanceOf(NotFound::class, $actual);

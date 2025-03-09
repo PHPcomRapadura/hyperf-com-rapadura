@@ -6,8 +6,8 @@ namespace Tests\Integration\Infrastructure\Postgres;
 
 use App\Domain\Entity\Game;
 use App\Infrastructure\Repository\Postgres\PostgresGameQueryRepository;
-use Tests\Integration\InfrastructureTestCase;
 use Serendipity\Testing\Extension\ManagedExtension;
+use Tests\Integration\InfrastructureTestCase;
 
 use function Hyperf\Collection\collect;
 

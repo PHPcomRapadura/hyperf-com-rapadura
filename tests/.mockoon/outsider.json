@@ -1,0 +1,209 @@
+{
+  "uuid": "bc383511-7cf7-4539-adbf-c8a8b0490d9a",
+  "lastMigration": 32,
+  "name": "outsider",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "602508a6-5cdd-4161-9a87-77bb7f5f66b0",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/post",
+      "responses": [
+        {
+          "uuid": "0a7bc947-1055-4e8d-b017-1c1c26251133",
+          "body": "{\n  \"status\": \"ok\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "6622dcfb-f24c-482b-ad9f-04e51ae685eb",
+          "body": "Unauthorized",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "ip_address",
+              "value": "401.0.0.0",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "805f98d4-ea0f-484c-8909-214a5a18a144",
+          "body": "{\n  \"status\": \"error\",\n  \"errors\": {\n    \"email\": [\n      \"The email field is required.\"\n    ],\n    \"phone\": [\n      \"Phone is required if no email is sent.\"\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "ip_address",
+              "value": "422.0.0.0",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a37d3c13-83af-401d-aae9-ef4405c08b08",
+          "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <title>504 Gateway Time-out</title>\n</head>\n<body>\n  <center>\n    <h1>504 Gateway Time-out</h1>\n  </center>\n  <hr>\n  <center>nginx</center>\n</body>\n</html>\n",
+          "latency": 0,
+          "statusCode": 504,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "ip_address",
+              "value": "504.0.0.0",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ae4b5cec-ad6b-4409-91d8-1d7628707094",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "health",
+      "responses": [
+        {
+          "uuid": "b8018e7c-4808-4372-a95c-409eebd3b17f",
+          "body": "{\"status\":\"success\",\"data\":{\"method\":\"GET\",\"message\":\"Kicking ass and taking names!\"}}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "ae4b5cec-ad6b-4409-91d8-1d7628707094"
+    },
+    {
+      "type": "route",
+      "uuid": "602508a6-5cdd-4161-9a87-77bb7f5f66b0"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

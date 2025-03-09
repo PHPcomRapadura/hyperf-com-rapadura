@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Domain\Entity;
 
+use App\Domain\Entity\Command\GameCommand;
 use DateTimeImmutable;
 use Serendipity\Domain\Support\Reflective\Attributes\Managed;
-use App\Domain\Entity\Command\GameCommand;
 
 class Game extends GameCommand
 {
