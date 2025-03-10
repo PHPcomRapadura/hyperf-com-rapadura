@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Presentation\Action\Game\CreateGameAction;
 use App\Presentation\Action\Game\DeleteGameAction;
-use App\Presentation\Action\Game\ExportGamesAction;
+use App\Presentation\Action\Game\ExportGameAction;
 use App\Presentation\Action\Game\ReadGameAction;
 use App\Presentation\Action\Game\SearchGamesAction;
 use App\Presentation\Action\Game\UpdateGameAction;
@@ -21,5 +21,5 @@ Router::addGroup('/api/v1/', function () {
     Router::put('games/{id}', UpdateGameAction::class);
     Router::delete('games/{id}', DeleteGameAction::class);
     Router::get('games', SearchGamesAction::class);
-    Router::post('games/{slug}/export', ExportGamesAction::class);
+    Router::post('games/{slug}/export', ExportGameAction::class);
 });

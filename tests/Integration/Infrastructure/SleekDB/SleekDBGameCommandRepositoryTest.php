@@ -34,6 +34,56 @@ class SleekDBGameCommandRepositoryTest extends InfrastructureTestCase
         $this->assertHas([['id', '=', $id]]);
     }
 
+    public function testShouldUpdateSuccessfully(): void
+    {
+        // ## Arrange
+        $repository = $this->make(SleekDBGameCommandRepository::class);
+
+        // Seed a game record in the SleekDB database
+        $values = $this->seed(Game::class);
+        $originalId = $values->get('id');
+
+        // Generate new values to update the record
+        $newValues = $this->faker()->fake(GameCommand::class);
+        $updatedGame = $this->builder()->build(GameCommand::class, $newValues);
+
+        // ## Act
+        $wasUpdated = $repository->update($originalId, $updatedGame);
+
+        // ## Assert
+        // Ensure the update method returned true
+        $this->assertTrue($wasUpdated);
+
+        // Verify that the data in the DB was updated correctly
+        $this->assertHas(
+            [
+                ['id', '=', $originalId],
+                ['name', '=', $newValues->get('name')],
+                ['slug', '=', $newValues->get('slug')],
+            ]
+        );
+    }
+
+    public function testShouldReturnFalseIfRecordDoesNotExist(): void
+    {
+        // ## Arrange
+        $repository = $this->make(SleekDBGameCommandRepository::class);
+
+        // Generate a non-existent ID
+        $nonExistentId = $this->faker()->uuid();
+
+        // Create fake new data for a record
+        $newValues = $this->faker()->fake(GameCommand::class);
+        $game = $this->builder()->build(GameCommand::class, $newValues);
+
+        // ## Act
+        $wasUpdated = $repository->update($nonExistentId, $game);
+
+        // ## Assert
+        // Ensure the update method returned false
+        $this->assertFalse($wasUpdated);
+    }
+
     public function testShouldDestroySuccessfully(): void
     {
         $repository = $this->make(SleekDBGameCommandRepository::class);

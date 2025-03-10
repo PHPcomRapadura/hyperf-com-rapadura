@@ -14,7 +14,7 @@ class UpdateGameInput extends Input
             'id' => ['required', 'string'],
             'name' => ['required', 'string'],
             'slug' => ['required', 'string'],
-            'data' => ['sometimes', 'array'],
+            'data' => ['required', 'array'],
         ];
     }
 }

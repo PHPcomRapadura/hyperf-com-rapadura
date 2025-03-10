@@ -36,7 +36,7 @@ class ExportGameServiceTest extends TestCase
             ->willReturn($collection);
 
         $service = new ExportGameService($gameQueryRepository);
-        $exported = $service->exportGames('cool-game');
+        $exported = $service->exportGame('cool-game');
         $this->assertEquals($set1->get('slug'), $exported->slug);
     }
 
@@ -50,6 +50,6 @@ class ExportGameServiceTest extends TestCase
             ->willReturn(new GameCollection());
 
         $service = new ExportGameService($gameQueryRepository);
-        $service->exportGames('cool-game');
+        $service->exportGame('cool-game');
     }
 }

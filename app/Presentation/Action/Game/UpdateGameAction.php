@@ -8,6 +8,7 @@ use App\Domain\Entity\Command\GameCommand;
 use App\Domain\Repository\GameCommandRepository;
 use App\Presentation\Input\Game\UpdateGameInput;
 use Serendipity\Domain\Contract\Message;
+use Serendipity\Domain\Exception\ManagedException;
 use Serendipity\Infrastructure\Adapter\Serialize\Builder;
 use Serendipity\Presentation\Output\Accepted;
 use Serendipity\Presentation\Output\Fail\UnprocessableEntity;
@@ -20,6 +21,9 @@ readonly class UpdateGameAction
     ) {
     }
 
+    /**
+     * @throws ManagedException
+     */
     public function __invoke(UpdateGameInput $input): Message
     {
         $id = $input->value('id', '');

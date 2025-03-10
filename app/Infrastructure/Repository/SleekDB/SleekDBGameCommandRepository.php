@@ -16,6 +16,10 @@ use SleekDB\Exceptions\InvalidArgumentException;
 use SleekDB\Exceptions\IOException;
 use SleekDB\Exceptions\JsonException;
 
+use function is_numeric;
+use function Serendipity\Type\Cast\arrayify;
+use function Serendipity\Type\Cast\integerify;
+
 class SleekDBGameCommandRepository extends SleekDBGameRepository implements GameCommandRepository
 {
     /**
@@ -58,9 +62,13 @@ class SleekDBGameCommandRepository extends SleekDBGameRepository implements Game
      */
     public function update(int|string $id, GameCommand $game): bool
     {
+        $document = arrayify($this->database->findOneBy(['id', '=', $id]));
+        if (empty($document) || ! is_numeric($document['_id'] ?? null)) {
+            return false;
+        }
         $datum = $this->deserializer->deserialize($game);
         $datum['updated_at'] = $this->generator->now();
-        return (bool) $this->database->updateById($id, $datum);
+        return (bool) $this->database->updateById(integerify($document['_id'] ?? null), $datum);
     }
 
     /**

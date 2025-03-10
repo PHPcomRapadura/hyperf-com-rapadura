@@ -60,7 +60,8 @@ class PostgresGameCommandRepository extends PostgresRepository implements GameCo
         ];
         /* @noinspection SqlNoDataSourceInspection, SqlResolve */
         $query = 'update "games" set "updated_at" = ?, "name" = ?, "slug" = ?, "data" = ? where "id" = ?';
-        $bindings = $this->bindings($game, $fields, ['id' => $id]);
+        $bindings = $this->bindings($game, $fields);
+        $bindings[] = $id;
         $affected = $this->database->execute($query, $bindings);
         return $affected > 0;
     }

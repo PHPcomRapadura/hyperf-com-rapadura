@@ -17,7 +17,7 @@ class ExportGameService
     /**
      * @throws ExportGamesFailedException
      */
-    public function exportGames(string $slug): Game
+    public function exportGame(string $slug): Game
     {
         $games = $this->gameQueryRepository->search();
         foreach ($games as $game) {

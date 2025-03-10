@@ -9,7 +9,7 @@ use App\Application\Service\ExportGameService;
 use App\Domain\Entity\Game;
 use App\Presentation\Input\Game\ExportGamesInput;
 
-readonly class ExportGamesAction
+readonly class ExportGameAction
 {
     public function __construct(private ExportGameService $exportGameService)
     {
@@ -21,6 +21,6 @@ readonly class ExportGamesAction
     public function __invoke(ExportGamesInput $input): Game
     {
         $slug = $input->value('slug', '');
-        return $this->exportGameService->exportGames($slug);
+        return $this->exportGameService->exportGame($slug);
     }
 }
