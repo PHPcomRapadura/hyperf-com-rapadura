@@ -17,7 +17,7 @@
     "ext-json": "*",
     "ext-pdo": "*",
     "ext-swoole": "^5.0",
-    "devitools/serendipity": "^1.9.0",
+    "devitools/serendipity": "^1.9.1",
     "google/cloud-logging": "^1.32",
     "guzzlehttp/guzzle": "^7.9",
     "hyperf/cache": "~3.1.0",
