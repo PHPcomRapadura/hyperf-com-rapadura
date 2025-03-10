@@ -10,41 +10,46 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    container:
-      image: devitools/hyperf:8.3-dev
-      env:
-        SCAN_CACHEABLE: false
-        STDOUT_LOG_LEVEL: alert,critical,emergency,error,warning,notice,info
-      options: --cpus 1
-
-    services:
-      postgres:
-        image: postgres:16.2
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: root
-          POSTGRES_DB: database
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - '5432:5432'
+    env:
+      COMPOSE_RUNNER: "docker compose"
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: buildx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            buildx-${{ runner.os }}-
+
+      - name: Checkout current code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - run: git config --global --add safe.directory /__w/hyperf-com-rapadura/hyperf-com-rapadura
 
-      - run: composer install
+      - name: Put everything up
+        run: make up
 
-      - run: php bin/hyperf.php migrate --database=postgres
+      - name: Wait for postgres be ready to GO
+        uses: nick-fields/retry@v3
+        with:
+          timeout_seconds: 60
+          retry_wait_seconds: 5
+          max_attempts: 12
+          warning_on_retry: false
+          command: docker compose exec postgres pg_isready
 
-      - run: composer test
+      - name: Configure database environment
+        run: make migrate
 
-      - run: /bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io -X
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Run tests and generate coverage
+        run: make test
+
+      - name: Run SonarCloud analysis
+        run: make sonar
