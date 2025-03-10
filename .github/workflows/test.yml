@@ -33,6 +33,9 @@ jobs:
 
       - run: git config --global --add safe.directory /__w/hyperf-com-rapadura/hyperf-com-rapadura
 
+      - name: Setup the application environment
+        run: make install
+
       - name: Put everything up
         run: make up
 
