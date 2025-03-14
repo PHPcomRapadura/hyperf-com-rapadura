@@ -6,11 +6,11 @@ namespace App\Application\Service;
 
 use App\Application\Exception\ExportGamesFailedException;
 use App\Domain\Entity\Game;
-use App\Domain\Repository\GameQueryRepository;
+use App\Infrastructure\Repository\Postgres\PostgresGameQueryRepository;
 
 class ExportGameService
 {
-    public function __construct(private readonly GameQueryRepository $gameQueryRepository)
+    public function __construct(private readonly PostgresGameQueryRepository $gameQueryRepository)
     {
     }
 
